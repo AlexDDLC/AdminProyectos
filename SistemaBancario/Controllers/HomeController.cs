@@ -7,8 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SistemaBancario.Models;
 
-//Nelson Alexander 10:40 PM
-
 namespace SistemaBancario.Controllers
 {
     public class HomeController : Controller
