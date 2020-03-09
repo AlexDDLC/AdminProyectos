@@ -16,7 +16,6 @@
 
 
   <ItemGroup>
-    <Folder Include="CSS\" />
     <Folder Include="Imagenes\" />
   </ItemGroup>
 
