@@ -12,7 +12,7 @@ body {
     background-attachment: fixed;
     background-position: center;
     font-size: 100%;
-    font-family: 'Magra', sans-serif;
+    /*font-family: 'Magra', sans-serif;*/
     overflow-x: hidden;
 }
 
@@ -62,7 +62,7 @@ input.input-field {
         font-size: 30px;
         margin-bottom: 40px;
         position: relative;
-        font-family: 'Magra', sans-serif;
+        /*font-family: 'Magra', sans-serif;*/
     }
 
     .formBox form {
@@ -136,7 +136,7 @@ input.input-field {
     background-color: #25b4ed;
     border: none;
     cursor: pointer;
-    font-family: 'Magra', sans-serif;
+    /*font-family: 'Magra', sans-serif;*/
     color: #fff;
     text-align: center;
     letter-spacing: 1px;
