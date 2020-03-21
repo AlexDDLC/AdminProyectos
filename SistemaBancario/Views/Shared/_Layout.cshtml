@@ -9,48 +9,86 @@
     <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CoopITLA</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i> Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Nosotros"><i class="fas fa-users"></i> Sobre nosotros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Servicios"><i class="far fa-handshake"></i> Servicios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contactanos"><i class="fas fa-mail-bulk"></i> Contáctanos</a>
-                        </li>
+    <div class="contenedor"> 
+
+        <div class="cabecera">
+
+            <div class="loguero"><img class="logo" src="images/logo.png" alt=""></div>
+            <div class="coop">COOPERATIVA INSTITUTO TECNOLOGICO DE LAS AMERICAS</div>
+            <div class="cabeceraTrio">
+                <div><img class="escudo" src="images/escudo-RD.png"></div>
+                <div> <input type="text" id="buscador" placeholder="Buscar..."></div>
+                <div class="menu2">
+                    <ul>
+                        <li><a href="">INCIO</a></li> |
+                        <li><a href="">MAPA DE SITIO</a></li> |
+                        <li><a href="">CONTACTOS</a></li>
                     </ul>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - CoopITLA - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+        </div>
+
+
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CoopITLA</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><span style="color: black;"><i class="fas fa-home"></i></span> Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Nosotros"><i class="fas fa-users"></i> Sobre nosotros</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link text-dark dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="far fa-handshake"></i> Servicios
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Servicios" >Servicios en general</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Ahorros</a>
+                                    <a class="dropdown-item" href="#">Prestamos</a>
+                                    <a class="dropdown-item" href="#">Pagos</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contactanos"><i class="fas fa-mail-bulk"></i> Contáctanos</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="containerBody">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+        <div class="footer">
+            <footer>
+                <div> <div><img class="logoFooterRD" src="images/DUAL LOGO.png" alt=""></div></div>
+                <div>
+                    <b>Cooperativa Instituto Tecnológico de Las Américas CoopITLA</b> <br>
+                    Autopista Las Américas, Km. 27, PCSD, La Caleta, Boca Chica 11606.<br>
+                    809-738-4852  info@itla.edu.do<br>
+                    TÉRMINOS DE USO | POLÍTICAS DE PRIVACIDAD | PREGUNTAS FRECUENTES<br>
+                    © 2020 TODOS LOS DERECHOS RESERVADOS
+                </div>
+            </footer>
+        </div>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @RenderSection("Scripts", required: false)
 </body>
 </html>
