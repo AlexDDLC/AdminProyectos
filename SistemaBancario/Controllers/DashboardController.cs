@@ -8,7 +8,11 @@ namespace SistemaBancario.Controllers
 {
     public class DashboardController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
+        public IActionResult IndexDashboard()
         {
             return View();
         }

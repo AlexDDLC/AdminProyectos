@@ -21,11 +21,6 @@ namespace SistemaBancario.Controllers
             return View();
         }
 
-        public IActionResult Dashboard()
-        {
-            return View();
-        }
-
         public ActionResult Verify(Account Acc)
         {
             ConexionDB.Open();

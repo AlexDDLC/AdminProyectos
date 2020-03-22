@@ -25,7 +25,7 @@
                 </a>
                 <ul class="collapse list-unstyled" id="prestamos">
                     <li>
-                        <a href="#">Solicitud de préstamo</a>
+                        <a asp-controller="Prestamos" asp-action="SolicitarPrestamo">Solicitud de préstamo</a>
                     </li>
                     <li>
                         <a href="#">Lista de solicitudes</a>
@@ -111,11 +111,11 @@
     </nav>
     <!-- Sidebar Holder -->
 
-    <div>
+    @*<div>
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-    </div>
+    </div>*@
 
 </div>
 
