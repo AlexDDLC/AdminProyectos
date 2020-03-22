@@ -65,7 +65,6 @@ body {
   margin-bottom: 60px;
 }
 
-
 .contenedor {
     padding-left: 6.5%;
     padding-right: 6.5%;
@@ -73,22 +72,17 @@ body {
     font-family: sans-serif;
 }
 
-
-
 .containerBody {
     padding-left: 6.5%;
     padding-right: 6.5%;
     min-height: 90vh;
 }
 
-
 /*cover----------------------------------*/
 .cover {
     width: 100%;
     margin: 0;
 }
-
-
 
 /*Footer-----------------------------------*/
 

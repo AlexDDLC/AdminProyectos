@@ -18,7 +18,6 @@
 
 
   <ItemGroup>
-    <None Include="wwwroot\css\dashboard.css" />
     <None Include="wwwroot\css\Login.css" />
   </ItemGroup>
 
