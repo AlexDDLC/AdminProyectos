@@ -5,179 +5,124 @@
 }
 
 <head>
-    <link href="~/css/dashboard.css" rel="stylesheet"/>
-    <link href="~/css/dashboard2.css" rel="stylesheet"/>
+    <link href="~/css/dashboard.css" rel="stylesheet" />
 </head>
-    <div class="se-pre-con"></div>
-    <div class="wrapper">
-        <!-- Sidebar Holder -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <h1>
-                    <a href="index.html">Dashboard</a>
-                </h1>
-                <span>D</span>
-            </div>
-            <div class="profile-bg"></div>
-            <ul class="list-unstyled components">
-                <li class="active">
-                    <a href="index.html">
-                        <i class="fas fa-th-large"></i>
-                        Inicio
-                    </a>
-                </li>
-                <li>
-                    <a href="#prestamos" data-toggle="collapse" aria-expanded="false">
-                        <i class="fas fa-hand-holding-usd"></i>
-                        Prestamos
-                        <i class="fas fa-angle-down fa-pull-right"></i>
-                    </a>
-                    <ul class="collapse list-unstyled" id="prestamos">
-                        <li>
-                            <a href="#">Prestamos pendientes</a>
-                        </li>
-                        <li>
-                            <a href="#">Prestamos aprobadas</a>
-                        </li>
-                        <li>
-                            <a href="#">Prestamos rechazadas</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#pagos" data-toggle="collapse" aria-expanded="false">
-                        <i class="fas fa-cash-register"></i>
-                        Pagos
-                        <i class="fas fa-angle-down fa-pull-right"></i>
-                    </a>
-                    <ul class="collapse list-unstyled" id="pagos">
-                        <li>
-                            <a href="#">Prestamos pendientes</a>
-                        </li>
-                        <li>
-                            <a href="#">Prestamos aprobadas</a>
-                        </li>
-                        <li>
-                            <a href="#">Prestamos rechazadas</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#clientes" data-toggle="collapse" aria-expanded="false">
-                        <i class="fas fa-user"></i>
-                        Clientes
-                        <i class="fas fa-angle-down fa-pull-right"></i>
-                    </a>
-                    <ul class="collapse list-unstyled" id="clientes">
-                        <li>
-                            <a href="#">Lista de clientes</a>
-                        </li>
-                        <li>
-                            <a href="#">Agregar cliente</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#empleados" data-toggle="collapse" aria-expanded="false">
-                        <i class="fas fa-user-tie"></i>
-                        Empleados
-                        <i class="fas fa-angle-down fa-pull-right"></i>
-                    </a>
-                    <ul class="collapse list-unstyled" id="empleados">
-                        <li>
-                            <a href="#">Lista de empleados</a>
-                        </li>
-                        <li>
-                            <a href="#">Agregar empleado</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-
-        <!-- Page Content Holder -->
-        <div id="content">
-            <!-- top-bar -->
-            <nav class="navbar navbar-default mb-xl-5 mb-4">
-                <div class="container-fluid">
-
-                    <div class="navbar-header">
-                        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                            <i class="fas fa-bars"></i>
-                        </button>
-                    </div>
-                    <ul class="top-icons-agileits-w3layouts float-right">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="far fa-user"></i>
-                            </a>
-                            <div class="dropdown-menu drop-3">
-                                <div class="profile d-flex mr-o">
-                                    <div class="profile-l align-self-center">
-                                        <img src="images/profile.jpg" class="img-fluid mb-3" alt="Responsive image">
-                                    </div>
-                                    <div class="profile-r align-self-center">
-                                        <h3 class="sub-title-w3-agileits">Will Smith</h3>
-                                        <a href="mailto:info@example.com">info@example.com</a>
-                                    </div>
-                                </div>
-                                <a href="#" class="dropdown-item mt-3">
-                                    <h4>
-                                        <i class="far fa-user mr-3"></i>My Profile
-                                    </h4>
-                                </a>
-                                <a href="#" class="dropdown-item mt-3">
-                                    <h4>
-                                        <i class="fas fa-link mr-3"></i>Activity
-                                    </h4>
-                                </a>
-                                <a href="#" class="dropdown-item mt-3">
-                                    <h4>
-                                        <i class="far fa-envelope mr-3"></i>Messages
-                                    </h4>
-                                </a>
-                                <a href="#" class="dropdown-item mt-3">
-                                    <h4>
-                                        <i class="far fa-question-circle mr-3"></i>Faq
-                                    </h4>
-                                </a>
-                                <a href="#" class="dropdown-item mt-3">
-                                    <h4>
-                                        <i class="far fa-thumbs-up mr-3"></i>Support
-                                    </h4>
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="login.html">Logout</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            <div>
-                @* AQUI SE VAN A CARGAR LAS VISTAS DEL DASHBOARD
-                    SI QUITA EL COMENTARIO VA A MARCAR ERROR A LA 
-                    PHORA DE CARGAR NO SE LE ESTA LASANDO NINGUNA VISTA*@
-
-                @*<main role="main" class="pb-3">
-                    @RenderBody()
-                </main>*@
-            </div>
+<div class="wrapper">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h1>
+                <a href="index.html">Dashboard</a>
+            </h1>
         </div>
+        <div class="profile-bg"></div>
+        <ul class="list-unstyled components">
+            <li>
+                <a href="#prestamos" data-toggle="collapse" aria-expanded="false">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    Préstamos
+                    <i class="fas fa-angle-down fa-pull-right"></i>
+                </a>
+                <ul class="collapse list-unstyled" id="prestamos">
+                    <li>
+                        <a href="#">Solicitud de préstamo</a>
+                    </li>
+                    <li>
+                        <a href="#">Lista de solicitudes</a>
+                    </li>
+                    <li>
+                        <a href="#">Préstamos</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#pagos" data-toggle="collapse" aria-expanded="false">
+                    <i class="fas fa-cash-register"></i>
+                    Pagos
+                    <i class="fas fa-angle-down fa-pull-right"></i>
+                </a>
+                <ul class="collapse list-unstyled" id="pagos">
+                    <li>
+                        <a href="#">Solicitud de préstamo</a>
+                    </li>
+                    <li>
+                        <a href="#">Lista de solicitudes</a>
+                    </li>
+                    <li>
+                        <a href="#">Préstamos</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#empleados" data-toggle="collapse" aria-expanded="false">
+                    <i class="fas fa-user-tie"></i>
+                    Empleados
+                    <i class="fas fa-angle-down fa-pull-right"></i>
+                </a>
+                <ul class="collapse list-unstyled" id="empleados">
+                    <li>
+                        <a href="#">Solicitud de préstamo</a>
+                    </li>
+                    <li>
+                        <a href="#">Lista de solicitudes</a>
+                    </li>
+                    <li>
+                        <a href="#">Préstamos</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#clientes" data-toggle="collapse" aria-expanded="false">
+                    <i class="fas fa-user"></i>
+                    Clientes
+                    <i class="fas fa-angle-down fa-pull-right"></i>
+                </a>
+                <ul class="collapse list-unstyled" id="clientes">
+                    <li>
+                        <a href="#">Solicitud de préstamo</a>
+                    </li>
+                    <li>
+                        <a href="#">Lista de solicitudes</a>
+                    </li>
+                    <li>
+                        <a href="#">Préstamos</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#ahorros" data-toggle="collapse" aria-expanded="false">
+                    <i class="fas fa-piggy-bank"></i>
+                    Ahorros
+                    <i class="fas fa-angle-down fa-pull-right"></i>
+                </a>
+                <ul class="collapse list-unstyled" id="ahorros">
+                    <li>
+                        <a href="#">Solicitud de préstamo</a>
+                    </li>
+                    <li>
+                        <a href="#">Lista de solicitudes</a>
+                    </li>
+                    <li>
+                        <a href="#">Préstamos</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <!-- Sidebar Holder -->
+
+    <div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
     </div>
 
-<script src="~/js/jquery-2.2.3.min.js"></script>
-<script>
-        $(window).load(function () {
-            $(".se-pre-con").fadeOut("slow");;
-        });
-</script>
-<script>
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
-        });
-</script>
-<script src="js/bootstrap.min.js"></script>
+</div>
 
+
+<!-- Required common Js -->
+<script src="~/js/jquery-2.2.3.min.js"></script>
+<!-- //Required common Js -->
+<!-- Js for bootstrap working-->
+<script src="~/js/bootstrap.min.js"></script>
+<!-- //Js for bootstrap working -->
