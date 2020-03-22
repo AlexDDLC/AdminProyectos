@@ -55,7 +55,7 @@
                                     <i class="far fa-handshake"></i> Servicios
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Servicios" >Servicios en general</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Servicios">Servicios en general</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Ahorros">Ahorros</a>
                                     <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Prestamos">Prestamos</a>
@@ -65,12 +65,15 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contactanos"><i class="fas fa-mail-bulk"></i> Contáctanos</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Dashboard"><i class="fas fa-mail-bulk"></i> Dashboard</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </header>
-        <div class="containerBody">
+        <div class="">
             <main role="main" class="pb-3">
                 @RenderBody()
             </main>
