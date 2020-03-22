@@ -135,9 +135,8 @@ body {
 .containerBody {
     padding-left: 6.5%;
     padding-right: 6.5%;
-    min-height: 125vh;
+    min-height: 90vh;
 }
-
 
 
 /*cover-----------------------------------*/
@@ -148,21 +147,18 @@ body {
 }
 
 
-.redes{
-    padding-bottom:100px;
-}
+
 /*Footer-----------------------------------*/
 
 footer {
     background: #e6e6e7;
     width: 100%;
     padding: 20PX;
-    position: absolute;
-    bottom: 0;
+    position:absolute;
     text-align: center;
-    margin: 0 auto;
     font-size: 14px;
     color: #0060a9;
+    height:auto;
 }
 
 

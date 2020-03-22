@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CoopITLA</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/contacto-nosotros.css">
     <link rel="stylesheet" href="~/css/site.css" />
     <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
+    
 </head>
 <body>
     <div class="contenedor"> 
@@ -55,9 +57,9 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Servicios" >Servicios en general</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Ahorros</a>
-                                    <a class="dropdown-item" href="#">Prestamos</a>
-                                    <a class="dropdown-item" href="#">Pagos</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Ahorros">Ahorros</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Prestamos">Prestamos</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Pagos">Pagos</a>
                                 </div>
                             </li>
                             <li class="nav-item">

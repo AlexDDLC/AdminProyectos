@@ -33,6 +33,21 @@ namespace SistemaBancario.Controllers
             return View();
         }
 
+        public IActionResult Pagos()
+        {
+            return View();
+        }
+
+        public IActionResult Prestamos()
+        {
+            return View();
+        }
+
+        public IActionResult Ahorros()
+        {
+            return View();
+        }
+
         public IActionResult Contactanos()
         {
             return View();
