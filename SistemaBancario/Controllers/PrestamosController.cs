@@ -8,7 +8,7 @@ namespace SistemaBancario.Controllers
 {
     public class PrestamosController : Controller
     {
-        public IActionResult ListaPrestamos()
+        public IActionResult ListaSolicitudesPrestamos()
         {
             return View();
         }
@@ -17,7 +17,13 @@ namespace SistemaBancario.Controllers
         {
             return View();
         }
-        public IActionResult EditarPrestamo()
+
+        public IActionResult ListaPrestamosRechazados()
+        {
+            return View();
+        }
+
+        public IActionResult ListaPrestamosAprobados()
         {
             return View();
         }
