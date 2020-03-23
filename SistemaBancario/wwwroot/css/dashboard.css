@@ -2375,14 +2375,14 @@ a:focus {
 	box-shadow: 0 0 0 0.2rem rgb(151, 170, 247);
 }
 
-/* .btn-info:not(:disabled):not(.disabled):active,
+.btn-info:not(:disabled):not(.disabled):active,
 .btn-info:not(:disabled):not(.disabled).active,
 .show>.btn-info.dropdown-toggle,
 .btn-info:hover {
     color: #fff;
     background-color: #e04646;
     border-color: #f75757;
-} */
+}
 
 .line {
 	width: 100%;
