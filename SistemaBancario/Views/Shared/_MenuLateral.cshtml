@@ -9,8 +9,9 @@
 <nav id="sidebar">
     <div class="sidebar-header">
         <h1>
-            <a href="index.php">Dashboard</a>
+            <a asp-area="" asp-controller="Dashboard" asp-action="Dashboard">Dashboard</a>
         </h1>
+        <span>D</span>
     </div>
     <div class="profile-bg"></div>
     <ul class="list-unstyled components">
@@ -25,10 +26,13 @@
                     <a asp-area="" asp-controller="Prestamos" asp-action="SolicitarPrestamo">Solicitud de préstamo</a>
                 </li>
                 <li>
-                    <a href="#">Lista de solicitudes</a>
+                    <a asp-area="" asp-controller="Prestamos" asp-action="ListaSolicitudesPrestamos">Lista de solicitudes</a>
                 </li>
                 <li>
-                    <a href="#">Préstamos</a>
+                    <a asp-area="" asp-controller="Prestamos" asp-action="ListaPrestamosAprobados">Préstamo aprobados</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Prestamos" asp-action="ListaPrestamosRechazados">Préstamo rechazados</a>
                 </li>
             </ul>
         </li>
@@ -106,3 +110,5 @@
         </li>
     </ul>
 </nav>
+
+<script src="~/js/jquery-2.2.3.min.js"></script>
