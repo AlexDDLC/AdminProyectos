@@ -11,7 +11,7 @@ html,
 body {
 	margin: 0;
 	font-size: 100%;
-	font-family: 'Open Sans', sans-serif;
+	/*font-family: 'Open Sans', sans-serif;*/
 	background: #fff;
 }
 
@@ -44,7 +44,7 @@ h4,
 h5,
 h6 {
 	margin: 0;
-	font-family: 'Poiret One', cursive;
+	/*font-family: 'Poiret One', cursive;*/
 	font-weight: 700;
 }
 
@@ -1276,7 +1276,7 @@ p.paragraph-agileits-w3layouts a,
 h1.paragraph-agileits-w3layouts a {
 	display: inline-block;
 	color: #f75757;
-	font-family: 'Open Sans', sans-serif;
+	/*font-family: 'Open Sans', sans-serif;*/
 	font-weight: 400;
 }
 
@@ -1406,21 +1406,21 @@ canvas.chart1 {
 
 #circleBar-web-text,
 #circleBar-mobile-text {
-	font-family: 'Open Sans', sans-serif;
+	/*font-family: 'Open Sans', sans-serif;*/
 	font-size: 16px;
 	fill: #000;
 }
 
 #circleBar-web-labels tspan,
 #circleBar-mobile-labels tspan {
-	font-family: 'Open Sans', sans-serif;
+	/*font-family: 'Open Sans', sans-serif;*/
 	font-size: 10px;
 	fill: #6D6E71;
 }
 
 #circleBar-web-values tspan,
 #circleBar-mobile-values tspan {
-	font-family: 'Open Sans', sans-serif;
+	/*font-family: 'Open Sans', sans-serif;*/
 	font-size: 9px;
 	font-weight: bold;
 	fill: #000;
@@ -2335,12 +2335,12 @@ ul.percentg-circles-w3ls .chart .figure {
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 body {
-	font-family: 'Open Sans', sans-serif;
+	/*font-family: 'Open Sans', sans-serif;*/
 	background: #f1f1f1;
 }
 
 p {
-	font-family: 'Open Sans', sans-serif;
+	/*font-family: 'Open Sans', sans-serif;*/
 	/*font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
