@@ -7,6 +7,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 /*-- common css --*/
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
 html,
 body {
 	margin: 0;
