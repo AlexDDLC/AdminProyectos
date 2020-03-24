@@ -21,16 +21,15 @@ namespace SistemaBancario.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult SolicitarPrestamo(CalculadoraAmortizacion CalAm)
         {
             float CP_monto, CP_plazos, CP_interes;
             CP_monto = CalAm.monto;
             CP_plazos = CalAm.plazos;
             CP_interes = CalAm.interes;
-            if(CalAm.calcular == "calcular")
+            if(CalAm.calcular == "Calcular")
             {
-                CalAm.total = ((CP_monto*(CP_interes/CP_plazos))/100) + (CP_monto/CP_plazos);
+                CalAm.total = (((CP_monto*(CP_interes/CP_plazos))/100) + (CP_monto/CP_plazos));
             }
             ViewData["total"] = CalAm.total; 
             return View();
