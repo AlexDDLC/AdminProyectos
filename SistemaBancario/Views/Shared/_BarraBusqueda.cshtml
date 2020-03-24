@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<!-- top-bar -->
+<nav class="navbar dnavbar navbar-default mb-xl-5 mb-4">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- Search-from -->
+        <form action="#" method="post" class="form-inline mx-auto search-form">
+            <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" required="">
+            <button class="btn btn-style my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+        </form>
+        <!--// Search-from -->
+    </div>
+</nav>
+<!--// top-bar -->
+
+<script>
+        $(document).ready(function() {
+            $('#sidebarCollapse').on('click', function() {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+</script>
