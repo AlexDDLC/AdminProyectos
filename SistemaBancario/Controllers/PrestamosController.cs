@@ -9,6 +9,7 @@ namespace SistemaBancario.Controllers
 {
     public class PrestamosController : Controller
     {
+        ConsultasSQLPrestamo conpres = new ConsultasSQLPrestamo();
         public IActionResult ListaSolicitudesPrestamos()
         {
             return View();
@@ -16,22 +17,39 @@ namespace SistemaBancario.Controllers
 
         public IActionResult SolicitarPrestamo()
         {
-            var tipo_prestamos = new CalculadoraAmortizacion();
-            return View(tipo_prestamos);
+            //var tipo_prestamos = new SolicitudPrestamo();
+            return View();
         }
 
         [HttpPost]
-        public IActionResult SolicitarPrestamo(CalculadoraAmortizacion CalAm)
+        public IActionResult SolicitarPrestamo([Bind] SolicitudPrestamo SPC)
         {
-            float CP_monto, CP_plazos, CP_interes;
-            CP_monto = CalAm.monto;
-            CP_plazos = CalAm.plazos;
-            CP_interes = CalAm.interes;
-            if(CalAm.calcular == "Calcular")
+            //Calcular amortizacion
+            float CA_monto = SPC.monto, CA_plazos = SPC.plazos, CA_interes = SPC.interes;
+            string CA_tipoprestamo = SPC.tipoPrestamo;
+            if(string.IsNullOrEmpty(CA_tipoprestamo))
             {
-                CalAm.total = (((CP_monto*(CP_interes/CP_plazos))/100) + (CP_monto/CP_plazos));
+
             }
-            ViewData["total"] = CalAm.total; 
+            if(SPC.calcular == "Calcular")
+            {
+                SPC.total = (((CA_monto*(CA_interes/CA_plazos))/100) + (CA_monto/CA_plazos));
+            }
+            ViewData["total"] = SPC.total;
+
+            //Crear solocitud prestamo
+            SPC.estadoPrestamo = "Pendiente";
+            SPC.fechaSolicitud = DateTime.Now;
+            //SPC.fechaSolicitud.ToString("MM-dd-yyyy");
+            string formato = string.Format("{0:dd/mm/yyyy}", SPC.fechaSolicitud);
+            Console.WriteLine(formato);
+            if (SPC.solicitar == "Solicitar")
+            {
+                if (ModelState.IsValid)
+                {
+                    conpres.CrearSolicitudPrestamo(SPC);
+                }
+            }
             return View();
         }
 
