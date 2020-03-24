@@ -7,122 +7,14 @@
 <head>
     <link href="~/css/dashboard.css" rel="stylesheet" />
 </head>
+
 <div class="wrapper">
-    <!-- Sidebar Holder -->
-    <nav id="sidebar">
-        <div class="sidebar-header">
-            <h1>
-                <a href="index.html">Dashboard</a>
-            </h1>
-        </div>
-        <div class="profile-bg"></div>
-        <ul class="list-unstyled components">
-            <li>
-                <a href="#prestamos" data-toggle="collapse" aria-expanded="false">
-                    <i class="fas fa-hand-holding-usd"></i>
-                    Préstamos
-                    <i class="fas fa-angle-down fa-pull-right"></i>
-                </a>
-                <ul class="collapse list-unstyled" id="prestamos">
-                    <li>
-                        <a asp-controller="Prestamos" asp-action="SolicitarPrestamo">Solicitud de préstamo</a>
-                    </li>
-                    <li>
-                        <a href="#">Lista de solicitudes</a>
-                    </li>
-                    <li>
-                        <a href="#">Préstamos</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#pagos" data-toggle="collapse" aria-expanded="false">
-                    <i class="fas fa-cash-register"></i>
-                    Pagos
-                    <i class="fas fa-angle-down fa-pull-right"></i>
-                </a>
-                <ul class="collapse list-unstyled" id="pagos">
-                    <li>
-                        <a href="#">Solicitud de préstamo</a>
-                    </li>
-                    <li>
-                        <a href="#">Lista de solicitudes</a>
-                    </li>
-                    <li>
-                        <a href="#">Préstamos</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#empleados" data-toggle="collapse" aria-expanded="false">
-                    <i class="fas fa-user-tie"></i>
-                    Empleados
-                    <i class="fas fa-angle-down fa-pull-right"></i>
-                </a>
-                <ul class="collapse list-unstyled" id="empleados">
-                    <li>
-                        <a href="#">Solicitud de préstamo</a>
-                    </li>
-                    <li>
-                        <a href="#">Lista de solicitudes</a>
-                    </li>
-                    <li>
-                        <a href="#">Préstamos</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#clientes" data-toggle="collapse" aria-expanded="false">
-                    <i class="fas fa-user"></i>
-                    Clientes
-                    <i class="fas fa-angle-down fa-pull-right"></i>
-                </a>
-                <ul class="collapse list-unstyled" id="clientes">
-                    <li>
-                        <a href="#">Solicitud de préstamo</a>
-                    </li>
-                    <li>
-                        <a href="#">Lista de solicitudes</a>
-                    </li>
-                    <li>
-                        <a href="#">Préstamos</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#ahorros" data-toggle="collapse" aria-expanded="false">
-                    <i class="fas fa-piggy-bank"></i>
-                    Ahorros
-                    <i class="fas fa-angle-down fa-pull-right"></i>
-                </a>
-                <ul class="collapse list-unstyled" id="ahorros">
-                    <li>
-                        <a href="#">Solicitud de préstamo</a>
-                    </li>
-                    <li>
-                        <a href="#">Lista de solicitudes</a>
-                    </li>
-                    <li>
-                        <a href="#">Préstamos</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-    <!-- Sidebar Holder -->
-
-    @*<div>
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>*@
-
+    <partial name="_MenuLateral" />
+    <!-- Page Content Holder -->
+    <div id="content">
+        <!-- Forms content -->
+        <section class="forms-section">
+            <h1>Aqui va la vista de inicio del dashboard</h1>
+        </section>
+    </div>
 </div>
-
-
-<!-- Required common Js -->
-<script src="~/js/jquery-2.2.3.min.js"></script>
-<!-- //Required common Js -->
-<!-- Js for bootstrap working-->
-<script src="~/js/bootstrap.min.js"></script>
-<!-- //Js for bootstrap working -->
