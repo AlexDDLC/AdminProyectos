@@ -11,34 +11,43 @@ namespace SistemaBancario.Controllers
 {
     public class AccountController : Controller
     {
-        SqlConnection ConexionDB = new SqlConnection("Data Source=DESKTOP-8ES98D2;Initial Catalog=CoopITLA;Integrated Security=True");
-        SqlCommand ComandoSQL = new SqlCommand();
-        SqlDataReader sqlRD;
-
+        SqlConnection con = new SqlConnection();
+        SqlCommand com = new SqlCommand();
+        SqlDataReader dr;
+       
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
 
+        void connectionString()
+        {
+            con.ConnectionString = "Data Source=.;Initial Catalog=CoopITLA;Integrated Security=True";
+
+        }
+        [HttpPost]
+
         public ActionResult Verify(Account Acc)
         {
-            ConexionDB.Open();
-            ComandoSQL.CommandText = "";
-            ComandoSQL.CommandType = CommandType.StoredProcedure;
-            ComandoSQL.Parameters.AddWithValue("", Acc.Usuario);
-            ComandoSQL.Parameters.AddWithValue("", Acc.Contrasena);
-            sqlRD = ComandoSQL.ExecuteReader();
-            if(sqlRD.Read())
+            connectionString();
+            con.Open();
+            com.Connection = con;
+            com.CommandText = "EXEC LOGIN_CLIENTE '"+Acc.UsuarioCliente+"', '"+Acc.ContrasenaCliente+"'";
+            dr = com.ExecuteReader();
+            if (dr.Read())
             {
-                ConexionDB.Close();
-                return View("Dashboard");
+                con.Close();
+                return View("../Dashboard/Dashboard");
             }
             else
             {
-                ConexionDB.Close();
-                return View();
+               
+                con.Close();
+                return View("Login");
             }
+            
+           
         }
     }
 }

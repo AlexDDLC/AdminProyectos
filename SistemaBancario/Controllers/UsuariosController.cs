@@ -12,5 +12,15 @@ namespace SistemaBancario.Controllers
         {
             return View();
         }
+
+        public IActionResult CrearEmpleado()
+        {
+            return View();
+        }
+
+        public IActionResult CrearCliente()
+        {
+            return View();
+        }
     }
 }
