@@ -9,7 +9,7 @@ namespace SistemaBancario.Models
 {
     public class Account
     {
-        public string Usuario { get; set; }
-        public string Contrasena { get; set; }
+        public string UsuarioCliente { get; set; }
+        public string ContrasenaCliente { get; set; }
     }
 }
