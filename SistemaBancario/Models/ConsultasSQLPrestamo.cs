@@ -10,11 +10,11 @@ namespace SistemaBancario.Models
     {
         string conexion = "Data Source=.;Initial Catalog=CoopITLA;Integrated Security=True";
 
-        public List<ListarSolicitudesPrestamo> cliList = new List<ListarSolicitudesPrestamo>();
-
         public IEnumerable<ListarSolicitudesPrestamo> listarsolicitudes()
         {
-            using(SqlConnection con = new SqlConnection(conexion))
+            List<ListarSolicitudesPrestamo> cliList = new List<ListarSolicitudesPrestamo>();
+
+            using (SqlConnection con = new SqlConnection(conexion))
             {
                 SqlCommand cmd = new SqlCommand("listarSolicitudesPrestamo", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
@@ -32,7 +32,7 @@ namespace SistemaBancario.Models
                     lsp.fechasolicitud = dr["FechaSolicitud"].ToString();
                     lsp.detalles = dr["Detalle"].ToString();
                     cliList.Add(lsp);
-                    Console.WriteLine(cliList);
+                    Console.WriteLine(lsp.fechasolicitud);
                 }
                 con.Close();
             }

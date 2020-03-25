@@ -1,4 +1,4 @@
-﻿@model ConsultasSQLPrestamo
+﻿@model IEnumerable<SistemaBancario.Models.ListarSolicitudesPrestamo>
 @{
     ViewData["Title"] = "Lista de solicitudes de préstamos";
 }
@@ -30,29 +30,30 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">Model[i].ID_Solicitud</th>
-                                <td>Nelson Alexander Diaz De La Cruz</td>
-                                <td>000-0000000-0</td>
-                                <td>50000</td>
-                                <td>Hipotecario</td>
-                                <td>22/03/2020</td>
-                                <td style="text-align: justify;">
-                                    Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Eius error et possimus sunt
-                                    aperiam aut voluptas accusamus eveniet quod fuga corrupti odio mollitia aliquid,
-                                    quibusdam, maiores quas neque doloremque iusto!
-                                </td>
-                                <td>
-                                    <select id="tipoPrestamo" class="form-control">
-                                        <option selected="">Elegir...</option>
-                                        <option>...</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <button type="submit" class="btn btn-primary">OK</button>
-                                </td>
-                            </tr>
+                            @foreach (var sol in Model)
+                            {
+                                <tr>
+                                    <th scope="row">@Html.DisplayFor(modelItem => sol.id)</th>
+                                    <td>@Html.DisplayFor(modelItem => sol.solicitante)</td>
+                                    <td>@Html.DisplayFor(modelItem => sol.cedula)</td>
+                                    <td>@Html.DisplayFor(modelItem => sol.monto)</td>
+                                    <td>@Html.DisplayFor(modelItem => sol.tipo)</td>
+                                    <td>@Html.DisplayFor(modelItem => sol.fechasolicitud)</td>
+                                    <td style="text-align: justify;">
+                                        @Html.DisplayFor(modelItem => sol.detalles)
+                                    </td>
+                                    <td>
+                                        <select id="tipoPrestamo" class="form-control">
+                                            <option>@Html.DisplayFor(modelItem => sol.estado)</option>
+                                            <option value="Aprobado">Aprobado</option>
+                                            <option value="Rechazado">Rechazado</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <button type="submit" class="btn btn-primary">OK</button>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>

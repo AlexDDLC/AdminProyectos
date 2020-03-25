@@ -11,10 +11,11 @@ namespace SistemaBancario.Controllers
     {
         ConsultasSQLPrestamo conpres = new ConsultasSQLPrestamo();
 
-        public IActionResult ListaSolicitudesPrestamos(ConsultasSQLPrestamo sqlp)
+        public IActionResult ListaSolicitudesPrestamos()
         {
-            sqlp.listarsolicitudes();
-            return View();
+            List<ListarSolicitudesPrestamo> listsol = new List<ListarSolicitudesPrestamo>();
+            listsol = conpres.listarsolicitudes().ToList();
+            return View(listsol);
         }
 
         public IActionResult SolicitarPrestamo()
