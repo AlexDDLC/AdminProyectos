@@ -48,5 +48,13 @@ namespace SistemaBancario.Models
                 con.Close();
             }
         }
+
+        public void ListarSolicitudesPrestamo(ListarSolicitudesPrestamo LSP)
+        {
+            using (SqlConnection con = new SqlConnection(conexion))
+            {
+                SqlCommand cmd = new SqlCommand("", con);
+            }
+        }
     }
 }
