@@ -42,7 +42,6 @@ namespace SistemaBancario.Controllers
             SPC.fechaSolicitud = DateTime.Now;
             //SPC.fechaSolicitud.ToString("MM-dd-yyyy");
             string formato = string.Format("{0:dd/mm/yyyy}", SPC.fechaSolicitud);
-            Console.WriteLine(formato);
             if (SPC.solicitar == "Solicitar")
             {
                 if (ModelState.IsValid)
