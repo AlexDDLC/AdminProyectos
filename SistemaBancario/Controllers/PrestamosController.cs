@@ -10,9 +10,10 @@ namespace SistemaBancario.Controllers
     public class PrestamosController : Controller
     {
         ConsultasSQLPrestamo conpres = new ConsultasSQLPrestamo();
-        public IActionResult ListaSolicitudesPrestamos(ListarSolicitudesPrestamo LSP)
-        {
 
+        public IActionResult ListaSolicitudesPrestamos(ConsultasSQLPrestamo sqlp)
+        {
+            sqlp.listarsolicitudes();
             return View();
         }
 

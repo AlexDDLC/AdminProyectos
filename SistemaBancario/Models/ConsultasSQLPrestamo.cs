@@ -10,21 +10,29 @@ namespace SistemaBancario.Models
     {
         string conexion = "Data Source=.;Initial Catalog=CoopITLA;Integrated Security=True";
 
-        public IEnumerable<SolicitudPrestamo> obtenerID_cliente()
-        {
-            List<SolicitudPrestamo> cliList = new List<SolicitudPrestamo>();
+        public List<ListarSolicitudesPrestamo> cliList = new List<ListarSolicitudesPrestamo>();
 
+        public IEnumerable<ListarSolicitudesPrestamo> listarsolicitudes()
+        {
             using(SqlConnection con = new SqlConnection(conexion))
             {
-                SqlCommand cmd = new SqlCommand("buscarCliente", con);
+                SqlCommand cmd = new SqlCommand("listarSolicitudesPrestamo", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 con.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
                 while(dr.Read())
                 {
-                    SolicitudPrestamo sp = new SolicitudPrestamo();
-                    sp.cedulaCliente = dr[""].ToString();
-                    cliList.Add(sp);
+                    ListarSolicitudesPrestamo lsp = new ListarSolicitudesPrestamo();
+                    lsp.id = dr["ID_Solicitud"].ToString();
+                    lsp.solicitante = dr["nombreCliente"].ToString();
+                    lsp.cedula = dr["Cedula"].ToString();
+                    lsp.monto = dr["Monto"].ToString();
+                    lsp.estado = dr["EstadoPrestamo"].ToString();
+                    lsp.tipo = dr["TipoPrestamo"].ToString();
+                    lsp.fechasolicitud = dr["FechaSolicitud"].ToString();
+                    lsp.detalles = dr["Detalle"].ToString();
+                    cliList.Add(lsp);
+                    Console.WriteLine(cliList);
                 }
                 con.Close();
             }
@@ -46,14 +54,6 @@ namespace SistemaBancario.Models
                 con.Open();
                 cmd.ExecuteNonQuery();
                 con.Close();
-            }
-        }
-
-        public void ListarSolicitudesPrestamo(ListarSolicitudesPrestamo LSP)
-        {
-            using (SqlConnection con = new SqlConnection(conexion))
-            {
-                SqlCommand cmd = new SqlCommand("", con);
             }
         }
     }
