@@ -12,7 +12,7 @@ namespace SistemaBancario.Models
 
         public IEnumerable<ListarSolicitudesPrestamo> listarsolicitudes()
         {
-            List<ListarSolicitudesPrestamo> cliList = new List<ListarSolicitudesPrestamo>();
+            List<ListarSolicitudesPrestamo> solList = new List<ListarSolicitudesPrestamo>();
 
             using (SqlConnection con = new SqlConnection(conexion))
             {
@@ -31,12 +31,11 @@ namespace SistemaBancario.Models
                     lsp.tipo = dr["TipoPrestamo"].ToString();
                     lsp.fechasolicitud = dr["FechaSolicitud"].ToString();
                     lsp.detalles = dr["Detalle"].ToString();
-                    cliList.Add(lsp);
-                    Console.WriteLine(lsp.fechasolicitud);
+                    solList.Add(lsp);
                 }
                 con.Close();
             }
-            return cliList;
+            return solList;
         }
 
         public void CrearSolicitudPrestamo(SolicitudPrestamo SP)
@@ -51,6 +50,7 @@ namespace SistemaBancario.Models
                 cmd.Parameters.AddWithValue("@Monto", SP.montoPrestamo);
                 cmd.Parameters.AddWithValue("@Detalle", SP.detalles);
                 cmd.Parameters.AddWithValue("@FechaSolicitud", SP.fechaSolicitud);
+                cmd.Parameters.AddWithValue("@FechaRechazo", SP.fechaSolicitud);
                 con.Open();
                 cmd.ExecuteNonQuery();
                 con.Close();

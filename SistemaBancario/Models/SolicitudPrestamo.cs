@@ -32,6 +32,7 @@ namespace SistemaBancario.Models
         public float montoPrestamo { get; set; }
         public string detalles { get; set; }
         public string fechaSolicitud { get; set; }
+        public string fechaRechazo { get; set; }
         public string solicitar { get; set; }
     }
 }

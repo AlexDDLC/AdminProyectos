@@ -48,6 +48,7 @@ namespace SistemaBancario.Controllers
                 string formato = string.Format("{0:dd/MM/yyyy}", fecha);
                 SPC.estadoPrestamo = "Pendiente";
                 SPC.fechaSolicitud = formato;
+                SPC.fechaRechazo = formato;
 
                 if (SPC.solicitar == "Solicitar")
                 {
