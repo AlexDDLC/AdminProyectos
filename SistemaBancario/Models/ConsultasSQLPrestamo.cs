@@ -8,13 +8,13 @@ namespace SistemaBancario.Models
 {
     public class ConsultasSQLPrestamo
     {
-        string conexion = "Data Source=.;Initial Catalog=CoopITLA;Integrated Security=True";
+        ConSQL conexionSQL = new ConSQL();
 
         public IEnumerable<ListarSolicitudesPrestamo> listarsolicitudes()
         {
             List<ListarSolicitudesPrestamo> solList = new List<ListarSolicitudesPrestamo>();
 
-            using (SqlConnection con = new SqlConnection(conexion))
+            using (SqlConnection con = new SqlConnection(conexionSQL.conexion))
             {
                 SqlCommand cmd = new SqlCommand("listarSolicitudesPrestamo", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
@@ -40,7 +40,7 @@ namespace SistemaBancario.Models
 
         public void CrearSolicitudPrestamo(SolicitudPrestamo SP)
         {
-            using (SqlConnection con = new SqlConnection(conexion))
+            using (SqlConnection con = new SqlConnection(conexionSQL.conexion))
             {
                 SqlCommand cmd = new SqlCommand("crearSolicitudPrestamo", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
