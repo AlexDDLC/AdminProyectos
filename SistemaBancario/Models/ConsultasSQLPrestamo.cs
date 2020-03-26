@@ -50,7 +50,20 @@ namespace SistemaBancario.Models
                 cmd.Parameters.AddWithValue("@Monto", SP.montoPrestamo);
                 cmd.Parameters.AddWithValue("@Detalle", SP.detalles);
                 cmd.Parameters.AddWithValue("@FechaSolicitud", SP.fechaSolicitud);
-                cmd.Parameters.AddWithValue("@FechaRechazo", SP.fechaSolicitud);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+        }
+
+        public void EditarEstadoPrestamo(ListarSolicitudesPrestamo lsp)
+        {
+            using(SqlConnection con = new SqlConnection(conexionSQL.conexion))
+            {
+                SqlCommand cmd = new SqlCommand("CambiarEstadoSolicitud", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_Solicitud", lsp.id);
+                cmd.Parameters.AddWithValue("@nuevoEstado", lsp.NuevoEstadoPrestamo);
                 con.Open();
                 cmd.ExecuteNonQuery();
                 con.Close();

@@ -10,17 +10,30 @@ namespace SistemaBancario.Controllers
     public class PrestamosController : Controller
     {
         ConsultasSQLPrestamo conpres = new ConsultasSQLPrestamo();
+        ListarSolicitudesPrestamo listpres = new ListarSolicitudesPrestamo();
+        List<ListarSolicitudesPrestamo> listsol = new List<ListarSolicitudesPrestamo>();
 
         public IActionResult ListaSolicitudesPrestamos()
         {
-            List<ListarSolicitudesPrestamo> listsol = new List<ListarSolicitudesPrestamo>();
             listsol = conpres.listarsolicitudes().ToList();
             return View(listsol);
         }
 
+        public IActionResult EditarEstadoPrestamo(int? id, [Bind] ListarSolicitudesPrestamo idsol)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+            if(ModelState.IsValid)
+            {
+                //conpres.EditarEstadoPrestamo();
+            }
+            return View();
+        }
+
         public IActionResult SolicitarPrestamo()
         {
-            //var tipo_prestamos = new SolicitudPrestamo();
             return View();
         }
 
@@ -48,7 +61,6 @@ namespace SistemaBancario.Controllers
                 string formato = string.Format("{0:dd/MM/yyyy}", fecha);
                 SPC.estadoPrestamo = "Pendiente";
                 SPC.fechaSolicitud = formato;
-                SPC.fechaRechazo = formato;
 
                 if (SPC.solicitar == "Solicitar")
                 {
