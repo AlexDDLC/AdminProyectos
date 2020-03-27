@@ -153,8 +153,7 @@ namespace SistemaBancario.Controllers
             dr = com.ExecuteReader();
 
             while (dr.Read())
-            {
-              
+            {     
                 Info.idCliente = dr["ID_Cliente"].ToString();
                 Info.cedulaCliente = dr["Cedula"].ToString();
                 Info.nombreCliente = dr["Nombre"].ToString();

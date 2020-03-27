@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<SistemaBancario.Models.ListarSolicitudesPrestamo> 
 @{
     ViewData["Title"] = "Lista de solicitudes de préstamos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
     <head>
@@ -40,9 +41,14 @@
                                     <td>@Html.DisplayFor(modelItem => sol.fechasolicitud)</td>
                                     <td>@Html.DisplayFor(modelItem => sol.estado)</td>
                                     <td>
-                                        <a class="btn btn-primary" asp-action="EditarEstadoPrestamo" asp-route-id="@sol.id">Detalles</a>
+                                        <a class="btn btn-primary"
+                                           asp-controller="Prestamos"
+                                           asp-action="EditarEstadoPrestamo"
+                                           asp-route-id="@sol.id">
+                                            Detalles
+                                        </a>
                                     </td>
-                                </tr> 
+                                </tr>
                             }
                         </tbody>
                     </table>

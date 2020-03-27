@@ -23,7 +23,7 @@ namespace SistemaBancario.Models
                 while(dr.Read())
                 {
                     ListarSolicitudesPrestamo lsp = new ListarSolicitudesPrestamo();
-                    lsp.id = Convert.ToInt32(dr["ID_Solicitud"].ToString());
+                    lsp.id = dr["ID_Solicitud"].ToString();
                     lsp.solicitante = dr["nombreCliente"].ToString();
                     lsp.cedula = dr["Cedula"].ToString();
                     lsp.monto = dr["Monto"].ToString();
@@ -70,7 +70,7 @@ namespace SistemaBancario.Models
             }
         }
 
-        public ListarSolicitudesPrestamo listarsolicitudPorID(int idsol)
+        public ListarSolicitudesPrestamo listarsolicitudPorID(int id)
         {
             ListarSolicitudesPrestamo solList = new ListarSolicitudesPrestamo();
 
@@ -78,20 +78,19 @@ namespace SistemaBancario.Models
             {
                 SqlCommand cmd = new SqlCommand("ObtenerSolicitudPorID", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@id_sol", idsol);
+                cmd.Parameters.AddWithValue("@id_sol", id);
                 con.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    ListarSolicitudesPrestamo lsp = new ListarSolicitudesPrestamo();
-                    lsp.id = Convert.ToInt32(dr["ID_Solicitud"].ToString());
-                    lsp.solicitante = dr["nombreCliente"].ToString();
-                    lsp.cedula = dr["Cedula"].ToString();
-                    lsp.monto = dr["Monto"].ToString();
-                    lsp.estado = dr["EstadoPrestamo"].ToString();
-                    lsp.tipo = dr["TipoPrestamo"].ToString();
-                    lsp.fechasolicitud = dr["FechaSolicitud"].ToString();
-                    lsp.detalles = dr["Detalle"].ToString();
+                    solList.id = dr["ID_Solicitud"].ToString();
+                    solList.solicitante = dr["solicitante"].ToString();
+                    solList.cedula = dr["CedulaCliente"].ToString();
+                    solList.monto = dr["Monto"].ToString();
+                    solList.estado = dr["EstadoPrestamo"].ToString();
+                    solList.tipo = dr["TipoPrestamo"].ToString();
+                    solList.fechasolicitud = dr["FechaSolicitud"].ToString();
+                    solList.detalles = dr["Detalle"].ToString();
                 }
                 con.Close();
             }
