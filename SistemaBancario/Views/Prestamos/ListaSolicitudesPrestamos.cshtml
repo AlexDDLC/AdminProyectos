@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<SistemaBancario.Models.ListarSolicitudesPrestamo> 
 @{
     ViewData["Title"] = "Lista de solicitudes de préstamos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
     <head>
@@ -18,15 +19,14 @@
                     <table class="table table-bordered">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col" style="width: 10px;">ID</th>
-                                <th scope="col" style="width: 220px;">Solicitante</th>
-                                <th scope="col" style="width: 115px;">Cedula</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Solicitante</th>
+                                <th scope="col">Cedula</th>
                                 <th scope="col">Monto</th>
                                 <th scope="col">Tipo</th>
-                                <th scope="col">Fecha S</th>
-                                <th scope="col">Detalle préstamo</th>
-                                <th scope="col" style="width: 150px;">Acción</th>
-                                <th></th>
+                                <th scope="col">Fecha de solicitud</th>
+                                <th scope="col">Estado del préstamo</th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,10 +39,14 @@
                                     <td>@Html.DisplayFor(modelItem => sol.monto)</td>
                                     <td>@Html.DisplayFor(modelItem => sol.tipo)</td>
                                     <td>@Html.DisplayFor(modelItem => sol.fechasolicitud)</td>
-                                    <td style="text-align: justify;">@Html.DisplayFor(modelItem => sol.detalles)</td>
                                     <td>@Html.DisplayFor(modelItem => sol.estado)</td>
                                     <td>
-                                        <a class="btn btn-primary" asp-action="EditarEstadoPrestamo" asp-route-id="@sol.id">Acción</a>
+                                        <a class="btn btn-primary"
+                                           asp-controller="Prestamos"
+                                           asp-action="EditarEstadoPrestamo"
+                                           asp-route-id="@sol.id">
+                                            Detalles
+                                        </a>
                                     </td>
                                 </tr>
                             }
