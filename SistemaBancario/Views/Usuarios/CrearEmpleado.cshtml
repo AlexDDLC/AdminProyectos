@@ -13,33 +13,33 @@
 
                     <div class="containerBody">
                         <h4 class="mb-3">Información General</h4>
-                        <form action="#" method="post">
+                        <form action="CrearUsuario" method="post">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4">Nombre</label>
-                                    <input type="text" class="form-control" id="Nombre" placeholder="Nombre" required="">
+                                    <input pattern="(?=.*[A-Z]).{1,}" title="Primera letra en mayúscula." type="text" class="form-control" name="nombreEmpleado" placeholder="Nombre" required="">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputapellido">Apellido</label>
-                                    <input type="text" class="form-control" id="Aoellido" placeholder="Apellido" required="">
+                                    <input pattern="(?=.*[A-Z]).{1,}" title="Primera letra en mayúscula." type="text" class="form-control" name="apellidoEmpleado" placeholder="Apellido" required="">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputapellido">Cedula</label>
-                                    <input type="text" class="form-control" id="Cedula" placeholder="Cedula" required="">
+                                    <input pattern="\d*" title="Debe ingresar los números de la cedula sin guiones." type="text" minlength="11" maxlength="11" class="form-control" name="cedulaEmpleado" placeholder="Cedula" required="">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="Dare">Fecha de nacimiento</label>
-                                    <input type="date" class="form-control" id="fechaNacimiento" placeholder="" required="">
+                                    <input type="date" pattern="\d*" title="Debe ser mayor de edad." max="2002-03-31" class="form-control" name="fechaNacimientoEmpleado" placeholder="" required="">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="Sexo">Sexo</label>
-                                    <select type="text" class="form-control custom-select" id="Sexo" placeholder="Sexo" required="">
+                                    <select type="text" class="form-control custom-select" name="sexoEmpleado" placeholder="Sexo" required="">
                                         <option value="">Sexo...</option>
                                         <option>Masculino</option>
                                         <option>Femenino</option>
@@ -50,11 +50,11 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputAddress">Direccion</label>
-                                    <input type="text" class="form-control" id="Direccion" placeholder="Direccion" required="">
+                                    <input type="text" class="form-control" name="direccionEmpleado" placeholder="Direccion" required="">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="Tel">Telefono</label>
-                                    <input type="text" class="form-control" id="Telefono" placeholder="Telefono" required="">
+                                    <input type="text" pattern="\d*" title="Debe ingresar los números de teléfono sin guiones." minlength="10" maxlength="10" class="form-control" name="telefonoEmpleado" placeholder="Telefono" required="">
                                 </div>
                             </div>
 
@@ -63,30 +63,36 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="User">Usuario</label>
-                                    <input type="text" class="form-control" id="Usuario" placeholder="Usuario" required="">
+                                    <input type="text" class="form-control" name="usuarioEmpleado" placeholder="Usuario" required="">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="Password">Contraseña</label>
-                                    <input type="password" class="form-control" id="Contrasena" placeholder="Contraseña" required="">
+                                    <input type="password" pattern=".{6,}" title="Debe contener mas de 6 caracteres." class="form-control" name="contrasenaEmpleado" placeholder="Contraseña" required="">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="Salario">Salario</label>
-                                    <input type="text" class="form-control" id="Salario" placeholder="Salario" required="">
+                                    <input type="text" pattern="\d*" minlength="3" maxlength="7" class="form-control" name="salarioEmpleado" placeholder="Salario" required="">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="Cuenta">No. Cuenta bancaria</label>
-                                    <input type="text" class="form-control" id="NumeroCuenta" placeholder="Número de cuenta" required="">
+                                    <input type="number" class="form-control" name="numeroCuentaEmpleado" placeholder="Número de cuenta" required="">
                                 </div>
                             </div>
                             <div class="form-row">
-                                
+
                                 <div class="form-group col-md-6">
-                                    <label for="Cargo">Cargo</label>
-                                    <input type="text" class="form-control" id="Cargo" placeholder="Cargo" required="">
+                                    <label for="Sexo">Cargo</label>
+                                    <select type="text" class="form-control custom-select" name="cargoEmpleado" placeholder="Cargo..." required="">
+                                        <option value="">Cargo...</option>
+                                        <option value="Administrador">Administrador</option>
+                                        <option value="Secretario">Secretario</option>
+                                    </select>
                                 </div>
                             </div>
+
+                           
 
                             <hr class="mb-3" />
                             <button type="submit" class="btn btn-primary">Crear empleado</button>
