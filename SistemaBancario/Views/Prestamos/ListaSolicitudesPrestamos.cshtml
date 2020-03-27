@@ -33,7 +33,7 @@
                             @foreach (var sol in Model)
                             {
                                 <tr>
-                                    <th scope="row">@Html.DisplayFor(modelItem => sol.id)</th>
+                                    <th scope="row">@Html.DisplayFor(modelItem => sol.id_sol)</th>
                                     <td>@Html.DisplayFor(modelItem => sol.solicitante)</td>
                                     <td>@Html.DisplayFor(modelItem => sol.cedula)</td>
                                     <td>@Html.DisplayFor(modelItem => sol.monto)</td>
@@ -44,7 +44,8 @@
                                         <a class="btn btn-primary"
                                            asp-controller="Prestamos"
                                            asp-action="EditarEstadoPrestamo"
-                                           asp-route-id="@sol.id">
+                                           
+                                           asp-route-idsol="@sol.id_sol">
                                             Detalles
                                         </a>
                                     </td>

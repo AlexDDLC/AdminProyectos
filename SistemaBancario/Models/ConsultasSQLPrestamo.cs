@@ -23,7 +23,7 @@ namespace SistemaBancario.Models
                 while(dr.Read())
                 {
                     ListarSolicitudesPrestamo lsp = new ListarSolicitudesPrestamo();
-                    lsp.id = dr["ID_Solicitud"].ToString();
+                    lsp.id_sol = dr["ID_Solicitud"].ToString();
                     lsp.solicitante = dr["nombreCliente"].ToString();
                     lsp.cedula = dr["Cedula"].ToString();
                     lsp.monto = dr["Monto"].ToString();
@@ -62,7 +62,7 @@ namespace SistemaBancario.Models
             {
                 SqlCommand cmd = new SqlCommand("CambiarEstadoSolicitud", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@id_Solicitud", lsp.id);
+                cmd.Parameters.AddWithValue("@id_Solicitud", lsp.id_sol);
                 cmd.Parameters.AddWithValue("@nuevoEstado", lsp.NuevoEstadoPrestamo);
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -83,7 +83,7 @@ namespace SistemaBancario.Models
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    solList.id = dr["ID_Solicitud"].ToString();
+                    solList.id_sol = dr["ID_Solicitud"].ToString();
                     solList.solicitante = dr["solicitante"].ToString();
                     solList.cedula = dr["CedulaCliente"].ToString();
                     solList.monto = dr["Monto"].ToString();

@@ -20,7 +20,6 @@ namespace SistemaBancario.Controllers
 
         public IActionResult EditarEstadoPrestamo(int idsol)
         {
-            Console.WriteLine(idsol);
             ListarSolicitudesPrestamo lsp = conpres.listarsolicitudPorID(idsol);
             return View(lsp);
         }
