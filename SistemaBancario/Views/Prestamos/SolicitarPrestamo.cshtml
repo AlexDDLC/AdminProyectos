@@ -1,4 +1,4 @@
-﻿@model SistemaBancario.Models.CalculadoraAmortizacion
+﻿@model SistemaBancario.Models.SolicitudPrestamo
 @{
     ViewData["Title"] = "Solicitar Prestamo";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -30,8 +30,14 @@
                                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                                     <div>
                                         <h6 class="my-0">Tipo de préstamo</h6>
-                                        <select id="tipoPrestamo" class="form-control">
+                                        <select id="tipoPrestamo" asp-for="tipoPrestamo" class="form-control" required>
                                             <option>Elegir...</option>
+                                            <option value="Hipotecario">Hipotecario</option>
+                                            <option value="Extra crédito">Extra crédito</option>
+                                            <option value="Gerencial">Gerencial</option>
+                                            <option value="Salud">Salud</option>
+                                            <option value="Ordenes de compra">Ordenes de compra</option>
+                                            <option value="Resort">Resort</option>
                                         </select>
                                     </div>
                                 </li>
@@ -49,13 +55,13 @@
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between">
                                     <strong>Cuota mensual</strong>
-                                    <strong>$</strong>
+                                    <strong>$@ViewData["total"]</strong>
                                 </li>
                                 <li>
                                     <div class="input-group card p-2">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <input type="submit" class="btn btn-primary" asp-for="calcular" value="Calcular cuotas" />
+                                                <input type="submit" class="btn btn-primary" asp-for="calcular" value="Calcular" />
                                             </div>
                                             <div class="col-md-6">
                                                 <input type="submit" class="btn btn-danger" value="Borrar" />
@@ -71,17 +77,22 @@
                     @* FORMULARIO DE SOLICITUD *@
                     <div class="col-md-8 order-md-1 validform2">
                         <h4 class="mb-3">Formulario de solicitud</h4>
-                        <form action="#" method="post" class="needs-validation" novalidate="">
+                        <form class="needs-validation" asp-action="SolicitarPrestamo">
                             <div class="row">
                                 <div class="col-md-4 mb-3">
                                     <label for="cedulaCliente">Cedula del cliente</label>
-                                    <input type="text" class="form-control" id="cedulaCliente" placeholder="Cedula" value="" required="">
+                                    <input type="text" class="form-control" id="cedulaCliente" placeholder="Cedula" value="" asp-for="cedulaCliente" required="">
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="tipoPrestamo">Tipo de préstamo</label>
-                                    <select id="tipoPrestamo" class="form-control">
-                                        <option selected="">Elegir…</option>
-                                        <option>...</option>
+                                    <select id="tipoPrestamo" asp-for="tipoPrestamoSolicitado" class="form-control" required>
+                                        <option>Elegir...</option>
+                                        <option value="Hipotecario">Hipotecario</option>
+                                        <option value="Extra crédito">Extra crédito</option>
+                                        <option value="Gerencial">Gerencial</option>
+                                        <option value="Salud">Salud</option>
+                                        <option value="Ordenes de compra">Ordenes de compra</option>
+                                        <option value="Resort">Resort</option>
                                     </select>
                                 </div>
                                 <div class="col-md-4 mb-3">
@@ -90,16 +101,16 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">$RD</div>
                                         </div>
-                                        <input type="text" class="form-control" id="montoSolicitado" placeholder="Monto" required="">
+                                        <input type="number" class="form-control" id="montoSolicitado" placeholder="Monto" asp-for="montoPrestamo" required="">
                                     </div>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="detallesSolicitud">Detalles de la solicitud</label>
-                                <textarea style="resize: none;" class="form-control" id="detallesSolicitud" rows="6" required="" maxlength="200"></textarea>
+                                <textarea style="resize: none;" class="form-control" id="detallesSolicitud" rows="6" required="" asp-for="detalles" maxlength="200"></textarea>
                             </div>
                             <hr class="mb-4">
-                            <button type="submit" class="btn btn-primary">Enviar solicitud</button>
+                            <input type="submit" class="btn btn-primary" value="Solicitar" asp-for="solicitar"/>
                         </form>
                     </div>
                     @* FORMULARIO DE SOLICITUD *@
@@ -108,7 +119,4 @@
             <!--// Solicitud de prestamo -->
         </section>
     </div>
-</div>
-<div class="footer-29 py-4">
-
 </div>
