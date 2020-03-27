@@ -103,7 +103,7 @@
                             </select>
                         </div>
                     </div>
-                    
+
                     <hr class="mb-3" />
                     <h4 class="mb-1">Información familiar</h4>
                     <h6 class="mb-3">Deseo que en caso de fallecimiento, mis ahorros sean pagados a:</h6>
@@ -139,7 +139,11 @@
                     </div>
 
                     <hr class="mb-3" />
-                    <button type="submit" class="btn btn-primary">Editar cliente</button>
+                    <button type="submit" class="btn btn-warning">Editar cliente</button>
+                    <button class="btn btn-primary">
+                        <a asp-controller="Usuarios" asp-action="ListadoClientes">Volver a lista</a>
+                    </button>
+
                 </form>
 
             </div>
