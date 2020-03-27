@@ -10,41 +10,37 @@ namespace SistemaBancario.Controllers
     public class PrestamosController : Controller
     {
         ConsultasSQLPrestamo conpres = new ConsultasSQLPrestamo();
-        ListarSolicitudesPrestamo listpres = new ListarSolicitudesPrestamo();
-        List<ListarSolicitudesPrestamo> listsol = new List<ListarSolicitudesPrestamo>();
 
         public IActionResult ListaSolicitudesPrestamos()
         {
+            List<ListarSolicitudesPrestamo> listsol = new List<ListarSolicitudesPrestamo>();
             listsol = conpres.listarsolicitudes().ToList();
             return View(listsol);
         }
 
-        [HttpPost]
-        public IActionResult EditarEstadoPrestamo(int? idsol)
+        //public IActionResult EditarEstadoPrestamo()
+        //{
+        //    return View();
+        //}
+
+        public IActionResult EditarEstadoPrestamo(int idsol)
         {
-            if(idsol == null)
-            {
-                return NotFound(); 
-            }
-            ListarSolicitudesPrestamo lsp = conpres.listarsolicitudPorID(idsol);
-            if(lsp == null)
-            {
-                return NotFound();
-            }
+            ListarSolicitudesPrestamo lsp = new ListarSolicitudesPrestamo(); 
+            lsp = conpres.listarsolicitudPorID(idsol);
             return View(lsp);
         }
 
         [HttpPost]
-        public IActionResult EditarEstadoPrestamo(int? idsol, [Bind] ListarSolicitudesPrestamo lispres)
+        public IActionResult EditarEstadoPrestamo(int? idsol,[Bind] ListarSolicitudesPrestamo lsp)
         {
             if (idsol == null)
             {
                 return NotFound();
             }
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                conpres.EditarEstadoDePrestamo(lispres);
-                return RedirectToAction("");
+                conpres.ActualizarEstadoDePrestamo(lsp);
+                return RedirectToAction("ListaSolicitudesPrestamos");
             }
             return View(conpres);
         }

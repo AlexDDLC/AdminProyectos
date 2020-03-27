@@ -56,28 +56,29 @@ namespace SistemaBancario.Models
             }
         }
 
-        public void EditarEstadoDePrestamo(ListarSolicitudesPrestamo lsp)
+        public void ActualizarEstadoDePrestamo(ListarSolicitudesPrestamo lsp)
         {
             using(SqlConnection con = new SqlConnection(conexionSQL.conexion))
             {
-                SqlCommand cmd = new SqlCommand("CambiarEstadoPrestamo", con);
+                SqlCommand cmd = new SqlCommand("CambiarEstadoSolicitud", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@id_sol", lsp.id);
-                cmd.Parameters.AddWithValue("@Estado_sol", lsp.NuevoEstadoPrestamo);
+                cmd.Parameters.AddWithValue("@id_Solicitud", lsp.id);
+                cmd.Parameters.AddWithValue("@nuevoEstado", lsp.NuevoEstadoPrestamo);
                 con.Open();
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
         }
 
-        public ListarSolicitudesPrestamo listarsolicitudPorID(int? idsol)
+        public ListarSolicitudesPrestamo listarsolicitudPorID(int idsol)
         {
             ListarSolicitudesPrestamo solList = new ListarSolicitudesPrestamo();
 
             using (SqlConnection con = new SqlConnection(conexionSQL.conexion))
             {
-                SqlCommand cmd = new SqlCommand("listarSolicitudesPrestamo", con);
+                SqlCommand cmd = new SqlCommand("ObtenerSolicitudPorID", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_sol", idsol);
                 con.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
