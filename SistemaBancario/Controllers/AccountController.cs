@@ -32,7 +32,7 @@ namespace SistemaBancario.Controllers
 
         void connectionString()
         {
-            con.ConnectionString = "Data Source=.;Initial Catalog=CoopITLA;Integrated Security=True";
+            con.ConnectionString = "Data Source=sql5052.site4now.net;User ID=DB_A56E4E_CoopITLA_admin;Password=CoopITLA2020";
 
         }
         [HttpPost]
