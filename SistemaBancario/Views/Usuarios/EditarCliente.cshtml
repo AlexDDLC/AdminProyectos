@@ -1,45 +1,48 @@
-﻿
+﻿@model SistemaBancario.Models.ListadoUsuarios
 @{
-    ViewData["Title"] = "CrearCliente";
+    ViewData["Title"] = "EditarCliente";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
 <div class="wrapper">
     <partial name="_MenuLateral" />
     <div id="content">
         <!-- Forms-3 -->
         <div class="outer-w3-agile mt-3">
-            <h4 class="tittle-w3-agileits mb-4">Crear usuario Cliente</h4>
+            <h4 class="tittle-w3-agileits mb-4">Editar Cliente </h4>
 
             <div class="containerBody">
                 <h4 class="mb-3">Información General</h4>
-                <form action="CrearUsuario" method="post">
+                <form action="../updateUsuario" method="post">
                     <div class="form-row">
+                        <input type="hidden" class="form-control" value="@Html.DisplayFor(modelItem => Model.idCliente)" name="idCliente" required="">
                         <div class="form-group col-md-6">
                             <label for="inputNombre">Nombre</label>
-                            <input pattern="(?=.*[A-Z]).{1,}" title="Primera letra en mayúscula." type="text" class="form-control" name="nombreCliente" placeholder="Nombre" required="">
+                            <input pattern="(?=.*[A-Z]).{1,}" title="Primera letra en mayúscula." type="text" class="form-control" value="@Html.DisplayFor(modelItem => Model.nombreCliente)" name="nombreCliente" required="">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputapellido">Apellido</label>
-                            <input pattern="(?=.*[A-Z]).{1,}" title="Primera letra en mayúscula." type="text" class="form-control" name="apellidoCliente" placeholder="Apellido" required="">
+                            <input pattern="(?=.*[A-Z]).{1,}" title="Primera letra en mayúscula." type="text" class="form-control" name="apellidoCliente" value="@Html.DisplayFor(modelItem => Model.apellidoCliente)" required="">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inpuCedula">Cedula</label>
-                            <input pattern="\d*" title="Debe ingresar los números de la cedula sin guiones." type="text" minlength="11" maxlength="11" class="form-control" name="cedulaCliente" placeholder="Cedula" required="">
+                            <input pattern="\d*" title="Debe ingresar los números de la cedula sin guiones." type="text" minlength="11" maxlength="11" class="form-control" name="cedulaCliente" value="@Html.DisplayFor(modelItem => Model.cedulaCliente)" required="">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="Dare">Fecha de nacimiento</label>
-                            <input type="date" pattern="\d*" title="Debe ser mayor de edad." max="2002-03-31" class="form-control" name="fechaNacimientoCliente" placeholder="" required="">
+                            <label for="Dare">Fecha de nacimiento <b>(Actual @Html.DisplayFor(modelItem => Model.fechaNacimientoCliente))</b></label>
+                            <input type="date" pattern="\d*" title="Debe ser mayor de edad." max="2002-03-31" class="form-control" name="fechaNacimientoCliente" required="">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="Sexo">Sexo</label>
-                            <select type="text" class="form-control custom-select" name="sexoCliente" placeholder="Sexo" required="">
-                                <option value="">Sexo...</option>
+                            <select type="text" class="form-control custom-select" name="sexoCliente" required="">
+                                <option value="@Html.DisplayFor(modelItem => Model.sexoCliente)">@Html.DisplayFor(modelItem => Model.sexoCliente)</option>
                                 <option value="M">Masculino</option>
                                 <option value="F">Femenino</option>
                             </select>
@@ -49,11 +52,11 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputAddress">Direccion</label>
-                            <input type="text" class="form-control" name="direccionCliente" placeholder="Direccion" required="">
+                            <input type="text" class="form-control" name="direccionCliente" value="@Html.DisplayFor(modelItem => Model.direccionCliente)" required="">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="Tel">Telefono</label>
-                            <input type="text" pattern="\d*" title="Debe ingresar los números de teléfono sin guiones." minlength="10" maxlength="10" class="form-control" name="telefonoCliente" placeholder="Telefono" required="">
+                            <input type="text" pattern="\d*" title="Debe ingresar los números de teléfono sin guiones." minlength="10" maxlength="10" class="form-control" name="telefonoCliente" value="@Html.DisplayFor(modelItem => Model.telefonoCliente)" required="">
                         </div>
                     </div>
 
@@ -62,22 +65,22 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="User">Usuario</label>
-                            <input type="text" class="form-control" name="usuarioCliente" placeholder="Usuario" required="">
+                            <input type="text" class="form-control" name="usuarioCliente" value="@Html.DisplayFor(modelItem => Model.usuarioCliente)" required="">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="Password">Contraseña</label>
-                            <input pattern=".{6,}" title="Debe contener mas de 6 caracteres." type="password" class="form-control" name="contrasenaCliente" placeholder="Contraseña" required="">
+                            <input pattern=".{6,}" title="Debe contener mas de 6 caracteres." type="text" class="form-control" name="contrasenaCliente" value="@Html.DisplayFor(modelItem => Model.contrasenaCliente)" required="">
                         </div>
                     </div>
                     <div class="form-row">
 
                         <div class="form-group col-md-6">
                             <label for="Salario">Salario</label>
-                            <input type="number" class="form-control" name="salarioCliente" placeholder="Salario" required="">
+                            <input type="number" class="form-control" name="salarioCliente" value="@Html.DisplayFor(modelItem => Model.salarioCliente)" required="">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="Cuenta">No. Cuenta bancaria</label>
-                            <input type="number" class="form-control" name="numeroCuentaCliente" placeholder="Número de cuenta" required="">
+                            <input type="number" class="form-control" name="numeroCuentaCliente" value="@Html.DisplayFor(modelItem => Model.numeroCuentaCliente)" required="">
                         </div>
                     </div>
                     <div class="form-row">
@@ -88,32 +91,41 @@
                                 Autorizo al ITLA a descontar de mi salario esta cantidad por concepto de
                                 AHORRO.
                             </small>
-                            <input type="number" min="200" class="form-control" name="ahorroCliente" placeholder="200" required="">
+                            <input type="number" min="200" class="form-control" name="ahorroCliente" value="@Html.DisplayFor(modelItem => Model.ahorroCliente)" required="">
+                        </div>
+                        <br />
+                        <div class="form-group col-md-6">
+                            <label for="Estatus">Estatus</label>
+                            <select type="text" title="Reafirmar estatus" class="form-control custom-select" name="estatusCliente" required="">
+                                <option value="">@Html.DisplayFor(modelItem => Model.estatusCliente)</option>
+                                <option value="Activo">Activo</option>
+                                <option value="Inactivo">Inactivo</option>
+                            </select>
                         </div>
                     </div>
-
+                    
                     <hr class="mb-3" />
                     <h4 class="mb-1">Información familiar</h4>
                     <h6 class="mb-3">Deseo que en caso de fallecimiento, mis ahorros sean pagados a:</h6>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Nombre</label>
-                            <input pattern="(?=.*[A-Z]).{1,}" title="Primera letra en mayúscula." type="text" class="form-control" name="nombreFamiliarCliente" placeholder="Nombre" required="">
+                            <input pattern="(?=.*[A-Z]).{1,}" title="Primera letra en mayúscula." type="text" class="form-control" name="nombreFamiliarCliente" value="@Html.DisplayFor(modelItem => Model.nombreFamiliarCliente)" required="">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputapellido">Apellido</label>
-                            <input pattern="(?=.*[A-Z]).{1,}" title="Primera letra en mayúscula." type="text" class="form-control" name="apellidoFamiliarCliente" placeholder="Apellido" required="">
+                            <input pattern="(?=.*[A-Z]).{1,}" title="Primera letra en mayúscula." type="text" class="form-control" name="apellidoFamiliarCliente" value="@Html.DisplayFor(modelItem => Model.apellidoFamiliarCliente)" required="">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Cedula</label>
-                            <input pattern="\d*" title="Debe ingresar los números de la cedula sin guiones." type="text" minlength="11" maxlength="11" class="form-control" name="cedulaFamiliarCliente" placeholder="Cedula" required="">
+                            <input pattern="\d*" title="Debe ingresar los números de la cedula sin guiones." type="text" minlength="11" maxlength="11" class="form-control" name="cedulaFamiliarCliente" value="@Html.DisplayFor(modelItem => Model.cedulaFamiliarCliente)" required="">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="Parentesco">Parentesco</label>
-                            <select type="text" class="form-control custom-select" name="parentescoCliente" placeholder="Parentesco" required="">
-                                <option value="">Parentesco...</option>
+                            <select title="Reafirmar parentesco" type="text" class="form-control custom-select" name="parentescoCliente" required="">
+                                <option value="">@Html.DisplayFor(modelItem => Model.parentescoCliente)</option>
                                 <option value="Padre">Padre</option>
                                 <option value="Madre">Madre</option>
                                 <option value="Hijo">Hijo</option>
@@ -129,7 +141,7 @@
 
 
                     <hr class="mb-3" />
-                    <button type="submit" class="btn btn-primary">Crear cliente</button>
+                    <button type="submit" class="btn btn-primary">Editar cliente</button>
                 </form>
 
 
@@ -140,6 +152,4 @@
 
     </div>
 </div>
-
-
 

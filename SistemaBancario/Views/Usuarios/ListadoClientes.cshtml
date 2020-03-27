@@ -1,0 +1,78 @@
+﻿@model IEnumerable<SistemaBancario.Models.ListadoUsuarios>
+@{
+    ViewData["Title"] = "ListadoClientes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="wrapper">
+    <partial name="_MenuLateral" />
+    <div id="content">
+
+        <!-- table4 -->
+        <div class="outer-w3-agile mt-3">
+            <h4 class="tittle-w3-agileits mb-4">Listado de clientes</h4>
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Cedula</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Salario</th>
+                        <th scope="col">Cuenta Bancaria</th>
+                        <th scope="col">Fecha Registro</th>
+                        <th scope="col">Estatus</th>
+                        <th scope="col">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var cliente in Model)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => cliente.idCliente)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => cliente.cedulaCliente)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => cliente.nombreCliente)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => cliente.apellidoCliente)
+                        </td>
+
+                        <td>
+                            RD$@Html.DisplayFor(modelItem => cliente.salarioCliente)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => cliente.numeroCuentaCliente)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => cliente.fechaRegistroCliente)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => cliente.estatusCliente)
+                        </td>
+                        <td>
+                            <button class="btn btn-primary btn-sm"><a>Info. general</a></button>
+                            <button class="btn btn-warning btn-sm">
+                                <a asp-controller="Usuarios" asp-action="EditarCliente" asp-route-id="@cliente.idCliente">Editar</a>
+                            </button>
+                            <button class="btn btn-danger btn-sm ">
+                                <a asp-controller="Usuarios" asp-action="EliminarCliente" asp-route-id="@cliente.idCliente">Eliminar</a>
+                            </button>
+
+                        </td>
+                    </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!--// table4 -->
+
+    </div>
+</div>
+

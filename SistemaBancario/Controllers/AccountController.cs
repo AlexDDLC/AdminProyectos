@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using SistemaBancario.Models;
 using System.Data.SqlClient;
 using System.Data;
+using Microsoft.AspNetCore.Http;
 
 namespace SistemaBancario.Controllers
 {
@@ -33,21 +34,43 @@ namespace SistemaBancario.Controllers
             connectionString();
             con.Open();
             com.Connection = con;
-            com.CommandText = "EXEC LOGIN_CLIENTE '"+Acc.UsuarioCliente+"', '"+Acc.ContrasenaCliente+"'";
-            dr = com.ExecuteReader();
-            if (dr.Read())
+
+            if(Acc.UsuarioEmpleado == null)
             {
-                con.Close();
-                return View("../Dashboard/Dashboard");
+                com.CommandText = "EXEC LOGIN_CLIENTE '" + Acc.UsuarioCliente + "', '" + Acc.ContrasenaCliente + "'";
+                dr = com.ExecuteReader();
+                if (dr.Read())
+                {
+                    con.Close();
+                    return View("../Dashboard/Dashboard");
+                }
+                else
+                {
+                    con.Close();
+                    return View("Login");
+                }
+
             }
             else
             {
-               
-                con.Close();
-                return View("Login");
+                com.CommandText = "EXEC LOGIN_EMPLEADO '" + Acc.UsuarioEmpleado + "', '" + Acc.ContrasenaEmpleado + "'";
+                dr = com.ExecuteReader();
+                if (dr.Read())
+                {
+                    con.Close();
+                    return View("../Dashboard/Dashboard");
+                }
+                else
+                {
+                    con.Close();
+                    return View("Login");
+                }
+
+
             }
-            
-           
+
+
+
         }
     }
 }
