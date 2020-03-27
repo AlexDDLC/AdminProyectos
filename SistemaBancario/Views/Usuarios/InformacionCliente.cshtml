@@ -1,0 +1,117 @@
+﻿@model SistemaBancario.Models.ListadoUsuarios
+@{
+    ViewData["Title"] = "InformacionCliente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="wrapper">
+    <partial name="_MenuLateral" />
+    <div id="content">
+        <div class="outer-w3-agile mt-3">
+            <h4 class="tittle-w3-agileits mb-4">Información cliente</h4>
+            <table class="table table-bordered ">
+                <thead class="thead-dark">
+                    <tr>
+                        <th colspan="2">
+                            @Html.DisplayFor(modelItem => Model.nombreCliente) @Html.DisplayFor(modelItem => Model.apellidoCliente) - ID: @Html.DisplayFor(modelItem => Model.idCliente)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cedula</td>
+                        <th>@Html.DisplayFor(modelItem => Model.cedulaCliente)</th>
+                    </tr>
+                    <tr>
+                        <td>Fecha nacimiento</td>
+                        <th>@Html.DisplayFor(modelItem => Model.fechaNacimientoCliente)</th>
+                    </tr>
+                    <tr>
+                        <td>Sexo</td>
+                        <th>@Html.DisplayFor(modelItem => Model.sexoCliente)</th>
+                    </tr>
+                    <tr>
+                        <td>Direccion</td>
+                        <th>@Html.DisplayFor(modelItem => Model.direccionCliente)</th>
+                    </tr>
+                    <tr>
+                        <td>Telefono</td>
+                        <th>@Html.DisplayFor(modelItem => Model.telefonoCliente)</th>
+                    </tr>
+                    <tr>
+                        <td>Usuario</td>
+                        <th>@Html.DisplayFor(modelItem => Model.usuarioCliente)</th>
+                    </tr>
+                    <tr>
+                        <td>Salario</td>
+                        <th>RD$@Html.DisplayFor(modelItem => Model.salarioCliente)</th>
+                    </tr>
+                    <tr>
+                        <td>Descuento mensual para ahorro</td>
+                        <th>RD$@Html.DisplayFor(modelItem => Model.ahorroCliente)</th>
+                    </tr>
+                    <tr>
+                        <td>Cuenta Bancaria</td>
+                        <th>@Html.DisplayFor(modelItem => Model.numeroCuentaCliente)</th>
+                    </tr>
+                    <tr>
+                        <td>Fecha registro</td>
+                        <th>@Html.DisplayFor(modelItem => Model.fechaRegistroCliente)</th>
+                    </tr>
+                    <tr>
+                        <td>Estatus</td>
+                        <th>@Html.DisplayFor(modelItem => Model.estatusCliente)</th>
+                    </tr>
+
+                </tbody>
+                <thead class="thead-dark">
+                    <tr>
+                        <th colspan="2">
+                            Información de Familiar
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nombre</td>
+                        <th>@Html.DisplayFor(modelItem => Model.nombreFamiliarCliente)</th>
+                    </tr>
+                    <tr>
+                        <td>Apellido</td>
+                        <th>@Html.DisplayFor(modelItem => Model.apellidoFamiliarCliente)</th>
+                    </tr>
+                    <tr>
+                        <td>Cedula</td>
+                        <th>@Html.DisplayFor(modelItem => Model.cedulaFamiliarCliente)</th>
+                    </tr>
+                    <tr>
+                        <td>Parentesco</td>
+                        <th>@Html.DisplayFor(modelItem => Model.parentescoCliente)</th>
+                    </tr>
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <td colspan="2">
+                            <div style="margin:0 auto;">
+                                <button class="btn btn-warning btn-sm">
+                                    <a asp-controller="Usuarios" asp-action="EditarCliente" asp-route-id="@Model.idCliente">Editar</a>
+                                </button>
+                                <button class="btn btn-primary btn-sm ">
+                                    <a asp-controller="Usuarios" asp-action="ListadoClientes">Volver a lista</a>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+
+            </table>
+
+
+        </div>
+
+    </div>
+</div>
+
+

@@ -17,7 +17,7 @@
             <div class="containerBody">
                 <h4 class="mb-3">Información General</h4>
                 <form action="../updateUsuario" method="post">
-                   
+
                     <div class="form-row">
                         <input type="hidden" class="form-control" value="@Html.DisplayFor(modelItem => Model.idEmpleado)" name="idEmpleado" required="">
                         <div class="form-group col-md-6">
@@ -30,86 +30,89 @@
                         </div>
                     </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputapellido">Cedula</label>
-                                <input pattern="\d*" title="Debe ingresar los números de la cedula sin guiones." type="text" minlength="11" maxlength="11" class="form-control" name="cedulaEmpleado"value="@Html.DisplayFor(modelItem => Model.cedulaEmpleado)" required="">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="Dare">Fecha de nacimiento <b> (Actual @Html.DisplayFor(modelItem => Model.fechaNacimientoEmpleado))</b> </label>
-                                <input type="date" pattern="\d*" title="Debe ser mayor de edad." max="2002-03-31" class="form-control" name="fechaNacimientoEmpleado" value="@Html.DisplayFor(modelItem => Model.fechaNacimientoEmpleado)" required="">
-                            </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputapellido">Cedula</label>
+                            <input pattern="\d*" title="Debe ingresar los números de la cedula sin guiones." type="text" minlength="11" maxlength="11" class="form-control" name="cedulaEmpleado" value="@Html.DisplayFor(modelItem => Model.cedulaEmpleado)" required="">
                         </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="Sexo">Sexo</label>
-                                <select type="text" class="form-control custom-select" name="sexoEmpleado" required="">
-                                    <option value="@Html.DisplayFor(modelItem => Model.sexoEmpleado)">@Html.DisplayFor(modelItem => Model.sexoEmpleado)</option>
-                                    <option>Masculino</option>
-                                    <option>Femenino</option>
-                                </select>
-                            </div>
+                        <div class="form-group col-md-6">
+                            <label for="Dare">Fecha de nacimiento <b> (Actual @Html.DisplayFor(modelItem => Model.fechaNacimientoEmpleado))</b> </label>
+                            <input type="date" pattern="\d*" title="Debe ser mayor de edad." max="2002-03-31" class="form-control" name="fechaNacimientoEmpleado" value="@Html.DisplayFor(modelItem => Model.fechaNacimientoEmpleado)" required="">
                         </div>
+                    </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputAddress">Direccion</label>
-                                <input type="text" class="form-control" name="direccionEmpleado" value="@Html.DisplayFor(modelItem => Model.direccionEmpleado)" required="">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="Tel">Telefono</label>
-                                <input type="text" pattern="\d*" title="Debe ingresar los números de teléfono sin guiones." minlength="10" maxlength="10" class="form-control" name="telefonoEmpleado" value="@Html.DisplayFor(modelItem => Model.telefonoEmpleado)" required="">
-                            </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="Sexo">Sexo</label>
+                            <select type="text" class="form-control custom-select" name="sexoEmpleado" required="">
+                                <option value="@Html.DisplayFor(modelItem => Model.sexoEmpleado)">@Html.DisplayFor(modelItem => Model.sexoEmpleado)</option>
+                                <option>Masculino</option>
+                                <option>Femenino</option>
+                            </select>
                         </div>
+                    </div>
 
-                        <hr class="mb-3" />
-                        <h4 class="mb-3">Información de cuenta</h4>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="User">Usuario</label>
-                                <input type="text" class="form-control" name="usuarioEmpleado" value="@Html.DisplayFor(modelItem => Model.usuarioEmpleado)" required="">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="Password">Contraseña</label>
-                                <input type="text" pattern=".{6,}" title="Debe contener mas de 6 caracteres." class="form-control" name="contrasenaEmpleado" value="@Html.DisplayFor(modelItem => Model.contrasenaEmpleado)" required="">
-                            </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputAddress">Direccion</label>
+                            <input type="text" class="form-control" name="direccionEmpleado" value="@Html.DisplayFor(modelItem => Model.direccionEmpleado)" required="">
                         </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="Salario">Salario</label>
-                                <input type="number" class="form-control" name="salarioEmpleado" value="@Html.DisplayFor(modelItem => Model.salarioEmpleado)" required="">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="Cuenta">No. Cuenta bancaria</label>
-                                <input type="number" class="form-control" name="numeroCuentaEmpleado" value="@Html.DisplayFor(modelItem => Model.numeroCuentaEmpleado)" required="">
-                            </div>
+                        <div class="form-group col-md-6">
+                            <label for="Tel">Telefono</label>
+                            <input type="text" pattern="\d*" title="Debe ingresar los números de teléfono sin guiones." minlength="10" maxlength="10" class="form-control" name="telefonoEmpleado" value="@Html.DisplayFor(modelItem => Model.telefonoEmpleado)" required="">
                         </div>
-                        <div class="form-row">
+                    </div>
 
-                            <div class="form-group col-md-6">
-                                <label for="Sexo">Cargo</label>
-                                <select title="Reafirmar cargo" type="text" class="form-control custom-select" name="cargoEmpleado" required="">
-                                    <option value="">@Html.DisplayFor(modelItem => Model.cargoEmpleado)</option>
-                                    <option value="Administrador">Administrador</option>
-                                    <option value="Secretario">Secretario</option>
-
-                                </select>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="Estatus">Estatus</label>
-                                <select type="text" title="Reafirmar estatus" class="form-control custom-select" name="estatusEmpleado" required="">
-                                    <option value="">@Html.DisplayFor(modelItem => Model.estatusEmpleado)</option>
-                                    <option value="Activo">Activo</option>
-                                    <option value="Inactivo">Inactivo</option>
-                                </select>
-                            </div>
+                    <hr class="mb-3" />
+                    <h4 class="mb-3">Información de cuenta</h4>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="User">Usuario</label>
+                            <input type="text" class="form-control" name="usuarioEmpleado" value="@Html.DisplayFor(modelItem => Model.usuarioEmpleado)" required="">
                         </div>
+                        <div class="form-group col-md-6">
+                            <label for="Password">Contraseña</label>
+                            <input type="text" pattern=".{6,}" title="Debe contener mas de 6 caracteres." class="form-control" name="contrasenaEmpleado" value="@Html.DisplayFor(modelItem => Model.contrasenaEmpleado)" required="">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="Salario">Salario</label>
+                            <input type="number" class="form-control" name="salarioEmpleado" value="@Html.DisplayFor(modelItem => Model.salarioEmpleado)" required="">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="Cuenta">No. Cuenta bancaria</label>
+                            <input type="number" class="form-control" name="numeroCuentaEmpleado" value="@Html.DisplayFor(modelItem => Model.numeroCuentaEmpleado)" required="">
+                        </div>
+                    </div>
+                    <div class="form-row">
 
-                        <hr class="mb-3" />
-                        <button type="submit" class="btn btn-primary">Editar empleado</button>
-                    
-                    </form>
+                        <div class="form-group col-md-6">
+                            <label for="Sexo">Cargo</label>
+                            <select title="Reafirmar cargo" type="text" class="form-control custom-select" name="cargoEmpleado" required="">
+                                <option value="">@Html.DisplayFor(modelItem => Model.cargoEmpleado)</option>
+                                <option value="Administrador">Administrador</option>
+                                <option value="Secretario">Secretario</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="Estatus">Estatus</label>
+                            <select type="text" title="Reafirmar estatus" class="form-control custom-select" name="estatusEmpleado" required="">
+                                <option value="">@Html.DisplayFor(modelItem => Model.estatusEmpleado)</option>
+                                <option value="Activo">Activo</option>
+                                <option value="Inactivo">Inactivo</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <hr class="mb-3" />
+                    <button type="submit" class="btn btn-warning">Editar empleado</button>
+                    <button class="btn btn-primary">
+                        <a asp-controller="Usuarios" asp-action="ListadoEmpleados">Volver a lista</a>
+                    </button>
+
+                </form>
 
 
             </div>

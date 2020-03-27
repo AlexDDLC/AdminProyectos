@@ -35,7 +35,7 @@ namespace SistemaBancario.Controllers
         /* CONEXION A LA BASE DE DATOS*/
         void connectionString()
         {
-            con.ConnectionString = "Data Source=.;Initial Catalog=CoopITLA;Integrated Security=True";
+            con.ConnectionString = "Data Source=sql5052.site4now.net;User ID=DB_A56E4E_CoopITLA_admin;Password=CoopITLA2020";
         }
         [HttpPost]
 
@@ -133,14 +133,22 @@ namespace SistemaBancario.Controllers
             return clienteLista;
         }
 
-        /* CONTROLADOR DE VISTA PARA EDITAR CLIENTE*/
-
+        /* CONTROLADOR DE VISTA PARA EDITAR CLIENTE. RECIBE INFORMACION BY ID*/
         public IActionResult EditarCliente(int id)
         {
             ListadoUsuarios clienteInfo = new ListadoUsuarios();
             clienteInfo = infoCliente(id);
             return View(clienteInfo);
         }
+
+        /*Vista para ver infoRmacion general de cliente. Recibe datos de empleado por medio de ID*/
+        public IActionResult InformacionCliente(int id)
+        {
+            ListadoUsuarios clienteInfo = new ListadoUsuarios();
+            clienteInfo = infoCliente(id);
+            return View(clienteInfo);
+        }
+
 
         /* SELECT INFO DE CLIENTE BY ID*/
         public ListadoUsuarios infoCliente(int id)
@@ -195,6 +203,14 @@ namespace SistemaBancario.Controllers
         
         /*Vista para editar empleado. Recibe datos de empleado por medio de ID*/
         public IActionResult EditarEmpleado(int id)
+        {
+            ListadoUsuarios empleadoInfo = new ListadoUsuarios();
+            empleadoInfo = infoEmpledo(id);
+            return View(empleadoInfo);
+        }
+
+        /*Vista para ver informacion general de empleado. Recibe datos de empleado por medio de ID*/
+        public IActionResult InformacionEmpleado(int id)
         {
             ListadoUsuarios empleadoInfo = new ListadoUsuarios();
             empleadoInfo = infoEmpledo(id);

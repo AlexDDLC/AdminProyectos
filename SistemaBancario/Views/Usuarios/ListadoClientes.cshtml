@@ -56,7 +56,8 @@
                             @Html.DisplayFor(modelItem => cliente.estatusCliente)
                         </td>
                         <td>
-                            <button class="btn btn-primary btn-sm"><a>Info. general</a></button>
+                            <button class="btn btn-primary btn-sm">
+                                <a asp-controller="Usuarios" asp-action="InformacionCliente" asp-route-id="@cliente.idCliente">Info. general</a></button>
                             <button class="btn btn-warning btn-sm">
                                 <a asp-controller="Usuarios" asp-action="EditarCliente" asp-route-id="@cliente.idCliente">Editar</a>
                             </button>

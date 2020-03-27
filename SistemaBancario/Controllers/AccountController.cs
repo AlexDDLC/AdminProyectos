@@ -19,12 +19,20 @@ namespace SistemaBancario.Controllers
         [HttpGet]
         public IActionResult Login()
         {
+
             return View();
         }
 
+        public IActionResult Login2()
+        {
+
+            return View();
+        }
+
+
         void connectionString()
         {
-            con.ConnectionString = "Data Source=.;Initial Catalog=CoopITLA;Integrated Security=True";
+            con.ConnectionString = "Data Source=sql5052.site4now.net;User ID=DB_A56E4E_CoopITLA_admin;Password=CoopITLA2020";
 
         }
         [HttpPost]
@@ -34,6 +42,8 @@ namespace SistemaBancario.Controllers
             connectionString();
             con.Open();
             com.Connection = con;
+
+            
 
             if(Acc.UsuarioEmpleado == null)
             {
@@ -46,6 +56,9 @@ namespace SistemaBancario.Controllers
                 }
                 else
                 {
+
+                    ViewBag.Message = "Usuario y contraseña incorrectos. Por favor intente de nuevo.";
+
                     con.Close();
                     return View("Login");
                 }
@@ -62,8 +75,9 @@ namespace SistemaBancario.Controllers
                 }
                 else
                 {
+                    ViewBag.Message = "Usuario y contraseña incorrectos. Por favor intente de nuevo.";
                     con.Close();
-                    return View("Login");
+                    return View("Login2");
                 }
 
 
