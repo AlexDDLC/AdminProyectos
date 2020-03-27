@@ -18,25 +18,17 @@ namespace SistemaBancario.Controllers
             return View(listsol);
         }
 
-        //public IActionResult EditarEstadoPrestamo()
-        //{
-        //    return View();
-        //}
-
         public IActionResult EditarEstadoPrestamo(int idsol)
         {
-            ListarSolicitudesPrestamo lsp = new ListarSolicitudesPrestamo(); 
+            ListarSolicitudesPrestamo lsp = new ListarSolicitudesPrestamo();
             lsp = conpres.listarsolicitudPorID(idsol);
+            Console.WriteLine(idsol.ToString());
             return View(lsp);
         }
 
         [HttpPost]
-        public IActionResult EditarEstadoPrestamo(int? idsol,[Bind] ListarSolicitudesPrestamo lsp)
+        public IActionResult EditarEstadoPrestamo(int idsol,[Bind] ListarSolicitudesPrestamo lsp)
         {
-            if (idsol == null)
-            {
-                return NotFound();
-            }
             if (ModelState.IsValid)
             {
                 conpres.ActualizarEstadoDePrestamo(lsp);
