@@ -1,0 +1,55 @@
+﻿@model SistemaBancario.Models.ListarSolicitudesPrestamo
+@{
+    ViewData["Title"] = "EditarEstadoPrestamo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="wrapper">
+        <partial name="_MenuLateral" />
+        <!-- Page Content Holder -->
+        <div id="content">
+            <section class="forms-section">
+                <!-- Forms-3 -->
+                <div class="outer-w3-agile mt-3">
+                    <h4 class="tittle-w3-agileits mb-4">Detallada de la solicitud</h4>
+                    <form asp-action="EditarEstadoPrestamo">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Nombre del solicitante</label>
+                                <input type="text" class="form-control" id="inputEmail4" required="">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">Cedula</label>
+                                <input type="text" class="form-control" id="inputPassword4" required="">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label for="inputEmail4">Monto</label>
+                                <input type="text" class="form-control" id="inputEmail4" required="">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="inputPassword4">Estado prestamo</label>
+                                <input type="text" class="form-control" id="inputPassword4" required="">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="inputPassword4">Tipo de prestamo</label>
+                                <input type="text" class="form-control" id="inputPassword4" required="">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="inputPassword4">Fecha de solicitud</label>
+                                <input type="text" class="form-control" id="inputPassword4" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress">Detalles de la solicitud</label>
+                            <textarea type="text" class="form-control" id="inputAddress" required="" rows="5"></textarea>
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Aceptar">
+                        <input type="submit" class="btn btn-danger" value="Rechazar">
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+

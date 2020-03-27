@@ -23,7 +23,7 @@ namespace SistemaBancario.Models
                 while(dr.Read())
                 {
                     ListarSolicitudesPrestamo lsp = new ListarSolicitudesPrestamo();
-                    lsp.id = dr["ID_Solicitud"].ToString();
+                    lsp.id = Convert.ToInt32(dr["ID_Solicitud"].ToString());
                     lsp.solicitante = dr["nombreCliente"].ToString();
                     lsp.cedula = dr["Cedula"].ToString();
                     lsp.monto = dr["Monto"].ToString();
@@ -56,18 +56,45 @@ namespace SistemaBancario.Models
             }
         }
 
-        public void EditarEstadoPrestamo(ListarSolicitudesPrestamo lsp)
+        public void EditarEstadoDePrestamo(ListarSolicitudesPrestamo lsp)
         {
             using(SqlConnection con = new SqlConnection(conexionSQL.conexion))
             {
-                SqlCommand cmd = new SqlCommand("CambiarEstadoSolicitud", con);
+                SqlCommand cmd = new SqlCommand("CambiarEstadoPrestamo", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@id_Solicitud", lsp.id);
-                cmd.Parameters.AddWithValue("@nuevoEstado", lsp.NuevoEstadoPrestamo);
+                cmd.Parameters.AddWithValue("@id_sol", lsp.id);
+                cmd.Parameters.AddWithValue("@Estado_sol", lsp.NuevoEstadoPrestamo);
                 con.Open();
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
+        }
+
+        public ListarSolicitudesPrestamo listarsolicitudPorID(int? idsol)
+        {
+            ListarSolicitudesPrestamo solList = new ListarSolicitudesPrestamo();
+
+            using (SqlConnection con = new SqlConnection(conexionSQL.conexion))
+            {
+                SqlCommand cmd = new SqlCommand("listarSolicitudesPrestamo", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    ListarSolicitudesPrestamo lsp = new ListarSolicitudesPrestamo();
+                    lsp.id = Convert.ToInt32(dr["ID_Solicitud"].ToString());
+                    lsp.solicitante = dr["nombreCliente"].ToString();
+                    lsp.cedula = dr["Cedula"].ToString();
+                    lsp.monto = dr["Monto"].ToString();
+                    lsp.estado = dr["EstadoPrestamo"].ToString();
+                    lsp.tipo = dr["TipoPrestamo"].ToString();
+                    lsp.fechasolicitud = dr["FechaSolicitud"].ToString();
+                    lsp.detalles = dr["Detalle"].ToString();
+                }
+                con.Close();
+            }
+            return solList;
         }
     }
 }
