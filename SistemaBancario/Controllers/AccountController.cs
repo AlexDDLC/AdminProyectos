@@ -19,8 +19,16 @@ namespace SistemaBancario.Controllers
         [HttpGet]
         public IActionResult Login()
         {
+
             return View();
         }
+
+        public IActionResult Login2()
+        {
+
+            return View();
+        }
+
 
         void connectionString()
         {
@@ -35,6 +43,8 @@ namespace SistemaBancario.Controllers
             con.Open();
             com.Connection = con;
 
+            
+
             if(Acc.UsuarioEmpleado == null)
             {
                 com.CommandText = "EXEC LOGIN_CLIENTE '" + Acc.UsuarioCliente + "', '" + Acc.ContrasenaCliente + "'";
@@ -46,6 +56,9 @@ namespace SistemaBancario.Controllers
                 }
                 else
                 {
+
+                    ViewBag.Message = "Usuario y contraseña incorrectos. Por favor intente de nuevo.";
+
                     con.Close();
                     return View("Login");
                 }
@@ -62,8 +75,9 @@ namespace SistemaBancario.Controllers
                 }
                 else
                 {
+                    ViewBag.Message = "Usuario y contraseña incorrectos. Por favor intente de nuevo.";
                     con.Close();
-                    return View("Login");
+                    return View("Login2");
                 }
 
 
