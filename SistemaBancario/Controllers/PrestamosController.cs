@@ -89,12 +89,16 @@ namespace SistemaBancario.Controllers
 
         public IActionResult ListaPrestamosRechazados()
         {
-            return View();
+            List<ListarSolicitudesPrestamo> listsolRech = new List<ListarSolicitudesPrestamo>();
+            listsolRech = conpres.listarSolicitudesRechazadas().ToList();
+            return View(listsolRech);
         }
 
         public IActionResult ListaPrestamosAprobados()
         {
-            return View();
+            List<ListarSolicitudesPrestamo> listsolAprob = new List<ListarSolicitudesPrestamo>();
+            listsolAprob = conpres.listarSolicitudesAprobadas().ToList();
+            return View(listsolAprob);
         }
     }
 }

@@ -38,6 +38,62 @@ namespace SistemaBancario.Models
             return solList;
         }
 
+        public IEnumerable<ListarSolicitudesPrestamo> listarSolicitudesRechazadas()
+        {
+            List<ListarSolicitudesPrestamo> listaPresRech = new List<ListarSolicitudesPrestamo>();
+
+            using (SqlConnection con = new SqlConnection(conexionSQL.conexion))
+            {
+                SqlCommand cmd = new SqlCommand("listarSolicitudesRechazadas", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                while(dr.Read())
+                {
+                    ListarSolicitudesPrestamo lsp = new ListarSolicitudesPrestamo();
+                    lsp.id_sol = dr["ID_Solicitud"].ToString();
+                    lsp.solicitante = dr["nombreCliente"].ToString();
+                    lsp.cedula = dr["Cedula"].ToString();
+                    lsp.monto = dr["Monto"].ToString();
+                    lsp.tipo = dr["TipoPrestamo"].ToString();
+                    lsp.fechasolicitud = dr["FechaSolicitud"].ToString();
+                    lsp.detalles = dr["Detalle"].ToString();
+                    lsp.fechaRehazo = dr["fechaRechazo"].ToString();
+                    listaPresRech.Add(lsp);
+                }
+                con.Close();
+            }
+            return listaPresRech;
+        }
+
+        public IEnumerable<ListarSolicitudesPrestamo> listarSolicitudesAprobadas()
+        {
+            List<ListarSolicitudesPrestamo> listaPresAprob = new List<ListarSolicitudesPrestamo>();
+
+            using (SqlConnection con = new SqlConnection(conexionSQL.conexion))
+            {
+                SqlCommand cmd = new SqlCommand("listarSolicitudesAprobadas", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    ListarSolicitudesPrestamo lsp = new ListarSolicitudesPrestamo();
+                    lsp.id_sol = dr["ID_Solicitud"].ToString();
+                    lsp.solicitante = dr["nombreCliente"].ToString();
+                    lsp.cedula = dr["Cedula"].ToString();
+                    lsp.monto = dr["Monto"].ToString();
+                    lsp.tipo = dr["TipoPrestamo"].ToString();
+                    lsp.fechasolicitud = dr["FechaSolicitud"].ToString();
+                    lsp.detalles = dr["Detalle"].ToString();
+                    lsp.fechaRehazo = dr["fechaAprobado"].ToString();
+                    listaPresAprob.Add(lsp);
+                }
+                con.Close();
+            }
+            return listaPresAprob;
+        }
+
         public void CrearSolicitudPrestamo(SolicitudPrestamo SP)
         {
             using (SqlConnection con = new SqlConnection(conexionSQL.conexion))
