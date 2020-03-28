@@ -23,7 +23,7 @@ namespace SistemaBancario.Models
                 while(dr.Read())
                 {
                     ListarSolicitudesPrestamo lsp = new ListarSolicitudesPrestamo();
-                    lsp.id = dr["ID_Solicitud"].ToString();
+                    lsp.id_sol = dr["ID_Solicitud"].ToString();
                     lsp.solicitante = dr["nombreCliente"].ToString();
                     lsp.cedula = dr["Cedula"].ToString();
                     lsp.monto = dr["Monto"].ToString();
@@ -36,6 +36,62 @@ namespace SistemaBancario.Models
                 con.Close();
             }
             return solList;
+        }
+
+        public IEnumerable<ListarSolicitudesPrestamo> listarSolicitudesRechazadas()
+        {
+            List<ListarSolicitudesPrestamo> listaPresRech = new List<ListarSolicitudesPrestamo>();
+
+            using (SqlConnection con = new SqlConnection(conexionSQL.conexion))
+            {
+                SqlCommand cmd = new SqlCommand("listarSolicitudesRechazadas", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                while(dr.Read())
+                {
+                    ListarSolicitudesPrestamo lsp = new ListarSolicitudesPrestamo();
+                    lsp.id_sol = dr["ID_Solicitud"].ToString();
+                    lsp.solicitante = dr["nombreCliente"].ToString();
+                    lsp.cedula = dr["Cedula"].ToString();
+                    lsp.monto = dr["Monto"].ToString();
+                    lsp.tipo = dr["TipoPrestamo"].ToString();
+                    lsp.fechasolicitud = dr["FechaSolicitud"].ToString();
+                    lsp.detalles = dr["Detalle"].ToString();
+                    lsp.fechaRehazo = dr["fechaRechazo"].ToString();
+                    listaPresRech.Add(lsp);
+                }
+                con.Close();
+            }
+            return listaPresRech;
+        }
+
+        public IEnumerable<ListarSolicitudesPrestamo> listarSolicitudesAprobadas()
+        {
+            List<ListarSolicitudesPrestamo> listaPresAprob = new List<ListarSolicitudesPrestamo>();
+
+            using (SqlConnection con = new SqlConnection(conexionSQL.conexion))
+            {
+                SqlCommand cmd = new SqlCommand("listarSolicitudesAprobadas", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    ListarSolicitudesPrestamo lsp = new ListarSolicitudesPrestamo();
+                    lsp.id_sol = dr["ID_Solicitud"].ToString();
+                    lsp.solicitante = dr["nombreCliente"].ToString();
+                    lsp.cedula = dr["Cedula"].ToString();
+                    lsp.monto = dr["Monto"].ToString();
+                    lsp.tipo = dr["TipoPrestamo"].ToString();
+                    lsp.fechasolicitud = dr["FechaSolicitud"].ToString();
+                    lsp.detalles = dr["Detalle"].ToString();
+                    lsp.fechaRehazo = dr["fechaAprobado"].ToString();
+                    listaPresAprob.Add(lsp);
+                }
+                con.Close();
+            }
+            return listaPresAprob;
         }
 
         public void CrearSolicitudPrestamo(SolicitudPrestamo SP)
@@ -62,8 +118,9 @@ namespace SistemaBancario.Models
             {
                 SqlCommand cmd = new SqlCommand("CambiarEstadoSolicitud", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@id_Solicitud", lsp.id);
+                cmd.Parameters.AddWithValue("@id_Solicitud", lsp.id_sol);
                 cmd.Parameters.AddWithValue("@nuevoEstado", lsp.NuevoEstadoPrestamo);
+                cmd.Parameters.AddWithValue("@fechaCambio", lsp.fechaRehazo);
                 con.Open();
                 cmd.ExecuteNonQuery();
                 con.Close();
@@ -83,7 +140,7 @@ namespace SistemaBancario.Models
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    solList.id = dr["ID_Solicitud"].ToString();
+                    solList.id_sol = dr["ID_Solicitud"].ToString();
                     solList.solicitante = dr["solicitante"].ToString();
                     solList.cedula = dr["CedulaCliente"].ToString();
                     solList.monto = dr["Monto"].ToString();

@@ -9,7 +9,7 @@ namespace SistemaBancario.Models
     public class ListarSolicitudesPrestamo
     {
         //Listar prestamos
-        public string id { get; set; }
+        public string id_sol { get; set; }
         public string solicitante { get; set; }
         public string cedula { get; set; }
         public string monto { get; set; }
@@ -21,6 +21,6 @@ namespace SistemaBancario.Models
 
         //Aprobar - rechazar prestamos
         public string accion { get; set; }
-        public int NuevoEstadoPrestamo { get; set; }
+        public string NuevoEstadoPrestamo { get; set; }
     }
 }

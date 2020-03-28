@@ -20,7 +20,6 @@ namespace SistemaBancario.Controllers
 
         public IActionResult EditarEstadoPrestamo(int idsol)
         {
-            Console.WriteLine(idsol);
             ListarSolicitudesPrestamo lsp = conpres.listarsolicitudPorID(idsol);
             return View(lsp);
         }
@@ -30,6 +29,17 @@ namespace SistemaBancario.Controllers
         {
             if (ModelState.IsValid)
             {
+                if(lsp.accion == "Aprobar")
+                {
+                    lsp.NuevoEstadoPrestamo = "Aprobado";
+                }
+                else if(lsp.accion =="Rechazar")
+                {
+                    lsp.NuevoEstadoPrestamo = "Rechazado";
+                }
+                DateTime fecha = DateTime.Now;
+                string formato = string.Format("{0:dd/MM/yyyy}", fecha);
+                lsp.fechaRehazo = formato;
                 conpres.ActualizarEstadoDePrestamo(lsp);
                 return RedirectToAction("ListaSolicitudesPrestamos");
             }
@@ -79,12 +89,16 @@ namespace SistemaBancario.Controllers
 
         public IActionResult ListaPrestamosRechazados()
         {
-            return View();
+            List<ListarSolicitudesPrestamo> listsolRech = new List<ListarSolicitudesPrestamo>();
+            listsolRech = conpres.listarSolicitudesRechazadas().ToList();
+            return View(listsolRech);
         }
 
         public IActionResult ListaPrestamosAprobados()
         {
-            return View();
+            List<ListarSolicitudesPrestamo> listsolAprob = new List<ListarSolicitudesPrestamo>();
+            listsolAprob = conpres.listarSolicitudesAprobadas().ToList();
+            return View(listsolAprob);
         }
     }
 }
