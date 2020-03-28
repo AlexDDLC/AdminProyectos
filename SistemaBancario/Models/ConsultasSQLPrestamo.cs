@@ -64,6 +64,7 @@ namespace SistemaBancario.Models
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@id_Solicitud", lsp.id_sol);
                 cmd.Parameters.AddWithValue("@nuevoEstado", lsp.NuevoEstadoPrestamo);
+                cmd.Parameters.AddWithValue("@fechaCambio", lsp.fechaRehazo);
                 con.Open();
                 cmd.ExecuteNonQuery();
                 con.Close();

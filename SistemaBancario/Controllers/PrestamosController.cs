@@ -29,6 +29,17 @@ namespace SistemaBancario.Controllers
         {
             if (ModelState.IsValid)
             {
+                if(lsp.accion == "Aprobar")
+                {
+                    lsp.NuevoEstadoPrestamo = "Aprobado";
+                }
+                else if(lsp.accion =="Rechazar")
+                {
+                    lsp.NuevoEstadoPrestamo = "Rechazado";
+                }
+                DateTime fecha = DateTime.Now;
+                string formato = string.Format("{0:dd/MM/yyyy}", fecha);
+                lsp.fechaRehazo = formato;
                 conpres.ActualizarEstadoDePrestamo(lsp);
                 return RedirectToAction("ListaSolicitudesPrestamos");
             }

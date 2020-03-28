@@ -21,6 +21,6 @@ namespace SistemaBancario.Models
 
         //Aprobar - rechazar prestamos
         public string accion { get; set; }
-        public int NuevoEstadoPrestamo { get; set; }
+        public string NuevoEstadoPrestamo { get; set; }
     }
 }

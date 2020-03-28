@@ -10,8 +10,7 @@
             <section class="forms-section">
                 <!-- Forms-3 -->
                 <div class="outer-w3-agile mt-3">
-                    <h4 class="tittle-w3-agileits mb-4">Detallades de la solicitud</h4>
-                    @* Metodo para actualizar estado del prestamo *@
+                    <h4 class="tittle-w3-agileits mb-4">Detalles de la solicitud</h4>
                     <form asp-action="EditarEstadoPrestamo">
                         <input type="hidden" asp-for="id_sol"/>
                         <div class="form-row">
@@ -47,8 +46,8 @@
                             <textarea type="text" class="form-control" id="inputAddress" rows="5"
                                       asp-for="detalles"></textarea>
                         </div>
-                        <input type="submit" class="btn btn-primary" value="Aceptar">
-                        <input type="submit" class="btn btn-danger" value="Rechazar">
+                        <input type="submit" class="btn btn-primary" asp-for="accion" value="Aprobar">
+                        <input type="submit" class="btn btn-danger" asp-for="accion" value="Rechazar">
                     </form>
                 </div>
             </section>
