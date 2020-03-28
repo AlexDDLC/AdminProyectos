@@ -29,29 +29,25 @@ namespace SistemaBancario.Controllers
             return View();
         }
 
-
         void connectionString()
         {
             con.ConnectionString = "Data Source=sql5052.site4now.net;User ID=DB_A56E4E_CoopITLA_admin;Password=CoopITLA2020";
 
         }
-        [HttpPost]
 
+        [HttpPost]
         public ActionResult Verify(Account Acc)
         {
             connectionString();
             con.Open();
             com.Connection = con;
 
-            
-
             if(Acc.UsuarioEmpleado == null)
             {
                 com.CommandText = "EXEC LOGIN_CLIENTE '" + Acc.UsuarioCliente + "', '" + Acc.ContrasenaCliente + "'";
                 dr = com.ExecuteReader();
                 if (dr.Read())
-                {
-                  
+                {                  
                     con.Close();
                     return View("../Dashboard/Dashboard");
                 }
@@ -62,7 +58,6 @@ namespace SistemaBancario.Controllers
                     con.Close();
                     return View("Login");
                 }
-
             }
             else
             {
@@ -79,12 +74,7 @@ namespace SistemaBancario.Controllers
                     con.Close();
                     return View("Login2");
                 }
-
-
             }
-
-
-
         }
     }
 }
