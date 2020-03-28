@@ -42,6 +42,7 @@ namespace SistemaBancario.Controllers
         /* CREAR USUARIOS CLIENTE Y EMPLEADO*/
         public void CrearUsuario(RegistroUsuario ru)
         {
+           
             connectionString();
             con.Open();
             com.Connection = con;
@@ -49,16 +50,33 @@ namespace SistemaBancario.Controllers
             if (ru.nombreEmpleado == null)
             {
                 com.CommandText = "EXEC REGISTRAR_CLIENTE '" + ru.cedulaCliente + "', '" + ru.nombreCliente + "', '" + ru.apellidoCliente + "', '" + ru.sexoCliente + "', '" + ru.telefonoCliente + "', '" + ru.direccionCliente + "', '" + ru.numeroCuentaCliente + "', '" + ru.fechaNacimientoCliente + "', " + int.Parse(ru.salarioCliente) + ", '" + ru.usuarioCliente + "', '" + ru.contrasenaCliente + "', " + int.Parse(ru.ahorroCliente) + ", '" + (ru.cedulaFamiliarCliente) + "', '" + (ru.nombreFamiliarCliente) + "', '" + (ru.apellidoFamiliarCliente) + "', '" + (ru.parentescoCliente) + "'";
+                try
+                {
                 dr = com.ExecuteReader();
                 con.Close();
                 Response.Redirect("ListadoClientes");
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Error = ex;
+                }
             }
             else
             {
                 com.CommandText = "EXEC REGISTRAR_EMPLEADO '" + ru.cedulaEmpleado + "', '" + ru.nombreEmpleado + "', '" + ru.apellidoEmpleado + "', '" + ru.sexoEmpleado + "', '" + ru.telefonoEmpleado + "', '" + ru.direccionEmpleado + "','" + ru.fechaNacimientoEmpleado + "','" + ru.cargoEmpleado + "', '" + ru.numeroCuentaEmpleado + "'," + int.Parse(ru.salarioEmpleado) + ", '" + ru.usuarioEmpleado + "', '" + ru.contrasenaEmpleado + "'";
-                dr = com.ExecuteReader();
-                con.Close();
-                Response.Redirect("ListadoEmpleados");
+                try
+                {
+                    dr = com.ExecuteReader();
+                    con.Close();
+                    Response.Redirect("ListadoEmpleados");
+                }
+                catch (Exception ex)
+                {
+                    
+                    ViewBag.Error = ex;
+                    Response.Redirect("CrearEmpleado");
+                    
+                }
             }
         }
 

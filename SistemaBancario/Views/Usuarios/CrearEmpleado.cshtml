@@ -1,4 +1,4 @@
-﻿
+﻿@model SistemaBancario.Models.RegistroUsuario
 @{
     ViewData["Title"] = "CrearEmpleado";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,7 +17,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Nombre</label>
-                            <input pattern="(?=.*[A-Z]).{1,}" title="Primera letra en mayúscula." type="text" class="form-control" name="nombreEmpleado" placeholder="Nombre" required="">
+                            <input pattern="(?=.*[A-Z]).{1,}" title="Primera letra en mayúscula." type="text" class="form-control" value="@Html.DisplayFor(modelItem => Model.nombreEmpleado)" name="nombreEmpleado" placeholder="Nombre" required="">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputapellido">Apellido</label>
@@ -27,7 +27,7 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputapellido">Cedula</label>
+                            <label for="inputapellido">Cedula <p>@ViewBag.Error</p></label>
                             <input pattern="\d*" title="Debe ingresar los números de la cedula sin guiones." type="text" minlength="11" maxlength="11" class="form-control" name="cedulaEmpleado" placeholder="Cedula" required="">
                         </div>
                         <div class="form-group col-md-6">

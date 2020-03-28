@@ -51,12 +51,12 @@ namespace SistemaBancario.Controllers
                 dr = com.ExecuteReader();
                 if (dr.Read())
                 {
+                  
                     con.Close();
                     return View("../Dashboard/Dashboard");
                 }
                 else
                 {
-
                     ViewBag.Message = "Usuario y contraseña incorrectos. Por favor intente de nuevo.";
 
                     con.Close();

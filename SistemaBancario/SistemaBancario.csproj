@@ -22,4 +22,9 @@
     <None Include="wwwroot\css\Login.css" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="Areas\" />
+  </ItemGroup>
+
 </Project>
