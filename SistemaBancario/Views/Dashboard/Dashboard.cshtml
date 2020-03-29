@@ -1,4 +1,5 @@
-﻿
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor httpContextAccessor
 @{
     ViewData["Title"] = "Dashboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -14,7 +15,15 @@
     <div id="content">
         <!-- Forms content -->
         <section class="forms-section">
-            <h1>Aqui va la vista de inicio del dashboard.</h1>
+            <h1>Aqui va la vista de inicio del dashboard. @httpContextAccessor.HttpContext.Session.GetString("Usuario")  </h1>
+            <p>ID: @httpContextAccessor.HttpContext.Session.GetString("ID") </p>
+            <p>Cedula: @httpContextAccessor.HttpContext.Session.GetString("Cedula") </p>
+            <p>Nombre: @httpContextAccessor.HttpContext.Session.GetString("Nombre") </p>
+            <p>Apellido @httpContextAccessor.HttpContext.Session.GetString("Apellido") </p>
+            <p>User: @httpContextAccessor.HttpContext.Session.GetString("User") </p>
+            <p>Cuenta: @httpContextAccessor.HttpContext.Session.GetString("cuentaBancaria") </p>
+            <p>Roll: @httpContextAccessor.HttpContext.Session.GetString("Roll") </p>
+
         </section>
     </div>
 </div>

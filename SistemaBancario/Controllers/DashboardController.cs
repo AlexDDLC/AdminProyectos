@@ -6,13 +6,23 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using SistemaBancario.Models;
 
+
 namespace SistemaBancario.Controllers
 {
     public class DashboardController : Controller
     {
         public IActionResult Dashboard(Account acc)
         {
-            return View();
+            if(HttpContext.Session.GetString("Usuario") == null)
+            {
+                return View("../Home/Index");
+            }
+            else
+            {
+                return View();
+            }
+
+            
         }
         public IActionResult IndexDashboard()
         {

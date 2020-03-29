@@ -28,45 +28,46 @@
                 <tbody>
                     @foreach (var cliente in Model)
                     {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => cliente.idCliente)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => cliente.cedulaCliente)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => cliente.nombreCliente)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => cliente.apellidoCliente)
-                        </td>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => cliente.idCliente)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => cliente.cedulaCliente)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => cliente.nombreCliente)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => cliente.apellidoCliente)
+                            </td>
 
-                        <td>
-                            RD$@Html.DisplayFor(modelItem => cliente.salarioCliente)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => cliente.numeroCuentaCliente)
-                        </td>
+                            <td>
+                                RD$@Html.DisplayFor(modelItem => cliente.salarioCliente)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => cliente.numeroCuentaCliente)
+                            </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => cliente.fechaRegistroCliente)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => cliente.estatusCliente)
-                        </td>
-                        <td>
-                            <button class="btn btn-primary btn-sm">
-                                <a asp-controller="Usuarios" asp-action="InformacionCliente" asp-route-id="@cliente.idCliente">Info. general</a></button>
-                            <button class="btn btn-warning btn-sm">
-                                <a asp-controller="Usuarios" asp-action="EditarCliente" asp-route-id="@cliente.idCliente">Editar</a>
-                            </button>
-                            <button class="btn btn-danger btn-sm ">
-                                <a asp-controller="Usuarios" asp-action="EliminarCliente" asp-route-id="@cliente.idCliente">Eliminar</a>
-                            </button>
+                            <td>
+                                @Html.DisplayFor(modelItem => cliente.fechaRegistroCliente)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => cliente.estatusCliente)
+                            </td>
+                            <td>
+                                <button class="btn btn-primary btn-sm">
+                                    <a asp-controller="Usuarios" asp-action="InformacionCliente" asp-route-id="@cliente.idCliente">Info. general</a>
+                                </button>
+                                <button class="btn btn-warning btn-sm">
+                                    <a asp-controller="Usuarios" asp-action="EditarCliente" asp-route-id="@cliente.idCliente">Editar</a>
+                                </button>
+                                <button class="btn btn-danger btn-sm ">
+                                    <a asp-controller="Usuarios" asp-action="EliminarCliente" asp-route-id="@cliente.idCliente">Eliminar</a>
+                                </button>
 
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
 
                     }
                 </tbody>

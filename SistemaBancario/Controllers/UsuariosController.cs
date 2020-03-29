@@ -204,6 +204,7 @@ namespace SistemaBancario.Controllers
             return Info;
         }
 
+
         /*ELIMINAR CLIENTE BY ID*/
         public void EliminarCliente(int id)
         {
@@ -322,5 +323,6 @@ namespace SistemaBancario.Controllers
             con.Close();
             Response.Redirect("../ListadoEmpleados");
         }
+
     }
 }

@@ -15,4 +15,5 @@ namespace SistemaBancario.Models
         public string UsuarioEmpleado { get; set; }
         public string ContrasenaEmpleado { get; set; }
     }
+
 }
