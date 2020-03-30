@@ -75,7 +75,14 @@ body {
 .containerBody {
     padding-left: 6.5%;
     padding-right: 6.5%;
+    min-height: 50vh;
 }
+
+.paddingLR {
+    padding-left: 6.5%;
+    padding-right: 6.5%;
+}
+
 
 
 
@@ -85,17 +92,53 @@ body {
     margin: 0;
 }
 
+.cover2{
+    width:100%;
+}
+/*Footer-----------------------------------*/
+
+
 /*Footer-----------------------------------*/
 
 footer {
     background: #e6e6e7;
     width: 100%;
     padding: 20PX;
-    position:absolute;
+    position: absolute;
     text-align: center;
     font-size: 14px;
     color: #0060a9;
 }
+
+
+.logoFooterRD {
+    width: 175PX;
+    padding: 5PX 0 10px 0;
+}
+
+
+.index {
+    color: white;
+    background: #1a75bb;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    padding-left: 15px;
+}
+.index a{
+    color: white;
+    text-decoration:none;
+    font-weight:bold;
+}
+.accesos ul li{
+   
+  list-style-type: none;
+  padding: 2px; 
+  font-size: 18px;
+}
+
+
+
 
 
 
