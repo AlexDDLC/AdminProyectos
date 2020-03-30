@@ -1,7 +1,72 @@
 ﻿
 @{
     ViewData["Title"] = "Servicios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="containerBody"><h1>@ViewData["Title"]</h1></div>
+<head>
+    <link href="~/css/contacto-nosotros.css" rel="stylesheet" />
+</head>
+
+
+
+<div class="paddingLR">
+    <img class="cover2" src="~/Account/images/cover2.PNG" />
+    <div>
+        <p class="index mt-3"><a asp-controller="Home" asp-action="Index">Inicio </a>/ @ViewData["Title"] </p>
+    </div>
+</div>
+
+<div class="containerBody">
+    <div class="row validform ml-5 mr-5">
+
+        <div class="col-md-10 order-md-1">
+            <div class="mt-5">
+                <h1 style="font-weight:bold" class="mt-2 mb-2">Ahorro <i class="fas fa-piggy-bank"></i></h1>
+                <p>
+                    A través del ahorro, se establece una reserva que sirve de garantía para compromisos futuros.
+                    Siempre es un buen momento para comenzar a ahorrar y  prever la autosuficiencia económica para
+                    conformar un capital. Entre nuestros productos, ofrecemos la Cuenta de Ahorro, con la que podrás
+                    guardar mesualmente el monto que decidas.
+                </p>
+                <button type="submit" class="btn btn-primary mt-3">Ir a servicio</button>
+                <hr class="mb-3 mt-4" />
+            </div>
+            <div>
+                <h1 style="font-weight:bold" class="mt-3 mb-2">Prestamos <i class="fas fa-hand-holding-usd"></i></h1>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                    scrambled it to make a type specimen book.
+                </p>
+                <button type="submit" class="btn btn-primary mt-3">Ir a servicio</button>
+                <hr class="mb-3 mt-4" />
+            </div>
+            <div>
+                <h1 style="font-weight:bold" class="mt-3 mb-2">Pagos <i class="fas fa-cash-register"></i></h1>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                    scrambled it to make a type specimen book.
+                </p>
+                <button type="submit" class="btn btn-primary mt-3 mb-5">Ir a servicio</button>
+
+            </div>
+        </div>
+
+        <div class="col-md-2 order-md-2 mt-5 accesos">
+            <h3 style="font-weight:bold;">Accesos</h3>
+            <ul>
+                <li><a asp-controller="Home" asp-action="Index">Inicio</a></li>
+                <li><a asp-controller="Home" asp-action="Nosotros">Sobre nosotros</a></li>
+                <li><a asp-controller="Home" asp-action="Contactanos">Contactanos</a></li>
+                <li><a asp-controller="Account" asp-action="Login">Login</a></li>
+
+            </ul>
+        </div>
+        </div>
+
+    </div>
+
+
 

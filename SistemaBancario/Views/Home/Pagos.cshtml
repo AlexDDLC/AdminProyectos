@@ -4,4 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="containerBody"><h1>@ViewData["Title"]</h1></div>
+    <div class="containerBody">
+        <div>
+            <p class="index"><a asp-controller="Home" asp-action="Index">Inicio </a>/<a asp-controller="Home" asp-action="Servicios"> Servicios</a> / @ViewData["Title"]</p>
+        </div>
+
+        <h1>@ViewData["Title"]</h1>
+    </div>

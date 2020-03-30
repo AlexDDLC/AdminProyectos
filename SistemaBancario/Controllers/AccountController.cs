@@ -143,8 +143,8 @@ namespace SistemaBancario.Controllers
                 HttpContext.Session.SetString("ID", dr["ID_Empleado"].ToString());
                 HttpContext.Session.SetString("Cedula", dr["Cedula"].ToString());
                 HttpContext.Session.SetString("Nombre", dr["Nombre"].ToString());
-                HttpContext.Session.SetString("Apelliodo", dr["Apellido"].ToString());
-                HttpContext.Session.SetString("cuentaBancariA", dr["cuentaBancaria"].ToString());
+                HttpContext.Session.SetString("Apellido", dr["Apellido"].ToString());
+                HttpContext.Session.SetString("cuentaBancaria", dr["cuentaBancaria"].ToString());
             }
             con.Close();
 
