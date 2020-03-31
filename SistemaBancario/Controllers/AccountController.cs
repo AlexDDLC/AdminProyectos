@@ -22,12 +22,26 @@ namespace SistemaBancario.Controllers
         [HttpGet]
         public IActionResult Login()
         {
-            return View();
+            if (HttpContext.Session.GetString("Usuario") != null)
+            {
+                return View("../Home/Index");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public IActionResult Login2()
         {
-            return View();
+            if (HttpContext.Session.GetString("Usuario") != null)
+            {
+                return View("../Home/Index");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         void connectionString()

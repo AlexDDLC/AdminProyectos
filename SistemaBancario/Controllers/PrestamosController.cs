@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SistemaBancario.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Session;
 
 namespace SistemaBancario.Controllers
 {
@@ -14,27 +16,50 @@ namespace SistemaBancario.Controllers
 
         public IActionResult ListaSolicitudesPrestamos()
         {
-            List<ListarSolicitudesPrestamo> listsol = new List<ListarSolicitudesPrestamo>();
-            if (varuser.roll != "Cliente")
+            if (HttpContext.Session.GetString("Usuario") == null)
             {
-                listsol = conpres.listarsolicitudes().ToList();
+                return View("../Home/Index");
             }
             else
             {
-                listsol = conpres.listarsolicitudesCliente(varuser.cedula).ToList();
+                List<ListarSolicitudesPrestamo> listsol = new List<ListarSolicitudesPrestamo>();
+                if (varuser.roll != "Cliente")
+                {
+                    listsol = conpres.listarsolicitudes().ToList();
+                }
+                else
+                {
+                    listsol = conpres.listarsolicitudesCliente(varuser.cedula).ToList();
+                }
+                return View(listsol);
             }
-            return View(listsol);
         }
 
         public IActionResult EditarEstadoPrestamo(int idsol)
         {
+            if (HttpContext.Session.GetString("Roll") != "Admin")
+            {
+                return View("../Home/Index");
+            }
+            else
+            {
+               
             ListarSolicitudesPrestamo lsp = conpres.listarsolicitudPorID(idsol);
             return View(lsp);
+            }
         }
 
         [HttpPost]
         public IActionResult EditarEstadoPrestamo(int idsol, [Bind] ListarSolicitudesPrestamo lsp)
         {
+
+            if (HttpContext.Session.GetString("Roll") != "Admin")
+            {
+                return View("../Home/Index");
+            }
+            else
+            {
+
             DateTime fecha = DateTime.Now;
             string formato = string.Format("{0:dd/MM/yyyy}", fecha);
             lsp.fechaRehazo = formato;
@@ -53,11 +78,20 @@ namespace SistemaBancario.Controllers
                 return RedirectToAction("ListaSolicitudesPrestamos");
             }
             return View(conpres);
+              
+            }
         }
 
         public IActionResult SolicitarPrestamo()
         {
+            if (HttpContext.Session.GetString("Roll") != "Admin")
+            {
+                return View("../Home/Index");
+            }
+            else
+            {
             return View();
+            }
         }
 
         [HttpPost]
@@ -98,30 +132,47 @@ namespace SistemaBancario.Controllers
 
         public IActionResult ListaPrestamosRechazados()
         {
-            List<ListarSolicitudesPrestamo> listsolRech = new List<ListarSolicitudesPrestamo>();
-            if (varuser.roll != "Cliente")
+            if (HttpContext.Session.GetString("Roll") != "Admin")
             {
-                listsolRech = conpres.listarSolicitudesRechazadas().ToList();
+                return View("../Home/Index");
             }
             else
             {
-                listsolRech = conpres.listarsolicitudesRechazadoCliente(varuser.cedula).ToList();
+
+                List<ListarSolicitudesPrestamo> listsolRech = new List<ListarSolicitudesPrestamo>();
+                if (varuser.roll != "Cliente")
+                {
+                    listsolRech = conpres.listarSolicitudesRechazadas().ToList();
+                }
+                else
+                {
+                    listsolRech = conpres.listarsolicitudesRechazadoCliente(varuser.cedula).ToList();
+                }
+                return View(listsolRech);
             }
-            return View(listsolRech);
         }
 
         public IActionResult ListaPrestamosAprobados()
         {
-            List<ListarSolicitudesPrestamo> listsolAprob = new List<ListarSolicitudesPrestamo>();
-            if (varuser.roll != "Cliente")
+            if (HttpContext.Session.GetString("Roll") != "Admin")
             {
-                listsolAprob = conpres.listarSolicitudesAprobadas().ToList();
+                return View("../Home/Index");
             }
             else
             {
-                listsolAprob = conpres.listarsolicitudesAprobadoCliente(varuser.cedula).ToList();
+
+                
+                List<ListarSolicitudesPrestamo> listsolAprob = new List<ListarSolicitudesPrestamo>();
+                if (varuser.roll != "Cliente")
+                {
+                    listsolAprob = conpres.listarSolicitudesAprobadas().ToList();
+                }
+                else
+                {
+                    listsolAprob = conpres.listarsolicitudesAprobadoCliente(varuser.cedula).ToList();
+                }
+                return View(listsolAprob);
             }
-            return View(listsolAprob);
         }
     }
 }
