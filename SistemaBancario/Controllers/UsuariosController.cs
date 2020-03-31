@@ -125,6 +125,7 @@ namespace SistemaBancario.Controllers
         {
             List<ListadoUsuarios> clienteLista = new List<ListadoUsuarios>();
             clienteLista = ListaClientes().ToList();
+
             if (HttpContext.Session.GetString("Roll") != "Admin")
             {
                 return View("../Home/Index");
@@ -181,7 +182,15 @@ namespace SistemaBancario.Controllers
         {
             ListadoUsuarios clienteInfo = new ListadoUsuarios();
             clienteInfo = infoCliente(id);
-            if (HttpContext.Session.GetString("Roll") != "Admin")
+
+            if (HttpContext.Session.GetString("Usuario") == null)
+            {
+                return View("../Home/Index");
+            }
+            else
+            {
+
+                if (HttpContext.Session.GetString("Roll") != "Admin")
             {
                 return View("../Home/Index");
             }
@@ -190,23 +199,38 @@ namespace SistemaBancario.Controllers
                
             return View(clienteInfo);
             }
+            }
+
+
         }
 
         /*Vista para ver infoRmacion general de cliente. Recibe datos de empleado por medio de ID*/
         public IActionResult InformacionCliente(int id)
         {
-            if (HttpContext.Session.GetString("ID") != id.ToString())
+            if (HttpContext.Session.GetString("Roll") == "Admin")
             {
-                return View("../Home/Index");
+                ListadoUsuarios clienteInfo = new ListadoUsuarios();
+                clienteInfo = infoCliente(id);
+                return View(clienteInfo);
+               
             }
             else
             {
 
-                ListadoUsuarios clienteInfo = new ListadoUsuarios();
-                clienteInfo = infoCliente(id);
-                return View(clienteInfo);
+                if (HttpContext.Session.GetString("ID") != id.ToString())
+                {
+                    return View("../Home/Index");
+                }
+                else
+                {
 
+                    ListadoUsuarios clienteInfo = new ListadoUsuarios();
+                    clienteInfo = infoCliente(id);
+                    return View(clienteInfo);
+
+                }
             }
+
 
 
         }
@@ -343,6 +367,8 @@ namespace SistemaBancario.Controllers
         {
             ListadoUsuarios empleadoInfo = new ListadoUsuarios();
             empleadoInfo = infoEmpledo(id);
+
+
             if (HttpContext.Session.GetString("Roll") != "Admin")
             {
                 return View("../Home/Index");

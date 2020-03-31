@@ -104,6 +104,15 @@ namespace SistemaBancario.Controllers
         public void Logout()
         {
             HttpContext.Session.Remove("Usuario");
+
+            HttpContext.Session.SetString("ID", "");
+            HttpContext.Session.SetString("Cedula", "");
+            varUser.cedula = "";
+            varUser.roll = "";
+            HttpContext.Session.SetString("Nombre", "");
+            HttpContext.Session.SetString("Apellido", "");
+            HttpContext.Session.SetString("cuentaBancaria", "");
+
             Response.Redirect("../Home/Index");
         }
 

@@ -84,7 +84,7 @@ namespace SistemaBancario.Controllers
 
         public IActionResult SolicitarPrestamo()
         {
-            if (HttpContext.Session.GetString("User") == null)
+            if (HttpContext.Session.GetString("Usuario") == null)
             {
                 return View("../Home/Index");
             }
@@ -132,7 +132,7 @@ namespace SistemaBancario.Controllers
 
         public IActionResult ListaPrestamosRechazados()
         {
-            if (HttpContext.Session.GetString("Roll") != "Admin")
+            if (HttpContext.Session.GetString("Usuario") == null)
             {
                 return View("../Home/Index");
             }
@@ -154,7 +154,7 @@ namespace SistemaBancario.Controllers
 
         public IActionResult ListaPrestamosAprobados()
         {
-            if (HttpContext.Session.GetString("Roll") != "Admin")
+            if (HttpContext.Session.GetString("Usuario") == null)
             {
                 return View("../Home/Index");
             }
