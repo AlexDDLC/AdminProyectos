@@ -10,11 +10,19 @@ namespace SistemaBancario.Controllers
     public class PrestamosController : Controller
     {
         ConsultasSQLPrestamo conpres = new ConsultasSQLPrestamo();
+        VariablesUser varuser = new VariablesUser();
 
         public IActionResult ListaSolicitudesPrestamos()
         {
             List<ListarSolicitudesPrestamo> listsol = new List<ListarSolicitudesPrestamo>();
-            listsol = conpres.listarsolicitudes().ToList();
+            if (varuser.roll != "Cliente")
+            {
+                listsol = conpres.listarsolicitudes().ToList();
+            }
+            else
+            {
+                listsol = conpres.listarsolicitudesCliente(varuser.cedula).ToList();
+            }
             return View(listsol);
         }
 
@@ -25,22 +33,23 @@ namespace SistemaBancario.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditarEstadoPrestamo(int idsol,[Bind] ListarSolicitudesPrestamo lsp)
+        public IActionResult EditarEstadoPrestamo(int idsol, [Bind] ListarSolicitudesPrestamo lsp)
         {
+            DateTime fecha = DateTime.Now;
+            string formato = string.Format("{0:dd/MM/yyyy}", fecha);
+            lsp.fechaRehazo = formato;
             if (ModelState.IsValid)
             {
-                if(lsp.accion == "Aprobar")
+                if (lsp.accion == "Aprobar")
                 {
                     lsp.NuevoEstadoPrestamo = "Aprobado";
+                    conpres.ActualizarEstadoDePrestamoAprobado(lsp);
                 }
-                else if(lsp.accion =="Rechazar")
+                else if (lsp.accion == "Rechazar")
                 {
                     lsp.NuevoEstadoPrestamo = "Rechazado";
+                    conpres.ActualizarEstadoDePrestamoRechazado(lsp);
                 }
-                DateTime fecha = DateTime.Now;
-                string formato = string.Format("{0:dd/MM/yyyy}", fecha);
-                lsp.fechaRehazo = formato;
-                conpres.ActualizarEstadoDePrestamo(lsp);
                 return RedirectToAction("ListaSolicitudesPrestamos");
             }
             return View(conpres);
@@ -90,14 +99,28 @@ namespace SistemaBancario.Controllers
         public IActionResult ListaPrestamosRechazados()
         {
             List<ListarSolicitudesPrestamo> listsolRech = new List<ListarSolicitudesPrestamo>();
-            listsolRech = conpres.listarSolicitudesRechazadas().ToList();
+            if (varuser.roll != "Cliente")
+            {
+                listsolRech = conpres.listarSolicitudesRechazadas().ToList();
+            }
+            else
+            {
+                listsolRech = conpres.listarsolicitudesRechazadoCliente(varuser.cedula).ToList();
+            }
             return View(listsolRech);
         }
 
         public IActionResult ListaPrestamosAprobados()
         {
             List<ListarSolicitudesPrestamo> listsolAprob = new List<ListarSolicitudesPrestamo>();
-            listsolAprob = conpres.listarSolicitudesAprobadas().ToList();
+            if (varuser.roll != "Cliente")
+            {
+                listsolAprob = conpres.listarSolicitudesAprobadas().ToList();
+            }
+            else
+            {
+                listsolAprob = conpres.listarsolicitudesAprobadoCliente(varuser.cedula).ToList();
+            }
             return View(listsolAprob);
         }
     }

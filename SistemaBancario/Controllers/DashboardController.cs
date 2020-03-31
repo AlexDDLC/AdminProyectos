@@ -21,12 +21,10 @@ namespace SistemaBancario.Controllers
             {
                 return View();
             }
-
-            
         }
+
         public IActionResult IndexDashboard()
-        {
-           
+        { 
             return View();
         }
     }

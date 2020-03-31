@@ -16,37 +16,31 @@ namespace SistemaBancario.Controllers
     {
         SqlConnection con = new SqlConnection();
         SqlCommand com = new SqlCommand();
+        VariablesUser varUser = new VariablesUser();
         SqlDataReader dr;
 
         [HttpGet]
         public IActionResult Login()
         {
-
-
             return View();
         }
 
         public IActionResult Login2()
         {
-
             return View();
         }
-
 
         void connectionString()
         {
             con.ConnectionString = "Data Source=sql5052.site4now.net;User ID=DB_A56E4E_CoopITLA_admin;Password=CoopITLA2020";
-
         }
-        [HttpPost]
 
+        [HttpPost]
         public ActionResult Verify(Account Acc)
         {
             connectionString();
             con.Open();
             com.Connection = con;
-
-
 
             if (Acc.UsuarioEmpleado == null)
             {
@@ -69,7 +63,6 @@ namespace SistemaBancario.Controllers
                     con.Close();
                     return View("Login");
                 }
-
             }
             else
             {
@@ -91,21 +84,14 @@ namespace SistemaBancario.Controllers
                     con.Close();
                     return View("Login2");
                 }
-
-
             }
-
         }
-
-
 
         public void Logout()
         {
             HttpContext.Session.Remove("Usuario");
             Response.Redirect("../Home/Index");
         }
-
-
 
         /* SELECT INFO DE CLIENTE BY user*/
         public void infoClienteUser(string user)
@@ -120,14 +106,14 @@ namespace SistemaBancario.Controllers
             {
                 HttpContext.Session.SetString("ID", dr["ID_Cliente"].ToString());
                 HttpContext.Session.SetString("Cedula", dr["Cedula"].ToString());
+                varUser.cedula = dr["Cedula"].ToString();
+                varUser.roll = "Cliente";
                 HttpContext.Session.SetString("Nombre", dr["Nombre"].ToString());
                 HttpContext.Session.SetString("Apellido", dr["Apellido"].ToString());
                 HttpContext.Session.SetString("cuentaBancaria", dr["cuentaBancaria"].ToString());
             }
             con.Close();
-
         }
-
 
         /* SELECT INFO DE Empleado BY user*/
         public void infoEmpleadoUser(string user)
@@ -142,12 +128,12 @@ namespace SistemaBancario.Controllers
             {
                 HttpContext.Session.SetString("ID", dr["ID_Empleado"].ToString());
                 HttpContext.Session.SetString("Cedula", dr["Cedula"].ToString());
+                varUser.cedula = dr["Cedula"].ToString();
                 HttpContext.Session.SetString("Nombre", dr["Nombre"].ToString());
                 HttpContext.Session.SetString("Apellido", dr["Apellido"].ToString());
                 HttpContext.Session.SetString("cuentaBancaria", dr["cuentaBancaria"].ToString());
             }
             con.Close();
-
         }
     }
 }
