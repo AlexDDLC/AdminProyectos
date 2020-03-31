@@ -84,7 +84,7 @@ namespace SistemaBancario.Controllers
 
         public IActionResult SolicitarPrestamo()
         {
-            if (HttpContext.Session.GetString("Roll") != "Admin")
+            if (HttpContext.Session.GetString("User") == null)
             {
                 return View("../Home/Index");
             }
