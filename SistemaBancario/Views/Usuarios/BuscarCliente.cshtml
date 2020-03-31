@@ -1,13 +1,13 @@
-﻿@model IEnumerable<SistemaBancario.Models.ListadoUsuarios>
+﻿@model SistemaBancario.Models.ListadoUsuarios
 @{
-    ViewData["Title"] = "ListadoClientes";
+    ViewData["Title"] = "BuscarCliente";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 
 <div class="wrapper">
     <partial name="_MenuLateral" />
     <div id="content">
-
 
         <!-- top-bar -->
         <nav class="navbar dnavbar navbar-default mb-xl-5 mb-4">
@@ -30,12 +30,18 @@
                         <div class="form-group m-1">
                             <button type="submit" class="btn btn-warning">Buscar</button>
                         </div>
+
+
                     </div>
                 </form>
+                <div class="form-group m-1">
+                    <button type="submit" class="btn btn-primary"><a asp-controller="Usuarios" asp-action="ListadoClientes">Volver a listado</a></button>
+                </div>
                 <!--// Search-from -->
             </div>
         </nav>
         <!--// top-bar -->
+       
 
         <script>
             $(document).ready(function () {
@@ -63,50 +69,47 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var cliente in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => cliente.idCliente)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => cliente.cedulaCliente)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => cliente.nombreCliente)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => cliente.apellidoCliente)
-                            </td>
 
-                            <td>
-                                RD$@Html.DisplayFor(modelItem => cliente.salarioCliente)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => cliente.numeroCuentaCliente)
-                            </td>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.idCliente)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.cedulaCliente)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.nombreCliente)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.apellidoCliente)
+                        </td>
 
-                            <td>
-                                @Html.DisplayFor(modelItem => cliente.fechaRegistroCliente)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => cliente.estatusCliente)
-                            </td>
-                            <td>
-                                <button class="btn btn-primary btn-sm">
-                                    <a asp-controller="Usuarios" asp-action="InformacionCliente" asp-route-id="@cliente.idCliente">Info. general</a>
-                                </button>
-                                <button class="btn btn-warning btn-sm">
-                                    <a asp-controller="Usuarios" asp-action="EditarCliente" asp-route-id="@cliente.idCliente">Editar</a>
-                                </button>
-                                <button class="btn btn-danger btn-sm ">
-                                    <a asp-controller="Usuarios" asp-action="EliminarCliente" asp-route-id="@cliente.idCliente">Eliminar</a>
-                                </button>
+                        <td>
+                            RD$@Html.DisplayFor(modelItem => Model.salarioCliente)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.numeroCuentaCliente)
+                        </td>
 
-                            </td>
-                        </tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.fechaRegistroCliente)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.estatusCliente)
+                        </td>
+                        <td>
+                            <button class="btn btn-primary btn-sm">
+                                <a asp-controller="Usuarios" asp-action="InformacionCliente" asp-route-id="@Model.idCliente">Info. general</a>
+                            </button>
+                            <button class="btn btn-warning btn-sm">
+                                <a asp-controller="Usuarios" asp-action="EditarCliente" asp-route-id="@Model.idCliente">Editar</a>
+                            </button>
+                            <button class="btn btn-danger btn-sm ">
+                                <a asp-controller="Usuarios" asp-action="EliminarCliente" asp-route-id="@Model.idCliente">Eliminar</a>
+                            </button>
 
-                    }
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -114,4 +117,5 @@
 
     </div>
 </div>
+
 

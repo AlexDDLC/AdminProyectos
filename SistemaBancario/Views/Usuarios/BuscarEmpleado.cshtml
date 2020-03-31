@@ -1,13 +1,14 @@
-﻿@model IEnumerable<SistemaBancario.Models.ListadoUsuarios>
+﻿@model SistemaBancario.Models.ListadoUsuarios
 @{
-    ViewData["Title"] = "ListadoEmpleados";
+    ViewData["Title"] = "BuscarUsuario";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 
 <div class="wrapper">
     <partial name="_MenuLateral" />
     <div id="content">
+
+
 
         <!-- top-bar -->
         <nav class="navbar dnavbar navbar-default mb-xl-5 mb-4">
@@ -31,8 +32,12 @@
                             <button type="submit" class="btn btn-warning">Buscar</button>
                         </div>
 
+
                     </div>
                 </form>
+                <div class="form-group m-1">
+                    <button class="btn btn-primary"><a asp-controller="Usuarios" asp-action="ListadoEmpleados">Volver a listado</a></button>
+                </div>
                 <!--// Search-from -->
             </div>
         </nav>
@@ -65,52 +70,50 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var empleado in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => empleado.idEmpleado)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => empleado.cedulaEmpleado)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => empleado.nombreEmpleado)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => empleado.apellidoEmpleado)
-                            </td>
-                            <td>
-                                RD$@Html.DisplayFor(modelItem => empleado.salarioEmpleado)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => empleado.telefonoEmpleado)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => empleado.cargoEmpleado)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => empleado.estatusEmpleado)
-                            </td>
-                            <td>
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalLong">
-                                    <a asp-controller="Usuarios" asp-action="InformacionEmpleado" asp-route-id="@empleado.idEmpleado">Info. General</a>
-                                </button>
 
-                                <button class="btn btn-warning btn-sm">
-                                    <a asp-controller="Usuarios" asp-action="EditarEmpleado" asp-route-id="@empleado.idEmpleado">Editar</a>
-                                </button>
-                                <button class="btn btn-danger btn-sm ">
-                                    <a asp-controller="Usuarios" asp-action="EliminarEmpleado" asp-route-id="@empleado.idEmpleado">Eliminar</a>
-                                </button>
-                            </td>
-                        </tr>
-                    }
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.idEmpleado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.cedulaEmpleado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.nombreEmpleado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.apellidoEmpleado)
+                        </td>
+                        <td>
+                            RD$@Html.DisplayFor(modelItem => Model.salarioEmpleado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.telefonoEmpleado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.cargoEmpleado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.estatusEmpleado)
+                        </td>
+                        <td>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalLong">
+                                <a asp-controller="Usuarios" asp-action="InformacionEmpleado" asp-route-id="@Model.idEmpleado">Info. General</a>
+                            </button>
+
+                            <button class="btn btn-warning btn-sm">
+                                <a asp-controller="Usuarios" asp-action="EditarEmpleado" asp-route-id="@Model.idEmpleado">Editar</a>
+                            </button>
+                            <button class="btn btn-danger btn-sm ">
+                                <a asp-controller="Usuarios" asp-action="EliminarEmpleado" asp-route-id="@Model.idEmpleado">Eliminar</a>
+                            </button>
+                        </td>
+                    </tr>
+
                 </tbody>
             </table>
         </div>
 
     </div>
 </div>
-

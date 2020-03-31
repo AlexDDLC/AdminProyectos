@@ -218,8 +218,66 @@ namespace SistemaBancario.Controllers
             Response.Redirect("../ListadoClientes");
 
         }
+
+
+
+        /* vISTA INFO DE CLIENTE BY CELDULA PARA LISTADO*/
+        public IActionResult BuscarCliente(BuscarUsuario bu)
+        {
+            ListadoUsuarios lu = new ListadoUsuarios();
+
+            lu = ClienteBuscar(bu.cedula);
+
+            return View(lu);
+        }
+
+        /* SELECT INFO DE CLIENTE BY CELDULA PARA LISTADO*/
+        public ListadoUsuarios ClienteBuscar(string cedula)
+        {
+            ListadoUsuarios Info = new ListadoUsuarios();
+            connectionString();
+            con.Open();
+            com.Connection = con;
+            com.CommandText = "SELECT * FROM CLIENTES where Cedula = '" + cedula + "'";
+            dr = com.ExecuteReader();
+            while (dr.Read())
+            {
+                Info.idCliente = dr["ID_Cliente"].ToString();
+                Info.cedulaCliente = dr["Cedula"].ToString();
+                Info.nombreCliente = dr["Nombre"].ToString();
+                Info.apellidoCliente = dr["Apellido"].ToString();
+                Info.fechaNacimientoCliente = dr["FechaNacimiento"].ToString();
+                Info.sexoCliente = dr["Sexo"].ToString();
+                Info.direccionCliente = dr["Direccion"].ToString();
+                Info.telefonoCliente = dr["Telefono"].ToString();
+                Info.usuarioCliente = dr["Usuario"].ToString();
+                Info.contrasenaCliente = dr["Contrasena"].ToString();
+                Info.salarioCliente = dr["salario"].ToString();
+                Info.numeroCuentaCliente = dr["cuentaBancaria"].ToString();
+                Info.ahorroCliente = dr["DescuentoMensual"].ToString();
+                Info.fechaRegistroCliente = dr["FechaRegistro"].ToString();
+                Info.estatusCliente = dr["Estatus"].ToString();
+                Info.cedulaFamiliarCliente = dr["CedulaFamiliar"].ToString();
+                Info.nombreFamiliarCliente = dr["nombreFamiliar"].ToString();
+                Info.apellidoFamiliarCliente = dr["ApellidoFamiliar"].ToString();
+                Info.parentescoCliente = dr["Parentesco"].ToString();
+            }
+            con.Close();
+            return Info;
+        }
+
+
+
+
+
+
+
+
+
+
+
         /*---------------------------------------------------------------ACCIONES PARA USUARIO EMPLEADO---------------------------------------------------------------*/
-        
+
         /*Vista para editar empleado. Recibe datos de empleado por medio de ID*/
         public IActionResult EditarEmpleado(int id)
         {
@@ -323,6 +381,50 @@ namespace SistemaBancario.Controllers
             con.Close();
             Response.Redirect("../ListadoEmpleados");
         }
+
+
+        /* vISTA INFO DE EMPLEADO BY CELDULA PARA LISTADO*/
+        public IActionResult BuscarEmpleado(BuscarUsuario bu)
+        {
+            ListadoUsuarios lu = new ListadoUsuarios();
+
+            lu = EmpleadoBuscar(bu.cedula);
+
+            return View(lu);
+        }
+
+        /* SELECT INFO DE EMPLEADO BY CELDULA PARA LISTADO*/
+        public ListadoUsuarios EmpleadoBuscar(string cedula)
+        {
+            ListadoUsuarios Info = new ListadoUsuarios();
+            connectionString();
+            con.Open();
+            com.Connection = con;
+            com.CommandText = "SELECT * FROM EMPLEADOS where Cedula = '"+cedula+"'";
+            dr = com.ExecuteReader();
+            while (dr.Read())
+            {
+                Info.idEmpleado = dr["ID_Empleado"].ToString();
+                Info.cedulaEmpleado = dr["Cedula"].ToString();
+                Info.nombreEmpleado = dr["Nombre"].ToString();
+                Info.apellidoEmpleado = dr["Apellido"].ToString();
+                Info.fechaNacimientoEmpleado = dr["FechaNacimiento"].ToString();
+                Info.sexoEmpleado = dr["Sexo"].ToString();
+                Info.direccionEmpleado = dr["Direccion"].ToString();
+                Info.telefonoEmpleado = dr["Telefono"].ToString();
+                Info.usuarioEmpleado = dr["Usuario"].ToString();
+                Info.contrasenaEmpleado = dr["Contrasena"].ToString();
+                Info.salarioEmpleado = dr["salario"].ToString();
+                Info.numeroCuentaEmpleado = dr["cuentaBancaria"].ToString();
+                Info.cargoEmpleado = dr["Cargo"].ToString();
+                Info.fechaRegistroEmpleado = dr["FechaEntrada"].ToString();
+                Info.estatusEmpleado = dr["Estatus"].ToString();
+            }
+            con.Close();
+            return Info;
+        }
+
+
 
     }
 }
