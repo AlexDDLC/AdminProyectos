@@ -49,7 +49,7 @@ namespace SistemaBancario.Controllers
 
             if (ru.nombreEmpleado == null)
             {
-                com.CommandText = "EXEC REGISTRAR_CLIENTE '" + ru.cedulaCliente + "', '" + ru.nombreCliente + "', '" + ru.apellidoCliente + "', '" + ru.sexoCliente + "', '" + ru.telefonoCliente + "', '" + ru.direccionCliente + "', '" + ru.numeroCuentaCliente + "', '" + ru.fechaNacimientoCliente + "', " + int.Parse(ru.salarioCliente) + ", '" + ru.usuarioCliente + "', '" + ru.contrasenaCliente + "', " + int.Parse(ru.ahorroCliente) + ", '" + (ru.cedulaFamiliarCliente) + "', '" + (ru.nombreFamiliarCliente) + "', '" + (ru.apellidoFamiliarCliente) + "', '" + (ru.parentescoCliente) + "'";
+                com.CommandText = "EXEC REGISTRAR_CLIENTE '" + ru.cedulaCliente + "', '" + ru.nombreCliente + "', '" + ru.apellidoCliente + "', '" + ru.sexoCliente + "', '" + ru.telefonoCliente + "', '" + ru.direccionCliente + "', '" + ru.numeroCuentaCliente + "', '" + string.Format("{0:dd/MM/yyyy}", ru.fechaNacimientoCliente) + "', " + int.Parse(ru.salarioCliente) + ", '" + ru.usuarioCliente + "', '" + ru.contrasenaCliente + "', " + int.Parse(ru.ahorroCliente) + ", '" + (ru.cedulaFamiliarCliente) + "', '" + (ru.nombreFamiliarCliente) + "', '" + (ru.apellidoFamiliarCliente) + "', '" + (ru.parentescoCliente) + "'";
                 try
                 {
                 dr = com.ExecuteReader();
@@ -63,8 +63,8 @@ namespace SistemaBancario.Controllers
             }
             else
             {
-                com.CommandText = "EXEC REGISTRAR_EMPLEADO '" + ru.cedulaEmpleado + "', '" + ru.nombreEmpleado + "', '" + ru.apellidoEmpleado + "', '" + ru.sexoEmpleado + "', '" + ru.telefonoEmpleado + "', '" + ru.direccionEmpleado + "','" + ru.fechaNacimientoEmpleado + "','" + ru.cargoEmpleado + "', '" + ru.numeroCuentaEmpleado + "'," + int.Parse(ru.salarioEmpleado) + ", '" + ru.usuarioEmpleado + "', '" + ru.contrasenaEmpleado + "'";
-                try
+                com.CommandText = "EXEC REGISTRAR_EMPLEADO '" + ru.cedulaEmpleado + "', '" + ru.nombreEmpleado + "', '" + ru.apellidoEmpleado + "', '" + ru.sexoEmpleado + "', '" + ru.telefonoEmpleado + "', '" + ru.direccionEmpleado + "','" + string.Format("{0:dd/MM/yyyy}", ru.fechaNacimientoEmpleado) + "','" + ru.cargoEmpleado + "', '" + ru.numeroCuentaEmpleado + "'," + int.Parse(ru.salarioEmpleado) + ", '" + ru.usuarioEmpleado + "', '" + ru.contrasenaEmpleado + "'";
+                 try
                 {
                     dr = com.ExecuteReader();
                     con.Close();
@@ -77,6 +77,7 @@ namespace SistemaBancario.Controllers
                     Response.Redirect("CrearEmpleado");
                     
                 }
+               
             }
         }
 
