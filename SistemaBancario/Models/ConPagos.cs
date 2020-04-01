@@ -28,6 +28,8 @@ namespace SistemaBancario.Models
                     lsp.FK_ID_Prestamos = dr["Prestamo"].ToString();
                     lsp.Monto = dr["Monto"].ToString();
                     lsp.FechaPago = dr["FechaPago"].ToString();
+                    lsp.FechaPago = dr["Estado"].ToString();
+                    lsp.FechaPago = dr["Restante"].ToString();
                     lsp.CuotasCubiertas = dr["CuotasCubiertas"].ToString();
                     lsp.CuotasFaltantes = dr["CuotasFaltantes"].ToString();
                     
@@ -56,6 +58,8 @@ namespace SistemaBancario.Models
                     lsp.FK_ID_Prestamos = dr["Prestamo"].ToString();
                     lsp.Monto = dr["Monto"].ToString();
                     lsp.FechaPago = dr["FechaPago"].ToString();
+                    lsp.FechaPago = dr["Estado"].ToString();
+                    lsp.FechaPago = dr["Restante"].ToString();
                     lsp.CuotasCubiertas = dr["CuotasCubiertas"].ToString();
                     lsp.CuotasFaltantes = dr["CuotasFaltantes"].ToString();
                     ListaPagosPagados.Add(lsp);
@@ -83,6 +87,8 @@ namespace SistemaBancario.Models
                     lsp.FK_ID_Prestamos = dr["Prestamo"].ToString();
                     lsp.Monto = dr["Monto"].ToString();
                     lsp.FechaPago = dr["FechaPago"].ToString();
+                    lsp.FechaPago = dr["Estado"].ToString();
+                    lsp.FechaPago = dr["Restante"].ToString();
                     lsp.CuotasCubiertas = dr["CuotasCubiertas"].ToString();
                     lsp.CuotasFaltantes = dr["CuotasFaltantes"].ToString();
                     ListaPagosSin.Add(lsp);
@@ -106,6 +112,8 @@ namespace SistemaBancario.Models
                 cmd.Parameters.AddWithValue("@Prestamo", lsp.FK_ID_Prestamos);
                 cmd.Parameters.AddWithValue("@Monto", lsp.Monto);
                 cmd.Parameters.AddWithValue("@PechaPago", lsp.FechaPago);
+                cmd.Parameters.AddWithValue("@Estado", lsp.FechaPago);
+                cmd.Parameters.AddWithValue("@Restante", lsp.FechaPago);
                 cmd.Parameters.AddWithValue("@CuotasCubiertas", lsp.CuotasCubiertas);
                 cmd.Parameters.AddWithValue("@CuotasFaltantes", lsp.CuotasFaltantes);
                 
@@ -133,6 +141,8 @@ namespace SistemaBancario.Models
                     ListPagos.FK_ID_Prestamos = dr["Prestamo"].ToString();
                     ListPagos.Monto = dr["Monto"].ToString();
                     ListPagos.FechaPago = dr["FechaPago"].ToString();
+                    ListPagos.FechaPago = dr["Estado"].ToString();
+                    ListPagos.FechaPago = dr["Restante"].ToString();
                     ListPagos.CuotasCubiertas = dr["CuotasCubiertas"].ToString();
                     ListPagos.CuotasFaltantes = dr["CuotasFaltantes"].ToString();
                     
