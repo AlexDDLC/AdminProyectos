@@ -52,33 +52,30 @@ namespace SistemaBancario.Controllers
         [HttpPost]
         public IActionResult EditarEstadoPrestamo([Bind] ListarSolicitudesPrestamo lsp)
         {
-
             if (HttpContext.Session.GetString("Roll") != "Admin")
             {
                 return View("../Home/Index");
             }
             else
             {
-
-            DateTime fecha = DateTime.Now;
-            string formato = string.Format("{0:dd/MM/yyyy}", fecha);
-            lsp.fechaRehazo = formato;
-            if (ModelState.IsValid)
-            {
-                if (lsp.accion == "Aprobar")
+                DateTime fecha = DateTime.Now;
+                string formato = string.Format("{0:dd/MM/yyyy}", fecha);
+                lsp.fechaRehazo = formato;
+                if (ModelState.IsValid)
                 {
-                    lsp.NuevoEstadoPrestamo = "Aprobado";
-                    conpres.ActualizarEstadoDePrestamoAprobado(lsp);
+                    if (lsp.accion == "Aprobar")
+                    {
+                        lsp.NuevoEstadoPrestamo = "Aprobado";
+                        conpres.ActualizarEstadoDePrestamoAprobado(lsp);
+                    }
+                    else if (lsp.accion == "Rechazar")
+                    {
+                        lsp.NuevoEstadoPrestamo = "Rechazado";
+                        conpres.ActualizarEstadoDePrestamoRechazado(lsp);
+                    }
+                    return RedirectToAction("ListaSolicitudesPrestamos");
                 }
-                else if (lsp.accion == "Rechazar")
-                {
-                    lsp.NuevoEstadoPrestamo = "Rechazado";
-                    conpres.ActualizarEstadoDePrestamoRechazado(lsp);
-                }
-                return RedirectToAction("ListaSolicitudesPrestamos");
-            }
-            return View(conpres);
-              
+                return View(conpres);
             }
         }
 
