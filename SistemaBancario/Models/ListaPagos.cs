@@ -14,6 +14,8 @@ namespace SistemaBancario.Models
         public string FK_ID_Prestamos { get; set; }
         public string FechaPago { get; set; }
         public string Monto { get; set; }
+        public string Estado { get; set; }
+        public string Restante { get; set; }
         public string CuotasCubiertas { get; set; }
         public string CuotasFaltantes { get; set; }
 
