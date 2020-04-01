@@ -1,9 +1,11 @@
-﻿@*
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor httpContextAccessor
+@*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
 <head>
-    <link href="~/css/dashboard.css" rel="stylesheet"/>
+    <link href="~/css/dashboard.css" rel="stylesheet" />
 </head>
 <!-- Sidebar Holder -->
 <nav id="sidebar">
@@ -15,6 +17,29 @@
     </div>
     <div class="profile-bg"></div>
     <ul class="list-unstyled components">
+        @if (@httpContextAccessor.HttpContext.Session.GetString("Roll") == "Admin")
+        {
+            <li>
+                <a asp-controller="Usuarios" asp-action="InformacionEmpleado" asp-route-id=" @httpContextAccessor.HttpContext.Session.GetString("ID")">
+                    <i class="fas fa-info"></i>
+                    Mi información
+                    <i class="fas fa-angle-down fa-pull-right"></i>
+                </a>
+            </li>
+
+        }
+        else
+        {
+            <li>
+                <a asp-controller="Usuarios" asp-action="InformacionCliente" asp-route-id=" @httpContextAccessor.HttpContext.Session.GetString("ID")">
+                    <i class="fas fa-info"></i>
+                    Mi información
+                    <i class="fas fa-angle-down fa-pull-right"></i>
+                </a>
+            </li>
+
+        }
+
         <li>
             <a href="#prestamos" data-toggle="collapse" aria-expanded="false">
                 <i class="fas fa-hand-holding-usd"></i>
@@ -53,38 +78,47 @@
                  
             </ul>
         </li>
-        <li>
-            <a href="#empleados" data-toggle="collapse" aria-expanded="false">
-                <i class="fas fa-user-tie"></i>
-                Empleados
-                <i class="fas fa-angle-down fa-pull-right"></i>
-            </a>
-            <ul class="collapse list-unstyled" id="empleados">
-                <li>
-                    <a asp-area="" asp-controller="Usuarios" asp-action="ListadoEmpleados">Listado empleados</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Usuarios" asp-action="CrearEmpleado">Crear empleado</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="#clientes" data-toggle="collapse" aria-expanded="false">
-                <i class="fas fa-user"></i>
-                Clientes
-                <i class="fas fa-angle-down fa-pull-right"></i>
-            </a>
-            <ul class="collapse list-unstyled" id="clientes">
-                <li>
-                    <a asp-area="" asp-controller="Usuarios" asp-action="ListadoClientes">Listado clientes</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Usuarios" asp-action="CrearCliente">Crear cliente</a>
-                </li>
+        @if (@httpContextAccessor.HttpContext.Session.GetString("Roll") == "Admin")
+        {
+            <li>
+                <a href="#empleados" data-toggle="collapse" aria-expanded="false">
+                    <i class="fas fa-user-tie"></i>
+                    Empleados
+                    <i class="fas fa-angle-down fa-pull-right"></i>
+                </a>
+                <ul class="collapse list-unstyled" id="empleados">
+                    <li>
+                        <a asp-area="" asp-controller="Usuarios" asp-action="ListadoEmpleados">Listado empleados</a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Usuarios" asp-action="CrearEmpleado">Crear empleado</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#clientes" data-toggle="collapse" aria-expanded="false">
+                    <i class="fas fa-user"></i>
+                    Clientes
+                    <i class="fas fa-angle-down fa-pull-right"></i>
+                </a>
+                <ul class="collapse list-unstyled" id="clientes">
+                    <li>
+                        <a asp-area="" asp-controller="Usuarios" asp-action="ListadoClientes">Listado clientes</a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Usuarios" asp-action="CrearCliente">Crear cliente</a>
+                    </li>
 
 
-            </ul>
-        </li>
+                </ul>
+            </li>
+
+        }
+        else
+        {
+
+        }
+
         <li>
             <a href="#ahorros" data-toggle="collapse" aria-expanded="false">
                 <i class="fas fa-piggy-bank"></i>

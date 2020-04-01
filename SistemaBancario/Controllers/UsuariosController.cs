@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using SistemaBancario.Models;
 using System.Data.SqlClient;
 using System.Data;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Session;
 
 namespace SistemaBancario.Controllers
 {
@@ -23,12 +25,26 @@ namespace SistemaBancario.Controllers
 
         public IActionResult CrearEmpleado()
         {
-            return View();
+            if (HttpContext.Session.GetString("Roll") != "Admin")
+            {
+                return View("../Home/Index");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public IActionResult CrearCliente()
         {
-            return View();
+            if (HttpContext.Session.GetString("Roll") != "Admin")
+            {
+                return View("../Home/Index");
+            }
+            else
+            {
+                return View();
+            }
         }
       
 
@@ -49,7 +65,7 @@ namespace SistemaBancario.Controllers
 
             if (ru.nombreEmpleado == null)
             {
-                com.CommandText = "EXEC REGISTRAR_CLIENTE '" + ru.cedulaCliente + "', '" + ru.nombreCliente + "', '" + ru.apellidoCliente + "', '" + ru.sexoCliente + "', '" + ru.telefonoCliente + "', '" + ru.direccionCliente + "', '" + ru.numeroCuentaCliente + "', '" + ru.fechaNacimientoCliente + "', " + int.Parse(ru.salarioCliente) + ", '" + ru.usuarioCliente + "', '" + ru.contrasenaCliente + "', " + int.Parse(ru.ahorroCliente) + ", '" + (ru.cedulaFamiliarCliente) + "', '" + (ru.nombreFamiliarCliente) + "', '" + (ru.apellidoFamiliarCliente) + "', '" + (ru.parentescoCliente) + "'";
+                com.CommandText = "EXEC REGISTRAR_CLIENTE '" + ru.cedulaCliente + "', '" + ru.nombreCliente + "', '" + ru.apellidoCliente + "', '" + ru.sexoCliente + "', '" + ru.telefonoCliente + "', '" + ru.direccionCliente + "', '" + ru.numeroCuentaCliente + "', '" + string.Format("{0:dd/MM/yyyy}", ru.fechaNacimientoCliente) + "', " + int.Parse(ru.salarioCliente) + ", '" + ru.usuarioCliente + "', '" + ru.contrasenaCliente + "', " + int.Parse(ru.ahorroCliente) + ", '" + (ru.cedulaFamiliarCliente) + "', '" + (ru.nombreFamiliarCliente) + "', '" + (ru.apellidoFamiliarCliente) + "', '" + (ru.parentescoCliente) + "'";
                 try
                 {
                 dr = com.ExecuteReader();
@@ -63,8 +79,8 @@ namespace SistemaBancario.Controllers
             }
             else
             {
-                com.CommandText = "EXEC REGISTRAR_EMPLEADO '" + ru.cedulaEmpleado + "', '" + ru.nombreEmpleado + "', '" + ru.apellidoEmpleado + "', '" + ru.sexoEmpleado + "', '" + ru.telefonoEmpleado + "', '" + ru.direccionEmpleado + "','" + ru.fechaNacimientoEmpleado + "','" + ru.cargoEmpleado + "', '" + ru.numeroCuentaEmpleado + "'," + int.Parse(ru.salarioEmpleado) + ", '" + ru.usuarioEmpleado + "', '" + ru.contrasenaEmpleado + "'";
-                try
+                com.CommandText = "EXEC REGISTRAR_EMPLEADO '" + ru.cedulaEmpleado + "', '" + ru.nombreEmpleado + "', '" + ru.apellidoEmpleado + "', '" + ru.sexoEmpleado + "', '" + ru.telefonoEmpleado + "', '" + ru.direccionEmpleado + "','" + string.Format("{0:dd/MM/yyyy}", ru.fechaNacimientoEmpleado) + "','" + ru.cargoEmpleado + "', '" + ru.numeroCuentaEmpleado + "'," + int.Parse(ru.salarioEmpleado) + ", '" + ru.usuarioEmpleado + "', '" + ru.contrasenaEmpleado + "'";
+                 try
                 {
                     dr = com.ExecuteReader();
                     con.Close();
@@ -77,6 +93,7 @@ namespace SistemaBancario.Controllers
                     Response.Redirect("CrearEmpleado");
                     
                 }
+               
             }
         }
 
@@ -108,7 +125,16 @@ namespace SistemaBancario.Controllers
         {
             List<ListadoUsuarios> clienteLista = new List<ListadoUsuarios>();
             clienteLista = ListaClientes().ToList();
+
+            if (HttpContext.Session.GetString("Roll") != "Admin")
+            {
+                return View("../Home/Index");
+            }
+            else
+            {
+          
             return View(clienteLista);
+            }
         }
 
         /* SELECT TODOS LOS CLIENTES PARA VISUALIZACION*/
@@ -156,15 +182,57 @@ namespace SistemaBancario.Controllers
         {
             ListadoUsuarios clienteInfo = new ListadoUsuarios();
             clienteInfo = infoCliente(id);
+
+            if (HttpContext.Session.GetString("Usuario") == null)
+            {
+                return View("../Home/Index");
+            }
+            else
+            {
+
+                if (HttpContext.Session.GetString("Roll") != "Admin")
+            {
+                return View("../Home/Index");
+            }
+            else
+            {
+               
             return View(clienteInfo);
+            }
+            }
+
+
         }
 
         /*Vista para ver infoRmacion general de cliente. Recibe datos de empleado por medio de ID*/
         public IActionResult InformacionCliente(int id)
         {
-            ListadoUsuarios clienteInfo = new ListadoUsuarios();
-            clienteInfo = infoCliente(id);
-            return View(clienteInfo);
+            if (HttpContext.Session.GetString("Roll") == "Admin")
+            {
+                ListadoUsuarios clienteInfo = new ListadoUsuarios();
+                clienteInfo = infoCliente(id);
+                return View(clienteInfo);
+               
+            }
+            else
+            {
+
+                if (HttpContext.Session.GetString("ID") != id.ToString())
+                {
+                    return View("../Home/Index");
+                }
+                else
+                {
+
+                    ListadoUsuarios clienteInfo = new ListadoUsuarios();
+                    clienteInfo = infoCliente(id);
+                    return View(clienteInfo);
+
+                }
+            }
+
+
+
         }
 
 
@@ -218,14 +286,80 @@ namespace SistemaBancario.Controllers
             Response.Redirect("../ListadoClientes");
 
         }
+
+
+
+        /* vISTA INFO DE CLIENTE BY CELDULA PARA LISTADO*/
+        public IActionResult BuscarCliente(BuscarUsuario bu)
+        {
+            ListadoUsuarios lu = new ListadoUsuarios();
+
+            lu = ClienteBuscar(bu.cedula);
+            if (HttpContext.Session.GetString("Roll") != "Admin")
+            {
+                return View("../Home/Index");
+            }
+            else
+            {
+
+
+                return View(lu);
+               
+            }
+        }
+
+        /* SELECT INFO DE CLIENTE BY CELDULA PARA LISTADO*/
+        public ListadoUsuarios ClienteBuscar(string cedula)
+        {
+            ListadoUsuarios Info = new ListadoUsuarios();
+            connectionString();
+            con.Open();
+            com.Connection = con;
+            com.CommandText = "SELECT * FROM CLIENTES where Cedula = '" + cedula + "'";
+            dr = com.ExecuteReader();
+            while (dr.Read())
+            {
+                Info.idCliente = dr["ID_Cliente"].ToString();
+                Info.cedulaCliente = dr["Cedula"].ToString();
+                Info.nombreCliente = dr["Nombre"].ToString();
+                Info.apellidoCliente = dr["Apellido"].ToString();
+                Info.fechaNacimientoCliente = dr["FechaNacimiento"].ToString();
+                Info.sexoCliente = dr["Sexo"].ToString();
+                Info.direccionCliente = dr["Direccion"].ToString();
+                Info.telefonoCliente = dr["Telefono"].ToString();
+                Info.usuarioCliente = dr["Usuario"].ToString();
+                Info.contrasenaCliente = dr["Contrasena"].ToString();
+                Info.salarioCliente = dr["salario"].ToString();
+                Info.numeroCuentaCliente = dr["cuentaBancaria"].ToString();
+                Info.ahorroCliente = dr["DescuentoMensual"].ToString();
+                Info.fechaRegistroCliente = dr["FechaRegistro"].ToString();
+                Info.estatusCliente = dr["Estatus"].ToString();
+                Info.cedulaFamiliarCliente = dr["CedulaFamiliar"].ToString();
+                Info.nombreFamiliarCliente = dr["nombreFamiliar"].ToString();
+                Info.apellidoFamiliarCliente = dr["ApellidoFamiliar"].ToString();
+                Info.parentescoCliente = dr["Parentesco"].ToString();
+            }
+            con.Close();
+            return Info;
+        }
+
+
         /*---------------------------------------------------------------ACCIONES PARA USUARIO EMPLEADO---------------------------------------------------------------*/
-        
+
         /*Vista para editar empleado. Recibe datos de empleado por medio de ID*/
         public IActionResult EditarEmpleado(int id)
         {
             ListadoUsuarios empleadoInfo = new ListadoUsuarios();
             empleadoInfo = infoEmpledo(id);
-            return View(empleadoInfo);
+            if (HttpContext.Session.GetString("Roll") != "Admin")
+            {
+                return View("../Home/Index");
+            }
+            else
+            {
+             
+             return View(empleadoInfo);
+            }
         }
 
         /*Vista para ver informacion general de empleado. Recibe datos de empleado por medio de ID*/
@@ -233,7 +367,17 @@ namespace SistemaBancario.Controllers
         {
             ListadoUsuarios empleadoInfo = new ListadoUsuarios();
             empleadoInfo = infoEmpledo(id);
+
+
+            if (HttpContext.Session.GetString("Roll") != "Admin")
+            {
+                return View("../Home/Index");
+            }
+            else
+            {
+                
             return View(empleadoInfo);
+            }
         }
 
         /* SELECT INFO DE EMPLEADO BY ID*/
@@ -272,7 +416,15 @@ namespace SistemaBancario.Controllers
         {
             List<ListadoUsuarios> empleadoLista = new List<ListadoUsuarios>();
             empleadoLista = ListaEmpleados().ToList();
+            if (HttpContext.Session.GetString("Roll") != "Admin")
+            {
+                return View("../Home/Index");
+            }
+            else
+            {
+               
             return View(empleadoLista); 
+            }
         }
 
         /* SELECT TODOS LOS EMPLEADOS PARA VISUALIZACION*/
@@ -323,6 +475,58 @@ namespace SistemaBancario.Controllers
             con.Close();
             Response.Redirect("../ListadoEmpleados");
         }
+
+
+        /* vISTA INFO DE EMPLEADO BY CELDULA PARA LISTADO*/
+        public IActionResult BuscarEmpleado(BuscarUsuario bu)
+        {
+            ListadoUsuarios lu = new ListadoUsuarios();
+
+            lu = EmpleadoBuscar(bu.cedula);
+            if (HttpContext.Session.GetString("Roll") != "Admin")
+            {
+                return View("../Home/Index");
+            }
+            else
+            {
+                
+            return View(lu);
+            }
+
+        }
+
+        /* SELECT INFO DE EMPLEADO BY CELDULA PARA LISTADO*/
+        public ListadoUsuarios EmpleadoBuscar(string cedula)
+        {
+            ListadoUsuarios Info = new ListadoUsuarios();
+            connectionString();
+            con.Open();
+            com.Connection = con;
+            com.CommandText = "SELECT * FROM EMPLEADOS where Cedula = '"+cedula+"'";
+            dr = com.ExecuteReader();
+            while (dr.Read())
+            {
+                Info.idEmpleado = dr["ID_Empleado"].ToString();
+                Info.cedulaEmpleado = dr["Cedula"].ToString();
+                Info.nombreEmpleado = dr["Nombre"].ToString();
+                Info.apellidoEmpleado = dr["Apellido"].ToString();
+                Info.fechaNacimientoEmpleado = dr["FechaNacimiento"].ToString();
+                Info.sexoEmpleado = dr["Sexo"].ToString();
+                Info.direccionEmpleado = dr["Direccion"].ToString();
+                Info.telefonoEmpleado = dr["Telefono"].ToString();
+                Info.usuarioEmpleado = dr["Usuario"].ToString();
+                Info.contrasenaEmpleado = dr["Contrasena"].ToString();
+                Info.salarioEmpleado = dr["salario"].ToString();
+                Info.numeroCuentaEmpleado = dr["cuentaBancaria"].ToString();
+                Info.cargoEmpleado = dr["Cargo"].ToString();
+                Info.fechaRegistroEmpleado = dr["FechaEntrada"].ToString();
+                Info.estatusEmpleado = dr["Estatus"].ToString();
+            }
+            con.Close();
+            return Info;
+        }
+
+
 
     }
 }
