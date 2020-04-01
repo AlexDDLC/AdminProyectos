@@ -22,12 +22,26 @@ namespace SistemaBancario.Controllers
         [HttpGet]
         public IActionResult Login()
         {
-            return View();
+            if (HttpContext.Session.GetString("Usuario") != null)
+            {
+                return View("../Home/Index");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public IActionResult Login2()
         {
-            return View();
+            if (HttpContext.Session.GetString("Usuario") != null)
+            {
+                return View("../Home/Index");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         void connectionString()
@@ -90,6 +104,15 @@ namespace SistemaBancario.Controllers
         public void Logout()
         {
             HttpContext.Session.Remove("Usuario");
+
+            HttpContext.Session.SetString("ID", "");
+            HttpContext.Session.SetString("Cedula", "");
+            varUser.cedula = "";
+            varUser.roll = "";
+            HttpContext.Session.SetString("Nombre", "");
+            HttpContext.Session.SetString("Apellido", "");
+            HttpContext.Session.SetString("cuentaBancaria", "");
+
             Response.Redirect("../Home/Index");
         }
 

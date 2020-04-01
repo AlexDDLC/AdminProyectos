@@ -1,4 +1,6 @@
-﻿@model SistemaBancario.Models.ListadoUsuarios
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor httpContextAccessor
+@model SistemaBancario.Models.ListadoUsuarios
 @{
     ViewData["Title"] = "InformacionCliente";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -90,22 +92,23 @@
                         <th>@Html.DisplayFor(modelItem => Model.parentescoCliente)</th>
                     </tr>
                 </tbody>
-
-                <tfoot>
-                    <tr>
-                        <td colspan="2">
-                            <div style="margin:0 auto;">
-                                <button class="btn btn-warning btn-sm">
-                                    <a asp-controller="Usuarios" asp-action="EditarCliente" asp-route-id="@Model.idCliente">Editar</a>
-                                </button>
-                                <button class="btn btn-primary btn-sm ">
-                                    <a asp-controller="Usuarios" asp-action="ListadoClientes">Volver a lista</a>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                </tfoot>
-
+                @if (@httpContextAccessor.HttpContext.Session.GetString("Roll") == "Admin")
+                {
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">
+                                <div style="margin:0 auto;">
+                                    <button class="btn btn-warning btn-sm">
+                                        <a asp-controller="Usuarios" asp-action="EditarCliente" asp-route-id="@Model.idCliente">Editar</a>
+                                    </button>
+                                    <button class="btn btn-primary btn-sm ">
+                                        <a asp-controller="Usuarios" asp-action="ListadoClientes">Volver a lista</a>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                }
             </table>
 
 
