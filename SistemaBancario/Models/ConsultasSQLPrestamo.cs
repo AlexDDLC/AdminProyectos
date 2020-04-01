@@ -204,11 +204,10 @@ namespace SistemaBancario.Models
         {
             using(SqlConnection con = new SqlConnection(conexionSQL.conexion))
             {
-                SqlCommand cmd = new SqlCommand("CambiarEstadoSolicitud", con);
+                SqlCommand cmd = new SqlCommand("CambiarEstadoSolicitudAprobada", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@id_Solicitud", lsp.id_sol);
                 cmd.Parameters.AddWithValue("@CedulaCliente", lsp.cedula);
-                cmd.Parameters.AddWithValue("@CedulaEmpleado", varUser.cedula);
                 cmd.Parameters.AddWithValue("@cuotas", lsp.cuotas);
                 cmd.Parameters.AddWithValue("@tasaInteres", lsp.tasaInteres);
                 cmd.Parameters.AddWithValue("@nuevoEstado", lsp.NuevoEstadoPrestamo);
@@ -223,7 +222,7 @@ namespace SistemaBancario.Models
         {
             using (SqlConnection con = new SqlConnection(conexionSQL.conexion))
             {
-                SqlCommand cmd = new SqlCommand("CambiarEstadoSolicitud", con);
+                SqlCommand cmd = new SqlCommand("CambiarEstadoSolicitudRechazada", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@id_Solicitud", lsp.id_sol);
                 cmd.Parameters.AddWithValue("@nuevoEstado", lsp.NuevoEstadoPrestamo);

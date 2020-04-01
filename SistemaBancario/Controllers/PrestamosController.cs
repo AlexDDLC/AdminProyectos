@@ -33,7 +33,7 @@ namespace SistemaBancario.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditarEstadoPrestamo(int idsol, [Bind] ListarSolicitudesPrestamo lsp)
+        public IActionResult EditarEstadoPrestamo([Bind] ListarSolicitudesPrestamo lsp)
         {
             DateTime fecha = DateTime.Now;
             string formato = string.Format("{0:dd/MM/yyyy}", fecha);

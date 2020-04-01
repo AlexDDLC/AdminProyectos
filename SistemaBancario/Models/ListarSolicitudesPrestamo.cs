@@ -21,9 +21,9 @@ namespace SistemaBancario.Models
 
         //Aprobar - rechazar prestamos
         public string accion { get; set; }
+        public string cedulaEmpleado { get; set; }
         public string NuevoEstadoPrestamo { get; set; }
         public float tasaInteres { get; set; }
         public int cuotas { get; set; }
-
     }
 }
