@@ -23,7 +23,6 @@
                 <a asp-controller="Usuarios" asp-action="InformacionEmpleado" asp-route-id=" @httpContextAccessor.HttpContext.Session.GetString("ID")">
                     <i class="fas fa-info"></i>
                     Mi información
-                    <i class="fas fa-angle-down fa-pull-right"></i>
                 </a>
             </li>
 
@@ -34,7 +33,6 @@
                 <a asp-controller="Usuarios" asp-action="InformacionCliente" asp-route-id=" @httpContextAccessor.HttpContext.Session.GetString("ID")">
                     <i class="fas fa-info"></i>
                     Mi información
-                    <i class="fas fa-angle-down fa-pull-right"></i>
                 </a>
             </li>
 
@@ -109,11 +107,8 @@
                     <li>
                         <a asp-area="" asp-controller="Usuarios" asp-action="CrearCliente">Crear cliente</a>
                     </li>
-
-
                 </ul>
             </li>
-
         }
         else
         {

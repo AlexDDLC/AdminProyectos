@@ -45,13 +45,14 @@
                             <label for="inputAddress">Detalles de la solicitud</label>
                             <textarea type="text" class="form-control" id="inputAddress" rows="5" asp-for="detalles"></textarea>
                         </div>
+
+                        <input type="submit" class="btn btn-danger" asp-for="accion" value="Rechazar">
+
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" 
+                        <button type="button" class="btn btn-primary" data-toggle="modal"
                                 data-target="#exampleModal">
                             Aprobar préstamo
                         </button>
-
-                        <input type="submit" class="btn btn-danger" asp-for="accion" value="Rechazar">
 
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -67,11 +68,11 @@
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="inputEmail4">Cuotas del préstamo</label>
-                                                <input type="number" class="form-control" id="inputEmail4" value="" required asp-for="cuotas">
+                                                <input type="number" class="form-control" id="inputEmail4" value="" asp-for="cuotas">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inputPassword4">Tasa de interés</label>
-                                                <input type="number" class="form-control" id="inputPassword4" value="" required asp-for="tasaInteres">
+                                                <input type="number" class="form-control" id="inputPassword4" value="" asp-for="tasaInteres">
                                             </div>
                                         </div>
                                     </div>

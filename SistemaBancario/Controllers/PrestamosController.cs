@@ -43,14 +43,13 @@ namespace SistemaBancario.Controllers
             }
             else
             {
-               
-            ListarSolicitudesPrestamo lsp = conpres.listarsolicitudPorID(idsol);
-            return View(lsp);
+                ListarSolicitudesPrestamo lsp = conpres.listarsolicitudPorID(idsol);
+                return View(lsp);
             }
         }
 
         [HttpPost]
-        public IActionResult EditarEstadoPrestamo([Bind] ListarSolicitudesPrestamo lsp)
+        public IActionResult EditarEstadoPrestamo(int idsol, [Bind] ListarSolicitudesPrestamo lsp)
         {
             if (HttpContext.Session.GetString("Roll") != "Admin")
             {
@@ -63,15 +62,15 @@ namespace SistemaBancario.Controllers
                 lsp.fechaRehazo = formato;
                 if (ModelState.IsValid)
                 {
+                    if (lsp.accion == "Rechazar")
+                    {
+                        lsp.NuevoEstadoPrestamo = "Rechazado";
+                        conpres.ActualizarEstadoDePrestamoRechazado(lsp);
+                    }
                     if (lsp.accion == "Aprobar")
                     {
                         lsp.NuevoEstadoPrestamo = "Aprobado";
                         conpres.ActualizarEstadoDePrestamoAprobado(lsp);
-                    }
-                    else if (lsp.accion == "Rechazar")
-                    {
-                        lsp.NuevoEstadoPrestamo = "Rechazado";
-                        conpres.ActualizarEstadoDePrestamoRechazado(lsp);
                     }
                     return RedirectToAction("ListaSolicitudesPrestamos");
                 }
@@ -87,7 +86,7 @@ namespace SistemaBancario.Controllers
             }
             else
             {
-            return View();
+                return View();
             }
         }
 
@@ -135,7 +134,6 @@ namespace SistemaBancario.Controllers
             }
             else
             {
-
                 List<ListarSolicitudesPrestamo> listsolRech = new List<ListarSolicitudesPrestamo>();
                 if (varuser.roll != "Cliente")
                 {
@@ -157,8 +155,6 @@ namespace SistemaBancario.Controllers
             }
             else
             {
-
-                
                 List<ListarSolicitudesPrestamo> listsolAprob = new List<ListarSolicitudesPrestamo>();
                 if (varuser.roll != "Cliente")
                 {
