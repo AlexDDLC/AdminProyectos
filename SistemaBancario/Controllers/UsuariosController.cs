@@ -46,19 +46,17 @@ namespace SistemaBancario.Controllers
                 return View();
             }
         }
-      
 
         /* CONEXION A LA BASE DE DATOS*/
         void connectionString()
         {
             con.ConnectionString = "Data Source=sql5052.site4now.net;User ID=DB_A56E4E_CoopITLA_admin;Password=CoopITLA2020";
         }
-        [HttpPost]
 
         /* CREAR USUARIOS CLIENTE Y EMPLEADO*/
+        [HttpPost]
         public void CrearUsuario(RegistroUsuario ru)
         {
-           
             connectionString();
             con.Open();
             com.Connection = con;
@@ -68,9 +66,9 @@ namespace SistemaBancario.Controllers
                 com.CommandText = "EXEC REGISTRAR_CLIENTE '" + ru.cedulaCliente + "', '" + ru.nombreCliente + "', '" + ru.apellidoCliente + "', '" + ru.sexoCliente + "', '" + ru.telefonoCliente + "', '" + ru.direccionCliente + "', '" + ru.numeroCuentaCliente + "', '" + string.Format("{0:dd/MM/yyyy}", ru.fechaNacimientoCliente) + "', " + int.Parse(ru.salarioCliente) + ", '" + ru.usuarioCliente + "', '" + ru.contrasenaCliente + "', " + int.Parse(ru.ahorroCliente) + ", '" + (ru.cedulaFamiliarCliente) + "', '" + (ru.nombreFamiliarCliente) + "', '" + (ru.apellidoFamiliarCliente) + "', '" + (ru.parentescoCliente) + "'";
                 try
                 {
-                dr = com.ExecuteReader();
-                con.Close();
-                Response.Redirect("ListadoClientes");
+                    dr = com.ExecuteReader();
+                    con.Close();
+                    Response.Redirect("ListadoClientes");
                 }
                 catch (Exception ex)
                 {
@@ -80,7 +78,7 @@ namespace SistemaBancario.Controllers
             else
             {
                 com.CommandText = "EXEC REGISTRAR_EMPLEADO '" + ru.cedulaEmpleado + "', '" + ru.nombreEmpleado + "', '" + ru.apellidoEmpleado + "', '" + ru.sexoEmpleado + "', '" + ru.telefonoEmpleado + "', '" + ru.direccionEmpleado + "','" + string.Format("{0:dd/MM/yyyy}", ru.fechaNacimientoEmpleado) + "','" + ru.cargoEmpleado + "', '" + ru.numeroCuentaEmpleado + "'," + int.Parse(ru.salarioEmpleado) + ", '" + ru.usuarioEmpleado + "', '" + ru.contrasenaEmpleado + "'";
-                 try
+                try
                 {
                     dr = com.ExecuteReader();
                     con.Close();
@@ -88,12 +86,9 @@ namespace SistemaBancario.Controllers
                 }
                 catch (Exception ex)
                 {
-                    
                     ViewBag.Error = ex;
                     Response.Redirect("CrearEmpleado");
-                    
                 }
-               
             }
         }
 
@@ -132,15 +127,13 @@ namespace SistemaBancario.Controllers
             }
             else
             {
-          
-            return View(clienteLista);
+                return View(clienteLista);
             }
         }
 
         /* SELECT TODOS LOS CLIENTES PARA VISUALIZACION*/
         public IEnumerable<ListadoUsuarios> ListaClientes()
         {
-
             List<ListadoUsuarios> clienteLista = new List<ListadoUsuarios>();
 
             connectionString();
@@ -148,6 +141,7 @@ namespace SistemaBancario.Controllers
             com.Connection = con;
             com.CommandText = "SELECT * FROM CLIENTES";
             dr = com.ExecuteReader();
+           
             while (dr.Read())
             {
                 ListadoUsuarios cliente = new ListadoUsuarios();
@@ -189,19 +183,15 @@ namespace SistemaBancario.Controllers
             }
             else
             {
-
                 if (HttpContext.Session.GetString("Roll") != "Admin")
-            {
-                return View("../Home/Index");
+                {
+                    return View("../Home/Index");
+                }
+                else
+                {
+                    return View(clienteInfo);
+                }
             }
-            else
-            {
-               
-            return View(clienteInfo);
-            }
-            }
-
-
         }
 
         /*Vista para ver infoRmacion general de cliente. Recibe datos de empleado por medio de ID*/
@@ -212,29 +202,21 @@ namespace SistemaBancario.Controllers
                 ListadoUsuarios clienteInfo = new ListadoUsuarios();
                 clienteInfo = infoCliente(id);
                 return View(clienteInfo);
-               
             }
             else
             {
-
                 if (HttpContext.Session.GetString("ID") != id.ToString())
                 {
                     return View("../Home/Index");
                 }
                 else
                 {
-
                     ListadoUsuarios clienteInfo = new ListadoUsuarios();
                     clienteInfo = infoCliente(id);
                     return View(clienteInfo);
-
                 }
             }
-
-
-
         }
-
 
         /* SELECT INFO DE CLIENTE BY ID*/
         public ListadoUsuarios infoCliente(int id)
@@ -247,7 +229,7 @@ namespace SistemaBancario.Controllers
             dr = com.ExecuteReader();
 
             while (dr.Read())
-            {     
+            {
                 Info.idCliente = dr["ID_Cliente"].ToString();
                 Info.cedulaCliente = dr["Cedula"].ToString();
                 Info.nombreCliente = dr["Nombre"].ToString();
@@ -272,7 +254,6 @@ namespace SistemaBancario.Controllers
             return Info;
         }
 
-
         /*ELIMINAR CLIENTE BY ID*/
         public void EliminarCliente(int id)
         {
@@ -284,10 +265,7 @@ namespace SistemaBancario.Controllers
 
             con.Close();
             Response.Redirect("../ListadoClientes");
-
         }
-
-
 
         /* vISTA INFO DE CLIENTE BY CELDULA PARA LISTADO*/
         public IActionResult BuscarCliente(BuscarUsuario bu)
@@ -301,10 +279,7 @@ namespace SistemaBancario.Controllers
             }
             else
             {
-
-
                 return View(lu);
-               
             }
         }
 
@@ -317,6 +292,7 @@ namespace SistemaBancario.Controllers
             com.Connection = con;
             com.CommandText = "SELECT * FROM CLIENTES where Cedula = '" + cedula + "'";
             dr = com.ExecuteReader();
+           
             while (dr.Read())
             {
                 Info.idCliente = dr["ID_Cliente"].ToString();
@@ -342,7 +318,6 @@ namespace SistemaBancario.Controllers
             con.Close();
             return Info;
         }
-
 
         /*---------------------------------------------------------------ACCIONES PARA USUARIO EMPLEADO---------------------------------------------------------------*/
 
@@ -357,8 +332,7 @@ namespace SistemaBancario.Controllers
             }
             else
             {
-             
-             return View(empleadoInfo);
+                return View(empleadoInfo);
             }
         }
 
@@ -368,15 +342,13 @@ namespace SistemaBancario.Controllers
             ListadoUsuarios empleadoInfo = new ListadoUsuarios();
             empleadoInfo = infoEmpledo(id);
 
-
             if (HttpContext.Session.GetString("Roll") != "Admin")
             {
                 return View("../Home/Index");
             }
             else
             {
-                
-            return View(empleadoInfo);
+                return View(empleadoInfo);
             }
         }
 
@@ -389,8 +361,9 @@ namespace SistemaBancario.Controllers
             com.Connection = con;
             com.CommandText = "SELECT * FROM EMPLEADOS where ID_EMPLEADO = " + id + "";
             dr = com.ExecuteReader();
+
             while (dr.Read())
-            { 
+            {
                 Info.idEmpleado = dr["ID_Empleado"].ToString();
                 Info.cedulaEmpleado = dr["Cedula"].ToString();
                 Info.nombreEmpleado = dr["Nombre"].ToString();
@@ -405,7 +378,7 @@ namespace SistemaBancario.Controllers
                 Info.numeroCuentaEmpleado = dr["cuentaBancaria"].ToString();
                 Info.cargoEmpleado = dr["Cargo"].ToString();
                 Info.fechaRegistroEmpleado = dr["FechaEntrada"].ToString();
-                Info.estatusEmpleado = dr["Estatus"].ToString();  
+                Info.estatusEmpleado = dr["Estatus"].ToString();
             }
             con.Close();
             return Info;
@@ -422,15 +395,13 @@ namespace SistemaBancario.Controllers
             }
             else
             {
-               
-            return View(empleadoLista); 
+                return View(empleadoLista);
             }
         }
 
         /* SELECT TODOS LOS EMPLEADOS PARA VISUALIZACION*/
         public IEnumerable<ListadoUsuarios> ListaEmpleados()
         {
-
             List<ListadoUsuarios> empleadoLista = new List<ListadoUsuarios>();
 
             connectionString();
@@ -438,6 +409,7 @@ namespace SistemaBancario.Controllers
             com.Connection = con;
             com.CommandText = "SELECT * FROM EMPLEADOS";
             dr = com.ExecuteReader();
+
             while (dr.Read())
             {
                 ListadoUsuarios empleado = new ListadoUsuarios();
@@ -476,7 +448,6 @@ namespace SistemaBancario.Controllers
             Response.Redirect("../ListadoEmpleados");
         }
 
-
         /* vISTA INFO DE EMPLEADO BY CELDULA PARA LISTADO*/
         public IActionResult BuscarEmpleado(BuscarUsuario bu)
         {
@@ -489,10 +460,8 @@ namespace SistemaBancario.Controllers
             }
             else
             {
-                
-            return View(lu);
+                return View(lu);
             }
-
         }
 
         /* SELECT INFO DE EMPLEADO BY CELDULA PARA LISTADO*/
@@ -502,8 +471,9 @@ namespace SistemaBancario.Controllers
             connectionString();
             con.Open();
             com.Connection = con;
-            com.CommandText = "SELECT * FROM EMPLEADOS where Cedula = '"+cedula+"'";
+            com.CommandText = "SELECT * FROM EMPLEADOS where Cedula = '" + cedula + "'";
             dr = com.ExecuteReader();
+
             while (dr.Read())
             {
                 Info.idEmpleado = dr["ID_Empleado"].ToString();
@@ -525,8 +495,5 @@ namespace SistemaBancario.Controllers
             con.Close();
             return Info;
         }
-
-
-
     }
 }
