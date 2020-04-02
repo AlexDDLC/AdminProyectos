@@ -24,5 +24,6 @@ namespace SistemaBancario.Models
         public string NuevoEstadoPrestamo { get; set; }
         public float tasaInteres { get; set; }
         public int cuotas { get; set; }
+        public float cuotaMensual { get; set; }
     }
 }

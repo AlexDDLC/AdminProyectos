@@ -85,6 +85,20 @@
                                                             <input type="text" class="form-control" id="inputPassword4" value="@Html.DisplayFor(modelItem => solRech.fechaRehazo)">
                                                         </div>
                                                     </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-3">
+                                                            <label for="inputEmail4">Cuotas</label>
+                                                            <input type="text" class="form-control" id="inputEmail4" value="@Html.DisplayFor(modelItem => solRech.cuotas)">
+                                                        </div>
+                                                        <div class="form-group col-md-3">
+                                                            <label for="inputPassword4">Tasa de interés</label>
+                                                            <input type="text" class="form-control" id="inputPassword4" value="@Html.DisplayFor(modelItem => solRech.tasaInteres)">
+                                                        </div>
+                                                        <div class="form-group col-md-3">
+                                                            <label for="inputPassword4">Cuotas mencuales</label>
+                                                            <input type="text" class="form-control" id="inputPassword4" value="@Html.DisplayFor(modelItem => solRech.cuotaMensual)">
+                                                        </div>
+                                                    </div>
                                                     <div class="form-group">
                                                         <label for="inputAddress">Detalles de la solicitud</label>
                                                         <textarea type="text" class="form-control" id="inputAddress" rows="5">@Html.DisplayFor(modelItem => solRech.detalles)</textarea>

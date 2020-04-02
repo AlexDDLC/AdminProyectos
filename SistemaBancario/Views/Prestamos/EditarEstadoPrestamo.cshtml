@@ -3,86 +3,86 @@
     ViewData["Title"] = "EditarEstadoPrestamo";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="wrapper">
-    <partial name="_MenuLateral" />
-    <!-- Page Content Holder -->
-    <div id="content">
-        <section class="forms-section">
-            <!-- Forms-3 -->
-            <div class="outer-w3-agile mt-3">
-                <h4 class="tittle-w3-agileits mb-4">Detalles de la solicitud</h4>
-                <form asp-action="EditarEstadoPrestamo">
-                    <input type="hidden" asp-for="id_sol" />
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">Nombre del solicitante</label>
-                            <input type="text" class="form-control" id="inputEmail4" asp-for="solicitante">
+    <div class="wrapper">
+        <partial name="_MenuLateral" />
+        <!-- Page Content Holder -->
+        <div id="content">
+            <section class="forms-section">
+                <!-- Forms-3 -->
+                <div class="outer-w3-agile mt-3">
+                    <h4 class="tittle-w3-agileits mb-4">Detalles de la solicitud</h4>
+                    <form asp-action="EditarEstadoPrestamo">
+                        <input type="hidden" asp-for="id_sol" />
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Nombre del solicitante</label>
+                                <input type="text" class="form-control" id="inputEmail4" asp-for="solicitante">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">Cedula</label>
+                                <input type="text" class="form-control" id="inputPassword4" asp-for="cedula">
+                            </div>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputPassword4">Cedula</label>
-                            <input type="text" class="form-control" id="inputPassword4" asp-for="cedula">
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label for="inputEmail4">Monto</label>
+                                <input type="text" class="form-control" id="inputEmail4" asp-for="monto">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="inputPassword4">Estado prestamo</label>
+                                <input type="text" class="form-control" id="inputPassword4" asp-for="estado">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="inputPassword4">Tipo de prestamo</label>
+                                <input type="text" class="form-control" id="inputPassword4" asp-for="tipo">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="inputPassword4">Fecha de solicitud</label>
+                                <input type="text" class="form-control" id="inputPassword4" asp-for="fechasolicitud">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label for="inputEmail4">Monto</label>
-                            <input type="text" class="form-control" id="inputEmail4" asp-for="monto">
+                        <div class="form-group">
+                            <label for="inputAddress">Detalles de la solicitud</label>
+                            <textarea type="text" class="form-control" id="inputAddress" rows="5" asp-for="detalles"></textarea>
                         </div>
-                        <div class="form-group col-md-3">
-                            <label for="inputPassword4">Estado prestamo</label>
-                            <input type="text" class="form-control" id="inputPassword4" asp-for="estado">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="inputPassword4">Tipo de prestamo</label>
-                            <input type="text" class="form-control" id="inputPassword4" asp-for="tipo">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="inputPassword4">Fecha de solicitud</label>
-                            <input type="text" class="form-control" id="inputPassword4" asp-for="fechasolicitud">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputAddress">Detalles de la solicitud</label>
-                        <textarea type="text" class="form-control" id="inputAddress" rows="5"
-                                  asp-for="detalles"></textarea>
-                    </div>
-                    <input type="submit" class="btn btn-danger" asp-for="accion" value="Rechazar">
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        Aprobar préstamo
-                    </button>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Condiciones del préstamo</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="inputEmail4">Cuotas del préstamo</label>
-                                            <input type="number" placeholder="Cuotas" class="form-control" id="inputEmail4" asp-for="cuotas">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="inputPassword4">Tasa de interés</label>
-                                            <input type="number" placeholder="Interés" class="form-control" id="inputPassword4" asp-for="tasaInteres">
+                        <input type="submit" class="btn btn-danger" asp-for="accion" value="Rechazar">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Aprobar préstamo
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Condiciones del préstamo</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputEmail4">Cuotas del préstamo</label>
+                                                <input type="number" placeholder="Cuotas" class="form-control" id="inputEmail4" asp-for="cuotas">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputPassword4">Tasa de interés</label>
+                                                <input type="number" placeholder="Interés" class="form-control" id="inputPassword4" asp-for="tasaInteres">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                    <input type="submit" class="btn btn-primary" asp-for="accion" value="Aprobar">
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                        <input type="submit" class="btn btn-primary" asp-for="accion" value="Aprobar">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </form>
-            </div>
-        </section>
+                    </form>
+                </div>
+            </section>
+        </div>
     </div>
-</div>

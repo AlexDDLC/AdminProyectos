@@ -175,6 +175,9 @@ namespace SistemaBancario.Models
                     lsp.fechasolicitud = dr["FechaSolicitud"].ToString();
                     lsp.detalles = dr["Detalle"].ToString();
                     lsp.fechaRehazo = dr["fechaAprobado"].ToString();
+                    lsp.cuotas = Convert.ToInt32(dr["Cuotas"]);
+                    lsp.tasaInteres = Convert.ToSingle(dr["tasaInteres"]);
+                    lsp.cuotaMensual = Convert.ToSingle(dr["CuotaMensual"]);
                     listaPresAprob.Add(lsp);
                 }
                 con.Close();
