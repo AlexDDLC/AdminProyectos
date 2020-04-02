@@ -15,15 +15,17 @@
     <div id="content">
         <!-- Forms content -->
         <section class="forms-section">
-            <h1>Aqui va la vista de inicio del dashboard. @httpContextAccessor.HttpContext.Session.GetString("Usuario")  </h1>
-            <p>ID: @httpContextAccessor.HttpContext.Session.GetString("ID") </p>
-            <p>Cedula: @httpContextAccessor.HttpContext.Session.GetString("Cedula") </p>
-            <p>Nombre: @httpContextAccessor.HttpContext.Session.GetString("Nombre") </p>
-            <p>Apellido @httpContextAccessor.HttpContext.Session.GetString("Apellido") </p>
-            <p>User: @httpContextAccessor.HttpContext.Session.GetString("Usuario") </p>
-            <p>Cuenta: @httpContextAccessor.HttpContext.Session.GetString("cuentaBancaria") </p>
-            <p>Roll: @httpContextAccessor.HttpContext.Session.GetString("Roll") </p>
-
+            <div style="margin-top:50px; margin-left:auto; margin-right:auto; text-align:center;">
+                <h1>Hola @httpContextAccessor.HttpContext.Session.GetString("Nombre") @httpContextAccessor.HttpContext.Session.GetString("Apellido") <br /> bienvenido al sistema web de la cooperativa <br /> CoopITLA</h1>
+            </div>
+            @*<h1>Aqui va la vista de inicio del dashboard. @httpContextAccessor.HttpContext.Session.GetString("Usuario")  </h1>
+                <p>ID: @httpContextAccessor.HttpContext.Session.GetString("ID") </p>
+                <p>Cedula: @httpContextAccessor.HttpContext.Session.GetString("Cedula") </p>
+                <p>Nombre: @httpContextAccessor.HttpContext.Session.GetString("Nombre") </p>
+                <p>Apellido @httpContextAccessor.HttpContext.Session.GetString("Apellido") </p>
+                <p>User: @httpContextAccessor.HttpContext.Session.GetString("Usuario") </p>
+                <p>Cuenta: @httpContextAccessor.HttpContext.Session.GetString("cuentaBancaria") </p>
+                <p>Roll: @httpContextAccessor.HttpContext.Session.GetString("Roll") </p>*@
         </section>
     </div>
 </div>
