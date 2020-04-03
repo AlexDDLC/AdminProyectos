@@ -83,7 +83,74 @@ body {
     padding-right: 6.5%;
 }
 
+/* logo y menu buscador-----------------------------------*/
 
+.contenedor {
+    padding-left: 6.5%;
+    padding-right: 6.5%;
+    margin: 0;
+    font-family: sans-serif;
+}
+.contenedor2 {
+    padding-left: 6.5%;
+    padding-right: 6.5%;
+    margin: 0;
+    font-family: sans-serif;
+    background-color: white;
+}
+
+.cabecera {
+    padding: 20px 0 20px 0;
+ 
+}
+
+
+.coop {
+    padding-top: 55px;
+    padding-left: 10px;
+    float: left;
+    font-family: lato;
+    font-weight: bold;
+    color: #0060a9;
+}
+
+
+
+.logo {
+    text-align: center;
+    float: left;
+    width: 130PX;
+}
+
+
+.cabeceraTrio {
+    padding-left: 1050px;
+}
+
+    .cabeceraTrio div {
+        padding: 5px;
+    }
+
+.escudo {
+    width: 85%;
+}
+
+#buscador {
+    width: 230px;
+}
+
+.menu2 ul {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+.menu2 li a {
+    font-size: 12px;
+    padding: 4px;
+    text-decoration: none;
+}
 
 
 /*cover----------------------------------*/
