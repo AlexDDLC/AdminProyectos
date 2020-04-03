@@ -94,9 +94,99 @@
                             </td>
                             <td>
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalLong">
-                                    <a asp-controller="Usuarios" asp-action="InformacionEmpleado" asp-route-id="@empleado.idEmpleado">Info. General</a>
-                                </button>
+                                <!-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalLong">
+        <a asp-controller="Usuarios" asp-action="InformacionEmpleado" asp-route-id="@empleado.idEmpleado">Info. General</a>
+    </button>
+       -->
+                                <!-- Button trigger modal -->
+                                
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalLong-@empleado.idEmpleado">
+                                        Info. general
+                                    </button>
+                               
+                                <!-- popup content -->
+                                <div class="modal fade" id="exampleModalLong-@empleado.idEmpleado" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle1" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle1">Información empleado</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <table class="table table-bordered">
+                                                    <thead class="thead-dark">
+                                                        <tr>
+                                                            <th scope="col" colspan="2" style="text-align:center;">@Html.DisplayFor(modelItem => empleado.nombreEmpleado) @Html.DisplayFor(modelItem => empleado.apellidoEmpleado) - ID: @Html.DisplayFor(modelItem => empleado.idEmpleado)</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Cedula</td>
+                                                            <th>@Html.DisplayFor(modelItem => empleado.cedulaEmpleado)</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Fecha nacimiento</td>
+                                                            <th>@Html.DisplayFor(modelItem => empleado.fechaNacimientoEmpleado)</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Sexo</td>
+                                                            <th>@Html.DisplayFor(modelItem => empleado.sexoEmpleado)</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Direccion</td>
+                                                            <th>@Html.DisplayFor(modelItem => empleado.direccionEmpleado)</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Telefono</td>
+                                                            <th>@Html.DisplayFor(modelItem => empleado.telefonoEmpleado)</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Usuario</td>
+                                                            <th>@Html.DisplayFor(modelItem => empleado.usuarioEmpleado)</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Cargo</td>
+                                                            <th>@Html.DisplayFor(modelItem => empleado.cargoEmpleado)</th>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>Salario</td>
+                                                            <th>RD$@Html.DisplayFor(modelItem => empleado.salarioEmpleado)</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Cuenta Bancaria</td>
+                                                            <th>@Html.DisplayFor(modelItem => empleado.numeroCuentaEmpleado)</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Fecha registro</td>
+                                                            <th>@Html.DisplayFor(modelItem => empleado.fechaRegistroEmpleado)</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Estatus</td>
+                                                            <th>@Html.DisplayFor(modelItem => empleado.estatusEmpleado)</th>
+                                                        </tr>
+
+
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                                                <button type="button" class="btn btn-warning"><a asp-controller="Usuarios" asp-action="EditarEmpleado" asp-route-id="@empleado.idEmpleado">Editar</a></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--// popup content -->
+                                <!--// Scrolling long content Modal -->
+
+
+
+
 
                                 <button class="btn btn-warning btn-sm">
                                     <a asp-controller="Usuarios" asp-action="EditarEmpleado" asp-route-id="@empleado.idEmpleado">Editar</a>
@@ -113,4 +203,6 @@
 
     </div>
 </div>
+
+
 
