@@ -15,7 +15,7 @@ namespace SistemaBancario.Controllers
         {
             if(HttpContext.Session.GetString("Usuario") == null)
             {
-                return View("../Home/Index");
+                return View("../Account/Login");
             }
             else
             {
