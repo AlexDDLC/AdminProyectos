@@ -12,6 +12,7 @@ namespace SistemaBancario.Controllers
 {
     public class PrestamosController : Controller
     {
+        //Instancia de clase de la clase de los procedures
         ConsultasSQLPrestamo conpres = new ConsultasSQLPrestamo();
         VariablesUser varuser = new VariablesUser();
 
