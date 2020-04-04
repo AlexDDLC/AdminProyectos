@@ -93,12 +93,7 @@
                                 @Html.DisplayFor(modelItem => empleado.estatusEmpleado)
                             </td>
                             <td>
-                                <!-- Button trigger modal -->
-                                <!-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalLong">
-        <a asp-controller="Usuarios" asp-action="InformacionEmpleado" asp-route-id="@empleado.idEmpleado">Info. General</a>
-    </button>
-       -->
-                                <!-- Button trigger modal -->
+                                <!-- Button MODAL DE INFORMACION GENERAL -->
 
                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalLong-@empleado.idEmpleado">
                                     Info. general
@@ -182,25 +177,93 @@
                                     </div>
                                 </div>
                                 <!--// popup content -->
-                                <!--// Scrolling long content Modal -->
-
-
-
-
+                                <!-- Button MODAL DE INFORMACION GENERAL -->
 
                                 <button class="btn btn-warning btn-sm">
                                     <a asp-controller="Usuarios" asp-action="EditarEmpleado" asp-route-id="@empleado.idEmpleado">Editar</a>
                                 </button>
+
+                                @if (@empleado.estatusEmpleado == "Activo")
+                                {
+
+                                    <!-- BOTON INACTIVAR CON MODAL -->
+                                    <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleInactivar-@empleado.idEmpleado">
+                                        <a>Inactivar</a>
+                                    </button>
+
+                                    <!-- popup content -->
+                                    <div class="modal fade" id="exampleInactivar-@empleado.idEmpleado" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle1" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle1">Inactivar empleado</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+
+                                                <div class="modal-body">
+                                                    <h2>Desea inactivar la cuenta de @empleado.nombreEmpleado @empleado.apellidoEmpleado?</h2>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                                                    <button type="button" class="btn btn-warning">
+                                                        <a asp-controller="Usuarios" asp-action="InactivarEmpleado" asp-route-id="@empleado.idEmpleado">Inactivar</a>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--// popup content -->
+                                    <!-- BOTON INACTIVAR CON MODAL -->
+                                }
+                                else
+                                {
+                                    <!-- BOTON INACTIVAR CON MODAL -->
+                                    <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleActivar-@empleado.idEmpleado">
+                                        <a>Activar</a>
+                                    </button>
+
+                                    <!-- popup content -->
+                                    <div class="modal fade" id="exampleActivar-@empleado.idEmpleado" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle1" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle1">Activar empleado</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+
+                                                <div class="modal-body">
+                                                    <h2>Desea Activar la cuenta de @empleado.nombreEmpleado @empleado.apellidoEmpleado?</h2>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                                                    <button type="button" class="btn btn-warning">
+                                                        <a asp-controller="Usuarios" asp-action="ActivarEmpleado" asp-route-id="@empleado.idEmpleado">Activar</a>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--// popup content -->
+                                    <!-- BOTON INACTIVAR CON MODAL -->
+
+                                }
+
+                                <!-- BOTON ELIIMINAR CON MODAL -->
                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalLon-@empleado.idEmpleado">
                                     Eliminar
                                 </button>
+
 
                                 <!-- popup content -->
                                 <div class="modal fade" id="exampleModalLon-@empleado.idEmpleado" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle1" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLongTitle1">Eliminar cliente</h5>
+                                                <h5 class="modal-title" id="exampleModalLongTitle1">Eliminar empleado</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -219,7 +282,7 @@
                                     </div>
                                 </div>
                                 <!--// popup content -->
-                                <!--// Scrolling long content Modal -->
+                                <!-- BOTON ELIIMINAR CON MODAL -->
                             </td>
                         </tr>
                     }

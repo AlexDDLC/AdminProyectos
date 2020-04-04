@@ -34,7 +34,7 @@
                             <input pattern="\d*" title="Debe ingresar los números de la cedula sin guiones." type="text" minlength="11" maxlength="11" class="form-control" name="cedulaEmpleado" value="@Html.DisplayFor(modelItem => Model.cedulaEmpleado)" required="">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="Dare">Fecha de nacimiento <b> (Actual @Html.DisplayFor(modelItem => Model.fechaNacimientoEmpleado))</b> </label>
+                            <label for="Dare">Fecha de nacimiento</label>
                             <input type="date" pattern="\d*" title="Debe ser mayor de edad." max="2002-03-31" class="form-control" name="fechaNacimientoEmpleado" value="@Html.DisplayFor(modelItem => Model.fechaNacimientoEmpleado)" required="">
                         </div>
                     </div>

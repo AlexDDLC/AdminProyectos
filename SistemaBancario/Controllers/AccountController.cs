@@ -44,6 +44,13 @@ namespace SistemaBancario.Controllers
             }
         }
 
+        public IActionResult Inactivo()
+        {
+           
+                return View();
+            
+        }
+
         void connectionString()
         {
             con.ConnectionString = "Data Source=sql5052.site4now.net;User ID=DB_A56E4E_CoopITLA_admin;Password=CoopITLA2020";
@@ -67,8 +74,28 @@ namespace SistemaBancario.Controllers
 
                     con.Close();
 
-                    infoClienteUser(Acc.UsuarioCliente);
-                    return View("../Dashboard/Dashboard");
+                    verificarEstatus(Acc.UsuarioCliente, "CLIENTES");
+
+                    if (HttpContext.Session.GetString("Estatus") == "Activo")
+                    {
+
+
+                        infoClienteUser(Acc.UsuarioCliente);
+                        return View("../Dashboard/Dashboard");
+                    }
+                    else
+                    {
+
+                        HttpContext.Session.Remove("Usuario");
+                        HttpContext.Session.Remove("Roll");
+
+                        con.Close();
+                        return View("Inactivo");
+                    }
+
+
+
+
                 }
                 else
                 {
@@ -89,8 +116,26 @@ namespace SistemaBancario.Controllers
 
                     con.Close();
 
-                    infoEmpleadoUser(Acc.UsuarioEmpleado);
-                    return View("../Dashboard/Dashboard");
+                    verificarEstatus(Acc.UsuarioEmpleado,"EMPLEADOS");
+
+                    if (HttpContext.Session.GetString("Estatus") == "Activo")
+                    {
+
+                        infoEmpleadoUser(Acc.UsuarioEmpleado);
+                        return View("../Dashboard/Dashboard");
+                    }
+                    else
+                    {
+
+                        HttpContext.Session.Remove("Usuario");
+                        HttpContext.Session.Remove("Roll");
+
+                        con.Close();
+                        return View("Inactivo");
+                    }
+
+
+
                 }
                 else
                 {
@@ -112,9 +157,32 @@ namespace SistemaBancario.Controllers
             HttpContext.Session.SetString("Nombre", "");
             HttpContext.Session.SetString("Apellido", "");
             HttpContext.Session.SetString("cuentaBancaria", "");
+            HttpContext.Session.Remove("Roll");
 
             Response.Redirect("../Home/Index");
         }
+
+
+
+        /*Verificar status de cuenta*/
+        public void verificarEstatus(string usuario, string tipo)
+        {
+            connectionString();
+            con.Open();
+            com.Connection = con;
+            com.CommandText = "SELECT * FROM "+tipo+" where Usuario = '" + usuario + "'";
+            dr = com.ExecuteReader();
+
+            while (dr.Read())
+            {
+                HttpContext.Session.SetString("Estatus", dr["Estatus"].ToString());
+           
+            }
+            con.Close();
+        }
+
+
+
 
         /* SELECT INFO DE CLIENTE BY user*/
         public void infoClienteUser(string user)
@@ -137,6 +205,7 @@ namespace SistemaBancario.Controllers
             }
             con.Close();
         }
+
 
         /* SELECT INFO DE Empleado BY user*/
         public void infoEmpleadoUser(string user)

@@ -268,6 +268,32 @@ namespace SistemaBancario.Controllers
             Response.Redirect("../ListadoClientes");
         }
 
+        /* INACTIVAR CLIENTE*/
+        public void InactivarCliente(int id)
+        {
+            connectionString();
+            con.Open();
+            com.Connection = con;
+            com.CommandText = "UPDATE CLIENTES SET ESTATUS = 'Inactivo' WHERE ID_CLIENTE =" + id + "";
+            dr = com.ExecuteReader();
+
+            con.Close();
+            Response.Redirect("../ListadoClientes");
+        }
+
+        /* ACTIVAR CLIENTE*/
+        public void ActivarCliente(int id)
+        {
+            connectionString();
+            con.Open();
+            com.Connection = con;
+            com.CommandText = "UPDATE CLIENTES SET ESTATUS = 'Activo' WHERE ID_CLIENTE =" + id + "";
+            dr = com.ExecuteReader();
+
+            con.Close();
+            Response.Redirect("../ListadoClientes");
+        }
+
         /* vISTA INFO DE CLIENTE BY CELDULA PARA LISTADO*/
         public IActionResult BuscarCliente(BuscarUsuario bu)
         {
@@ -449,6 +475,34 @@ namespace SistemaBancario.Controllers
             Response.Redirect("../ListadoEmpleados");
         }
 
+
+        /* INACTIVAR EMPLEADO*/
+        public void InactivarEmpleado(int id)
+        {
+            connectionString();
+            con.Open();
+            com.Connection = con;
+            com.CommandText = "UPDATE EMPLEADOS SET ESTATUS = 'Inactivo' WHERE ID_EMPLEADO =" + id + "";
+            dr = com.ExecuteReader();
+
+            con.Close();
+            Response.Redirect("../ListadoEmpleados");
+        }
+
+        /* ACTIVAR EMPLEADO*/
+        public void ActivarEmpleado(int id)
+        {
+            connectionString();
+            con.Open();
+            com.Connection = con;
+            com.CommandText = "UPDATE EMPLEADOS SET ESTATUS = 'Activo' WHERE ID_EMPLEADO =" + id + "";
+            dr = com.ExecuteReader();
+
+            con.Close();
+            Response.Redirect("../ListadoEmpleados");
+        }
+
+
         /* vISTA INFO DE EMPLEADO BY CELDULA PARA LISTADO*/
         public IActionResult BuscarEmpleado(BuscarUsuario bu)
         {
@@ -496,5 +550,7 @@ namespace SistemaBancario.Controllers
             con.Close();
             return Info;
         }
+
+
     }
 }
