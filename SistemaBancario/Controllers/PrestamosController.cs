@@ -73,10 +73,12 @@ namespace SistemaBancario.Controllers
                         lsp.NuevoEstadoPrestamo = "Aprobado";
                         conpres.ActualizarEstadoDePrestamoAprobado(lsp);
                     }
-                    Thread.Sleep(3000);
+                    ModelState.Clear();
+                    Thread.Sleep(2500);
                     return RedirectToAction("ListaSolicitudesPrestamos");
                 }
-                Thread.Sleep(3000);
+                ModelState.Clear();
+                Thread.Sleep(2500);
                 return View(conpres);
             }
         }
@@ -126,7 +128,8 @@ namespace SistemaBancario.Controllers
                     }
                 }
             }
-            Thread.Sleep(3000);
+            ModelState.Clear();
+            Thread.Sleep(2500);
             return View();
         }
 
