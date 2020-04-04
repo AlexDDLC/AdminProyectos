@@ -99,11 +99,11 @@
     </button>
        -->
                                 <!-- Button trigger modal -->
-                                
-                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalLong-@empleado.idEmpleado">
-                                        Info. general
-                                    </button>
-                               
+
+                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalLong-@empleado.idEmpleado">
+                                    Info. general
+                                </button>
+
                                 <!-- popup content -->
                                 <div class="modal fade" id="exampleModalLong-@empleado.idEmpleado" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle1" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
@@ -191,9 +191,35 @@
                                 <button class="btn btn-warning btn-sm">
                                     <a asp-controller="Usuarios" asp-action="EditarEmpleado" asp-route-id="@empleado.idEmpleado">Editar</a>
                                 </button>
-                                <button class="btn btn-danger btn-sm ">
-                                    <a asp-controller="Usuarios" asp-action="EliminarEmpleado" asp-route-id="@empleado.idEmpleado">Eliminar</a>
+                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalLon-@empleado.idEmpleado">
+                                    Eliminar
                                 </button>
+
+                                <!-- popup content -->
+                                <div class="modal fade" id="exampleModalLon-@empleado.idEmpleado" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle1" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle1">Eliminar cliente</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <h2>Desea eliminar a @empleado.nombreEmpleado @empleado.apellidoEmpleado?</h2>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                                                <button type="button" class="btn btn-danger">
+                                                    <a asp-controller="Usuarios" asp-action="EliminarEmpleado" asp-route-id="@empleado.idEmpleado">Eliminar</a>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--// popup content -->
+                                <!--// Scrolling long content Modal -->
                             </td>
                         </tr>
                     }

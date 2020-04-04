@@ -73,6 +73,7 @@ namespace SistemaBancario.Controllers
                 catch (Exception ex)
                 {
                     ViewBag.Error = ex;
+                    Response.Redirect("CrearCliente");
                 }
             }
             else
