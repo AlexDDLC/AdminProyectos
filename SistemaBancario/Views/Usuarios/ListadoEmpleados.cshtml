@@ -93,12 +93,7 @@
                                 @Html.DisplayFor(modelItem => empleado.estatusEmpleado)
                             </td>
                             <td>
-                                <!-- Button trigger modal -->
-                                <!-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalLong">
-        <a asp-controller="Usuarios" asp-action="InformacionEmpleado" asp-route-id="@empleado.idEmpleado">Info. General</a>
-    </button>
-       -->
-                                <!-- Button trigger modal -->
+                                <!-- Button MODAL DE INFORMACION GENERAL -->
 
                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalLong-@empleado.idEmpleado">
                                     Info. general
@@ -182,11 +177,7 @@
                                     </div>
                                 </div>
                                 <!--// popup content -->
-                                <!--// Scrolling long content Modal -->
-
-
-
-
+                                <!-- Button MODAL DE INFORMACION GENERAL -->
 
                                 <button class="btn btn-warning btn-sm">
                                     <a asp-controller="Usuarios" asp-action="EditarEmpleado" asp-route-id="@empleado.idEmpleado">Editar</a>
@@ -238,7 +229,7 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLongTitle1">Inactivar empleado</h5>
+                                                    <h5 class="modal-title" id="exampleModalLongTitle1">Activar empleado</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>

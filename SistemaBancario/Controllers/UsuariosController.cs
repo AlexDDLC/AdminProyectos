@@ -268,6 +268,32 @@ namespace SistemaBancario.Controllers
             Response.Redirect("../ListadoClientes");
         }
 
+        /* INACTIVAR CLIENTE*/
+        public void InactivarCliente(int id)
+        {
+            connectionString();
+            con.Open();
+            com.Connection = con;
+            com.CommandText = "UPDATE CLIENTES SET ESTATUS = 'Inactivo' WHERE ID_CLIENTE =" + id + "";
+            dr = com.ExecuteReader();
+
+            con.Close();
+            Response.Redirect("../ListadoClientes");
+        }
+
+        /* ACTIVAR CLIENTE*/
+        public void ActivarCliente(int id)
+        {
+            connectionString();
+            con.Open();
+            com.Connection = con;
+            com.CommandText = "UPDATE CLIENTES SET ESTATUS = 'Activo' WHERE ID_CLIENTE =" + id + "";
+            dr = com.ExecuteReader();
+
+            con.Close();
+            Response.Redirect("../ListadoClientes");
+        }
+
         /* vISTA INFO DE CLIENTE BY CELDULA PARA LISTADO*/
         public IActionResult BuscarCliente(BuscarUsuario bu)
         {
