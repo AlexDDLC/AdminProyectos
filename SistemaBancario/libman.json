@@ -5,6 +5,18 @@
     {
       "library": "font-awesome@5.12.1",
       "destination": "wwwroot/lib/font-awesome/"
+    },
+    {
+      "library": "sweetalert@2.1.2",
+      "destination": "wwwroot/lib/sweetalert/"
+    },
+    {
+      "library": "bootstrap-sweetalert@1.0.1",
+      "destination": "wwwroot/lib/bootstrap-sweetalert/"
+    },
+    {
+      "library": "limonte-sweetalert2@8.11.8",
+      "destination": "wwwroot/lib/limonte-sweetalert2/"
     }
   ]
 }

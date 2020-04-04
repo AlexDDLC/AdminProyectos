@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using SistemaBancario.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Session;
+using System.Threading;
 
 namespace SistemaBancario.Controllers
 {
@@ -23,7 +24,7 @@ namespace SistemaBancario.Controllers
             else
             {
                 List<ListarSolicitudesPrestamo> listsol = new List<ListarSolicitudesPrestamo>();
-                if (varuser.roll != "Cliente")
+                if (HttpContext.Session.GetString("Roll") != "Cliente")
                 {
                     listsol = conpres.listarsolicitudes().ToList();
                 }
@@ -72,8 +73,10 @@ namespace SistemaBancario.Controllers
                         lsp.NuevoEstadoPrestamo = "Aprobado";
                         conpres.ActualizarEstadoDePrestamoAprobado(lsp);
                     }
+                    Thread.Sleep(3000);
                     return RedirectToAction("ListaSolicitudesPrestamos");
                 }
+                Thread.Sleep(3000);
                 return View(conpres);
             }
         }
@@ -123,6 +126,7 @@ namespace SistemaBancario.Controllers
                     }
                 }
             }
+            Thread.Sleep(3000);
             return View();
         }
 

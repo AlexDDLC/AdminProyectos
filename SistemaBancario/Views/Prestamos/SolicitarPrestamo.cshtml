@@ -4,6 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script src="~/lib/sweetalert/sweetalert.min.js"></script>
+<link rel="stylesheet" href="~/lib/limonte-sweetalert2/sweetalert2.min.css"/>
+
 <div class="wrapper">
     <partial name="_MenuLateral" />
     <!-- Page Content Holder -->
@@ -110,7 +113,7 @@
                                 <textarea style="resize: none;" class="form-control" id="detallesSolicitud" rows="6" required="" asp-for="detalles" maxlength="200"></textarea>
                             </div>
                             <hr class="mb-4">
-                            <input type="submit" class="btn btn-primary" value="Solicitar" asp-for="solicitar"/>
+                            <input type="submit" class="btn btn-primary" id="btnsol" value="Solicitar" asp-for="solicitar"/>
                         </form>
                     </div>
                     @* FORMULARIO DE SOLICITUD *@
@@ -120,3 +123,15 @@
         </section>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnsol").click(function () {
+            swal(
+                '¡Buen trabajo!',
+                'Su solicitud fue completada y enviada correctamente',
+                'success',
+            );
+        });
+    });
+</script>
