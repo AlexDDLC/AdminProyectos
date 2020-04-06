@@ -67,13 +67,12 @@
             </a>
             <ul class="collapse list-unstyled" id="pagos">
                 <li>
-                    <a asp-area="" asp-controller="Pagos" asp-action="ListaPagosPagados">Lista de Pagos Al Dia</a>
+                    <a asp-area="" asp-controller="Pagos" asp-action="ListarPagos">Todos Los Pagos</a>
                 </li>
-                <li>
-                    <a asp-area="" asp-controller="Pagos" asp-action="ListaPagosSin">Lista de Pagos Sin Pagar</a>
-                </li>
+               
+
                 
-                 
+
             </ul>
         </li>
         @if (@httpContextAccessor.HttpContext.Session.GetString("Roll") == "Admin")
