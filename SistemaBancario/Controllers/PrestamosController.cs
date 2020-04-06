@@ -31,7 +31,7 @@ namespace SistemaBancario.Controllers
                 }
                 else
                 {
-                    listsol = conpres.listarsolicitudesCliente(varuser.cedula).ToList();
+                    listsol = conpres.listarsolicitudesCliente(HttpContext.Session.GetString("Cedula")).ToList();
                 }
                 return View(listsol);
             }
@@ -151,7 +151,8 @@ namespace SistemaBancario.Controllers
                 }
                 else
                 {
-                    listsolRech = conpres.listarsolicitudesRechazadoCliente(varuser.cedula).ToList();
+                    Console.WriteLine(HttpContext.Session.GetString("Cedula"));
+                    listsolRech = conpres.listarsolicitudesRechazadoCliente(HttpContext.Session.GetString("Cedula")).ToList();
                 }
                 return View(listsolRech);
             }
@@ -172,7 +173,7 @@ namespace SistemaBancario.Controllers
                 }
                 else
                 {
-                    listsolAprob = conpres.listarsolicitudesAprobadoCliente(varuser.cedula).ToList();
+                    listsolAprob = conpres.listarsolicitudesAprobadoCliente(HttpContext.Session.GetString("Cedula")).ToList();
                 }
                 return View(listsolAprob);
             }
