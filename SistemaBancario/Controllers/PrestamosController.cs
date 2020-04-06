@@ -73,6 +73,8 @@ namespace SistemaBancario.Controllers
                     {
                         lsp.NuevoEstadoPrestamo = "Aprobado";
                         conpres.ActualizarEstadoDePrestamoAprobado(lsp);
+                        //Aqui abajo va el procedure
+
                     }
                     ModelState.Clear();
                     Thread.Sleep(2500);

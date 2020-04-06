@@ -185,6 +185,7 @@ namespace SistemaBancario.Models
             return listaPresAprob;
         }
 
+        //Has un codigo parecido a este para agregar los datos a pagos
         public void CrearSolicitudPrestamo(SolicitudPrestamo SP)
         {
             using (SqlConnection con = new SqlConnection(conexionSQL.conexion))

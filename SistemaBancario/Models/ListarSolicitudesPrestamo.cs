@@ -8,6 +8,8 @@ namespace SistemaBancario.Models
 {
     public class ListarSolicitudesPrestamo
     {
+        //Estas son las variables donde se guandan los datos
+
         //Listar prestamos
         public string id_sol { get; set; }
         public string solicitante { get; set; }
