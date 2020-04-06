@@ -8,7 +8,7 @@ namespace SistemaBancario.Models
     public class ListarPagos
     {
         // Pagos
-        public string IDPagos { get; set; }
+        public int IDPagos { get; set; }
         public string Cliente { get; set; }
         public string Prestamo { get; set; }
       // public string FK_Prestamo { get; set; }

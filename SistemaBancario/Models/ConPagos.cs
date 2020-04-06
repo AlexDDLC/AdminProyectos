@@ -18,7 +18,7 @@ namespace SistemaBancario.Models
         {
             List<ListarPagos> listPagos = new List<ListarPagos>();
 
-            using (SqlConnection con = new SqlConnection(conexionSQL.conexion))
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand("ListarTodosPagos", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
@@ -27,7 +27,7 @@ namespace SistemaBancario.Models
                 while (dr.Read())
                 {
                     ListarPagos lsp = new ListarPagos();
-                    lsp.IDPagos = dr["ID_Pagos"].ToString();
+                    lsp.IDPagos = Convert.ToInt32(dr["ID_Pago"].ToString());
                     lsp.Cliente = dr["FK_ID_Cliente"].ToString();
                     lsp.Prestamo = dr["FK_ID_Prestamo"].ToString();
                     lsp.FechaPago = dr["FechaPago"].ToString();
@@ -59,7 +59,7 @@ namespace SistemaBancario.Models
                 while (dr.Read())
                 {
                     ListarPagos lsp = new ListarPagos();
-                    lsp.IDPagos = dr["ID_Pagos"].ToString();
+                    lsp.IDPagos = Convert.ToInt32(dr["ID_Pgo"].ToString());
                     lsp.Cliente = dr["FK_ID_Cliente"].ToString();
                     lsp.Prestamo = dr["FK_ID_Prestamo"].ToString();
                     lsp.FechaPago = dr["FechaPago"].ToString();
@@ -92,7 +92,7 @@ namespace SistemaBancario.Models
                 while (dr.Read())
                 {
                     ListarPagos lsp = new ListarPagos();
-                    lsp.IDPagos = dr["ID_Pagos"].ToString();
+                    lsp.IDPagos = Convert.ToInt32(dr["ID_Pgo"].ToString());
                     lsp.Cliente = dr["FK_ID_Cliente"].ToString();
                     lsp.Prestamo = dr["FK_ID_Prestamo"].ToString();
                     lsp.FechaPago = dr["FechaPago"].ToString();
@@ -101,7 +101,7 @@ namespace SistemaBancario.Models
                     lsp.Restante = dr["Restante"].ToString();
                     lsp.CuotasPagadas = dr["CuotasCubieras"].ToString();
                     lsp.CuotasRestantes = dr["CuotasFaltantes"].ToString();
-                    lsp.CuotasRestantes = dr["Detalle"].ToString();
+                    
                     listPagos.Add(lsp);
                 }
                 con.Close();
@@ -123,7 +123,7 @@ namespace SistemaBancario.Models
                 while (dr.Read())
                 {
                     ListarPagos lsp = new ListarPagos();
-                    lsp.IDPagos = dr["ID_Pagos"].ToString();
+                    lsp.IDPagos = Convert.ToInt32(dr["ID_Pgo"].ToString());
                     lsp.Cliente = dr["FK_ID_Cliente"].ToString();
                     lsp.Prestamo = dr["FK_ID_Prestamo"].ToString();
                     lsp.FechaPago = dr["FechaPago"].ToString();
@@ -153,7 +153,7 @@ namespace SistemaBancario.Models
                 while (dr.Read())
                 {
                     ListarPagos lsp = new ListarPagos();
-                    lsp.IDPagos = dr["ID_Pagos"].ToString();
+                    lsp.IDPagos = Convert.ToInt32(dr["ID_Pgo"].ToString());
                     lsp.Cliente = dr["FK_ID_Cliente"].ToString();
                     lsp.Prestamo = dr["FK_ID_Prestamo"].ToString();
                     lsp.FechaPago = dr["FechaPago"].ToString();
