@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<SistemaBancario.Models.ListarPagos>
+
 @{
     ViewData["Title"] = "ListarPagos";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -14,27 +15,34 @@
         <partial name="_BarraBusqueda" />
         <section class="tables-section">
             <!-- Pagos -->
+            <script>
+            $(document).ready(function () {
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar').toggleClass('active');
+                });
+            });
+            </script>
             <div class="outer-w3-agile mt-3">
                 <h4 class="tittle-w3-agileits mb-4">Lista de Pagos</h4>
                 <table class="table table-bordered">
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col" style="text-align:center;">ID</th>
-                            <th scope="col" style="text-align:center;">Cedula</th>
                             <th scope="col" style="text-align:center;">Cliente</th>
                             <th scope="col" style="text-align:center;">Prestamo</th>
                             <th scope="col" style="text-align:center;">Fecha de Pago</th>
-                            <th scope="col" style="text-align:center;">Monto</th>
+                            <th scope="col" style="text-align:center;">Monto a Pagar</th>
                             <th scope="col" style="text-align:center;">Estado del préstamo</th>
                             <th scope="col" style="text-align:center;">Restante</th>
                             <th scope="col" style="text-align:center;">Cuotas Pagadas</th>
                             <th scope="col" style="text-align:center;">Cuotas Restantes</th>
-
+                            <th scope="col" style="text-align:center;">Acciones</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var listPagos in Model)
+
                         {
                             <tr>
                                 <th scope="row">@Html.DisplayFor(modelItem => listPagos.IDPagos)</th>
@@ -48,67 +56,122 @@
                                 <td>@Html.DisplayFor(modelItem => listPagos.CuotasRestantes)</td>
 
                                 <td>
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary" style="margin-left:auto;margin-right:auto;"
-                                            data-toggle="modal" data-target="#exampleModal-@listPagos.IDPagos">
-                                        Detalles
+                                    <!-- Button MODAL DE INFORMACION GENERAL -->
+
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalLong-@listPagos.IDPagos">
+
+                                        Info. general
                                     </button>
 
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal-@listPagos.IDPagos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg" role="document">
+                                    <!-- popup content -->
+                                    <div class="modal fade" id="exampleModalLong-@listPagos.IDPagos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle1" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Detalles de la solicitud</h5>
+                                                    <h5 class="modal-title" id="exampleModalLongTitle1">Información Del Pago</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
+
                                                 <div class="modal-body">
+                                                    <table class="table table-bordered">
+                                                        <thead class="thead-dark">
 
-                                                    <div class="form-row">
-                                                        <div class="form-group col-md-6">
-                                                            <label for="inputEmail4">ID Cliente</label>
-                                                            <input type="text" class="form-control" id="inputEmail4" value="@Html.DisplayFor(modelItem => listPagos.Cliente)">
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="inputPassword4">ID Prestamo</label>
-                                                            <input type="text" class="form-control" id="inputPassword4" value="@Html.DisplayFor(modelItem => listPagos.Prestamo)">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-row">
-                                                        <div class="form-group col-md-3">
-                                                            <label for="inputPassword4">Fecha de Pago</label>
-                                                            <input type="text" class="form-control" id="inputPassword4" value="@Html.DisplayFor(modelItem => listPagos.FechaPago)">
-                                                        </div>
-                                                        <div class="form-group col-md-3">
-                                                            <label for="inputPassword4">Monto</label>
-                                                            <input type="text" class="form-control" id="inputPassword4" value="@Html.DisplayFor(modelItem => listPagos.Monto)">
-                                                        </div>
-                                                        <div class="form-group col-md-3">
-                                                            <label for="inputPassword4">Estado</label>
-                                                                <input type="text" class="form-control" id="inputPassword4" value="@Html.DisplayFor(modelItem => listPagos.Estado)">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-row">
-                                                        <div class="form-group col-md-3">
-                                                            <label for="inputEmail4">Restante</label>
-                                                            <input type="text" class="form-control" id="inputEmail4" value="@Html.DisplayFor(modelItem => listPagos.Restante)">
-                                                        </div>
-                                                        <div class="form-group col-md-3">
-                                                            <label for="inputPassword4">Cuotas Pagadas</label>
-                                                            <input type="text" class="form-control" id="inputPassword4" value="@Html.DisplayFor(modelItem => listPagos.CuotasPagadas)">
-                                                        </div>
-                                                        <div class="form-group col-md-3">
-                                                            <label for="inputPassword4">Cuotas Restantes</label>
-                                                            <input type="text" class="form-control" id="inputPassword4" value="@Html.DisplayFor(modelItem => listPagos.CuotasRestantes)">
-                                                        </div>
-                                                    </div>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>ID Cliente</td>
+                                                                <th>@Html.DisplayFor(modelItem => listPagos.Cliente)</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>ID Prstamo</td>
+                                                                <th>@Html.DisplayFor(modelItem => listPagos.Prestamo)</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Fecha de Pago</td>
+                                                                <th>@Html.DisplayFor(modelItem => listPagos.FechaPago)</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Monto de Pago</td>
+                                                                <th>RD$@Html.DisplayFor(modelItem => listPagos.Monto)</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Estado</td>
+                                                                <th>@Html.DisplayFor(modelItem => listPagos.Estado)</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Usuario</td>
+                                                                <th>@Html.DisplayFor(modelItem => listPagos.Restante)</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Cuotas Pagadas</td>
+                                                                <th>@Html.DisplayFor(modelItem => listPagos.CuotasPagadas)</th>
+                                                            </tr>
 
+                                                            <tr>
+                                                                <td>Cuotas Restantes</td>
+                                                                <th>@Html.DisplayFor(modelItem => listPagos.CuotasRestantes)</th>
+                                                            </tr>
+
+
+
+
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <!--// popup content -->
+                                    <!-- Button MODAL DE INFORMACION GENERAL -->
+                                    <!-- Button MODAL DE INFORMACION GENERAL -->
+
+                                    
+
+                                    @if (@listPagos.Estado == "Sin Pagar")
+                                    {
+
+                                        <!-- BOTON INACTIVAR CON MODAL -->
+                                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#examplePagar-@listPagos.IDPagos">
+                                            <a>Pagar</a>
+                                        </button>
+
+                                        <!-- popup content -->
+                                        <div class="modal fade" id="examplePagar-@listPagos.IDPagos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle1" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLongTitle1">Efectuar Pago</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+
+                                                    <div class="modal-body">
+                                                        <h2>Desea Efectuar este Pago @listPagos.Cliente ?</h2>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                                                        <button type="button" class="btn btn-warning">
+                                                            <a asp-controller="Pagos" asp-action="Pagar" asp-route-id="@listPagos.IDPagos">Pagar</a>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--// popup content -->
+                                        <!-- BOTON INACTIVAR CON MODAL -->
+                                    }
+
+                                    
+
+                                    
                                 </td>
                             </tr>
                         }

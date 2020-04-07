@@ -168,10 +168,67 @@ namespace SistemaBancario.Models
             }
             return listPagos;
         }
+        public void ActualizarEstadoDePagoAprobado(ListarPagos lsp)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("ActualizarEstadoPagos", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ID_Pago", lsp.IDPagos);
+                cmd.Parameters.AddWithValue("@Estado", lsp.Estado);
+                cmd.Parameters.AddWithValue("@CuotasPagadas", lsp.CuotasPagadas);
+                cmd.Parameters.AddWithValue("@CuotasRestantes", lsp.CuotasRestantes);
+                
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+        }
 
-        
+        public void ActualizarEstadoDePagosRechazado(ListarPagos lsp)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("CambiarEstadoSolicitudRechazada", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ID_Pago", lsp.IDPagos);
+                cmd.Parameters.AddWithValue("@Estado", lsp.Estado);
+                cmd.Parameters.AddWithValue("@CuotasPagadas", lsp.CuotasPagadas);
+                cmd.Parameters.AddWithValue("@CuotasRestantes", lsp.CuotasRestantes);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+        }
+        public ListarPagos listarPagosPorID(int id)
+        {
+            ListarPagos listPagos = new ListarPagos();
 
-        
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("ObtenerPagosPorID", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@IDPago", id);
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    listPagos.IDPagos = Convert.ToInt32(dr["ID_Pgo"].ToString());
+                    listPagos.Cliente = dr["FK_ID_Cliente"].ToString();
+                    listPagos.Prestamo = dr["FK_ID_Prestamo"].ToString();
+                    listPagos.FechaPago = dr["FechaPago"].ToString();
+                    listPagos.Monto = dr["Monto"].ToString();
+                    listPagos.Estado = dr["Estado"].ToString();
+                    listPagos.Restante = dr["Restante"].ToString();
+                    listPagos.CuotasPagadas = dr["CuotasCubieras"].ToString();
+                }
+                con.Close();
+            }
+            return listPagos;
+        }
+
+
+
 
     }
 }
