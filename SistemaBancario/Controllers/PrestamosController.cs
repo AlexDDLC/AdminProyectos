@@ -31,7 +31,7 @@ namespace SistemaBancario.Controllers
                 }
                 else
                 {
-                    listsol = conpres.listarsolicitudesCliente(varuser.cedula).ToList();
+                    listsol = conpres.listarsolicitudesCliente(HttpContext.Session.GetString("Cedula")).ToList();
                 }
                 return View(listsol);
             }
@@ -145,13 +145,13 @@ namespace SistemaBancario.Controllers
             else
             {
                 List<ListarSolicitudesPrestamo> listsolRech = new List<ListarSolicitudesPrestamo>();
-                if (varuser.roll != "Cliente")
+                if (HttpContext.Session.GetString("Roll") != "Cliente")
                 {
                     listsolRech = conpres.listarSolicitudesRechazadas().ToList();
                 }
                 else
                 {
-                    listsolRech = conpres.listarsolicitudesRechazadoCliente(varuser.cedula).ToList();
+                    listsolRech = conpres.listarsolicitudesRechazadoCliente(HttpContext.Session.GetString("Cedula")).ToList();
                 }
                 return View(listsolRech);
             }
@@ -166,13 +166,13 @@ namespace SistemaBancario.Controllers
             else
             {
                 List<ListarSolicitudesPrestamo> listsolAprob = new List<ListarSolicitudesPrestamo>();
-                if (varuser.roll != "Cliente")
+                if (HttpContext.Session.GetString("Roll") != "Cliente")
                 {
                     listsolAprob = conpres.listarSolicitudesAprobadas().ToList();
                 }
                 else
                 {
-                    listsolAprob = conpres.listarsolicitudesAprobadoCliente(varuser.cedula).ToList();
+                    listsolAprob = conpres.listarsolicitudesAprobadoCliente(HttpContext.Session.GetString("Cedula")).ToList();
                 }
                 return View(listsolAprob);
             }

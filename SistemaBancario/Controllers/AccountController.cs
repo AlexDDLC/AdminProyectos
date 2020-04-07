@@ -46,9 +46,7 @@ namespace SistemaBancario.Controllers
 
         public IActionResult Inactivo()
         {
-           
                 return View();
-            
         }
 
         void connectionString()
@@ -78,24 +76,17 @@ namespace SistemaBancario.Controllers
 
                     if (HttpContext.Session.GetString("Estatus") == "Activo")
                     {
-
-
                         infoClienteUser(Acc.UsuarioCliente);
                         return View("../Dashboard/Dashboard");
                     }
                     else
                     {
-
                         HttpContext.Session.Remove("Usuario");
                         HttpContext.Session.Remove("Roll");
 
                         con.Close();
                         return View("Inactivo");
                     }
-
-
-
-
                 }
                 else
                 {
@@ -120,22 +111,17 @@ namespace SistemaBancario.Controllers
 
                     if (HttpContext.Session.GetString("Estatus") == "Activo")
                     {
-
                         infoEmpleadoUser(Acc.UsuarioEmpleado);
                         return View("../Dashboard/Dashboard");
                     }
                     else
                     {
-
                         HttpContext.Session.Remove("Usuario");
                         HttpContext.Session.Remove("Roll");
 
                         con.Close();
                         return View("Inactivo");
                     }
-
-
-
                 }
                 else
                 {
@@ -162,8 +148,6 @@ namespace SistemaBancario.Controllers
             Response.Redirect("../Home/Index");
         }
 
-
-
         /*Verificar status de cuenta*/
         public void verificarEstatus(string usuario, string tipo)
         {
@@ -176,13 +160,9 @@ namespace SistemaBancario.Controllers
             while (dr.Read())
             {
                 HttpContext.Session.SetString("Estatus", dr["Estatus"].ToString());
-           
             }
             con.Close();
         }
-
-
-
 
         /* SELECT INFO DE CLIENTE BY user*/
         public void infoClienteUser(string user)
@@ -205,7 +185,6 @@ namespace SistemaBancario.Controllers
             }
             con.Close();
         }
-
 
         /* SELECT INFO DE Empleado BY user*/
         public void infoEmpleadoUser(string user)
